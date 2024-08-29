@@ -1,30 +1,65 @@
+import 'package:bon_achat/view/ads/my_ads.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart'; // Import ScreenUtil
-import 'package:bon_achat/view/home/home_scr.dart'; // Ensure this import is correct
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'const/colors.dart';
+import 'custom_widgets/CustomBottomAppBar.dart';
+import 'view/ads/post_add.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(375, 812), // Set your design size here
-      minTextAdapt: true,
-      splitScreenMode: true,
+      designSize: const Size(375, 812), // Adjust this as per your design dimensions
       builder: (context, child) {
         return MaterialApp(
-          title: 'Flutter Demo',
-          theme: ThemeData(
-            primarySwatch: Colors.blue,
-            textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
-          ),
-          home: const HomeScreen(), // Ensure HomeScreen is a constant widget
+          home: HomePage(),
         );
       },
     );
   }
 }
+
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int _currentIndex = 0;
+
+  final List<Widget> _pages = [
+    PostAdScreen(),
+    MyAdsPage(),
+    Container(), // Placeholder for FAB, no actual page
+    MyAdsPage(), // Replace with your Favorites page
+    MyAdsPage(), // Replace with your Account page
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: _pages[_currentIndex],
+      bottomNavigationBar: CustomBottomAppBar(
+        currentIndex: _currentIndex,
+        onItemSelected: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: AppColor.orange,
+        onPressed: () {
+          // Handle FAB action
+        },
+        child: Icon(Icons.add, color: AppColor.white),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+    );
+  }
+}
+
