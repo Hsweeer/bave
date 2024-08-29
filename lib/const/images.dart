@@ -19,6 +19,14 @@ class AppImages {
   static const tag = 'assets/images/tag.png';
   static const location = 'assets/images/location.png';
   static const clock = 'assets/images/location.png';
+  static const done = 'assets/images/Done.png';
+  static const camera = 'assets/images/camera.png';
+  static const headphone = 'assets/images/headphone.png';
+  static const iphone = 'assets/images/iphone.png';
+  static const lap_tab = 'assets/images/lap_tab.png';
+  static const mac = 'assets/images/mac.png';
+  static const mobile = 'assets/images/mobile.png';
+  static const map = 'assets/images/map.png';
 
 }
 
