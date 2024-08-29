@@ -1,4 +1,5 @@
 import 'package:bon_achat/view/ads/my_ads.dart';
+import 'package:bon_achat/view/home/home_scr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'const/colors.dart';
@@ -32,7 +33,8 @@ class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
-    PostAdScreen(),
+    HomeScreen(),
+    // PostAdScreen(),
     MyAdsPage(),
     Container(), // Placeholder for FAB, no actual page
     MyAdsPage(), // Replace with your Favorites page
@@ -55,6 +57,12 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: AppColor.orange,
         onPressed: () {
           // Handle FAB action
+          Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => PostAdScreen(),
+          ),
+        );
         },
         child: Icon(Icons.add, color: AppColor.white),
       ),
