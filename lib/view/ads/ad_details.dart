@@ -4,11 +4,196 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../const/colors.dart';
 import '../../const/images.dart';
+import '../../const/text_style.dart';
 
-class AdDetailsPage extends StatelessWidget {
+class AdDetailsPage extends StatefulWidget {
   final String imagePath;
 
   AdDetailsPage({required this.imagePath});
+
+  @override
+  State<AdDetailsPage> createState() => _AdDetailsPageState();
+}
+
+class _AdDetailsPageState extends State<AdDetailsPage> {
+  void _showSuccessDialog() {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20.r),
+          ),
+          child: Stack(
+            children: [
+              Container(
+                width: 300.w,
+                padding: EdgeInsets.symmetric(vertical: 24.h, horizontal: 20.w),
+                decoration: BoxDecoration(
+                  color: AppColor.green,
+                  borderRadius: BorderRadius.circular(20.r),
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      width: 130.w,
+                      height: 140.h,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Center(
+                        child: Image.asset(
+                          AppImages.done,
+                          width: 150.w,
+                          height: 140.h,
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 20.h),
+                    Text(
+                      'MARKED AS SOLD \nSUCCESSFULLY',
+                      textAlign: TextAlign.center,
+                      style: lemonMilkWithColor800(AppColor.white, 18.sp),
+                    ),
+                    SizedBox(height: 15.h),
+                    Text(
+                      'Congratulations!  Marked as Sold \nSuccessfully.',
+                      textAlign: TextAlign.center,
+                      style: lemonMilk500(12.sp, AppColor.white),
+                    ),
+                    SizedBox(height: 24.h),
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        style: ElevatedButton.styleFrom(
+                          padding: EdgeInsets.symmetric(vertical: 14.h),
+                          backgroundColor: AppColor.orange,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.r),
+                          ),
+                        ),
+                        child: Text(
+                          'GREAT',
+                          style: lemonMilkWithColor800(AppColor.white, 16.sp),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Positioned(
+                top: 10.h,
+                right: 10.w,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Icon(
+                    Icons.close,
+                    color: Colors.white,
+                    size: 24.sp,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+  void _showSuccessDialog2() {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20.r),
+          ),
+          child: Stack(
+            children: [
+              Container(
+                width: 300.w,
+                padding: EdgeInsets.symmetric(vertical: 24.h, horizontal: 20.w),
+                decoration: BoxDecoration(
+                  color: AppColor.green,
+                  borderRadius: BorderRadius.circular(20.r),
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      width: 130.w,
+                      height: 140.h,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Center(
+                        child: Image.asset(
+                          AppImages.done,
+                          width: 150.w,
+                          height: 140.h,
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 20.h),
+                    Text(
+                   'ARE YOU SURE?',
+                      textAlign: TextAlign.center,
+                      style: lemonMilkWithColor800(AppColor.white, 18.sp),
+                    ),
+                    SizedBox(height: 24.h),
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        style: ElevatedButton.styleFrom(
+                          padding: EdgeInsets.symmetric(vertical: 14.h),
+                          backgroundColor: AppColor.orange,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.r),
+                          ),
+                        ),
+                        child: Text(
+                          'YES, DELETE',
+                          style: lemonMilkWithColor800(AppColor.white, 16.sp),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Positioned(
+                top: 10.h,
+                right: 10.w,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Icon(
+                    Icons.close,
+                    color: Colors.white,
+                    size: 24.sp,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,20 +209,20 @@ class AdDetailsPage extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8.0), // Optional: Add rounded corners
                   child: Image.asset(
-                    imagePath,
+                    widget.imagePath,
                     fit: BoxFit.cover, // Adjust this property as needed
                   ),
                 ),
               ),
-          
+
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // Image Section
-          
-          
+
+
                     // Title, Price, and Call to Action
                     Text(
                       "APPLE MACBOOK PRO WITH M1 CHIP...",
@@ -104,7 +289,7 @@ class AdDetailsPage extends StatelessWidget {
                       ],
                     ),
                     SizedBox(height: 16.h),
-          
+
                     // Specifications Section
                     _buildSectionTitle("SPECIFICATIONS:"),
                     _buildSpecification("Price:", "\$2,347"),
@@ -114,16 +299,16 @@ class AdDetailsPage extends StatelessWidget {
                     _buildSpecification("Category:", "Gadgets"),
                     _buildSpecification("Condition:", "Used"),
                     _buildSpecification("Price Type:", "Negotiable"),
-          
+
                     SizedBox(height: 16.h),
-          
+
                     // Description Section
                     _buildSectionTitle("DESCRIPTION"),
-          
+
                     Container(
                       width: 353.w,
                       height: 46.h,
-          
+
                       padding: EdgeInsets.all(12.h),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8.r),
@@ -139,12 +324,12 @@ class AdDetailsPage extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 16.h),
-          
+
                     // Author Info
                     _buildSectionTitle("AUTHOR INFO"),
                   Container(
                     width: 353.w,
-          
+
                     padding: EdgeInsets.all(12.h),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8.r),
@@ -217,7 +402,7 @@ class AdDetailsPage extends StatelessWidget {
                       ],
                     ),
                   ),              SizedBox(height: 16.h),
-          
+
                     // Location Section
                     _buildSectionTitle("LOCATION"),
                     Container(
@@ -233,7 +418,7 @@ class AdDetailsPage extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 16.h),
-          
+
                     // Safety Tips Section
                     _buildSectionTitle("SAFETY TIPS"),
                     _buildSafetyTip("Check the item before you buy"),
@@ -242,9 +427,9 @@ class AdDetailsPage extends StatelessWidget {
                     _buildSafetyTip("Meet seller at a safe location"),
                     _buildSafetyTip("Do not make an abrupt decision"),
                     _buildSafetyTip("Be honest with the ad you post"),
-          
+
                     SizedBox(height: 16.h),
-          
+
                     // Admin Approval Section
                     Container(
                       width: double.infinity,
@@ -260,29 +445,63 @@ class AdDetailsPage extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 16.h),
-          
+
                     // Delete Ad Button
-                    ElevatedButton(
-                      onPressed: () {
-                        // Handle Delete
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColor.red,
-                        padding: EdgeInsets.symmetric(vertical: 12.h),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8.r),
-                        ),
-                      ),
-                      child: Center(
-                        child: Text(
-                          "DELETE AD",
-                          style: TextStyle(
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.bold,
-                            color: AppColor.white,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          width: 160.w,
+                        height: 55.h,
+                          child: ElevatedButton(
+                            onPressed: _showSuccessDialog,
+
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: AppColor.orange,
+                              padding: EdgeInsets.symmetric(vertical: 12.h),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8.r),
+                              ),
+                            ),
+                            child: Center(
+                              child: Text(
+                                "MARK AS SOLD",
+                                style: TextStyle(
+                                  fontSize: 16.sp,
+                                  fontWeight: FontWeight.bold,
+                                  color: AppColor.white,
+                                ),
+                              ),
+                            ),
                           ),
                         ),
-                      ),
+                        SizedBox(width: 5.w,),
+                        SizedBox(
+                          width: 160.w,
+                          height: 55.h,
+                          child: ElevatedButton(
+                            onPressed: _showSuccessDialog2,
+
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: AppColor.red,
+                              padding: EdgeInsets.symmetric(vertical: 12.h),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8.r),
+                              ),
+                            ),
+                            child: Center(
+                              child: Text(
+                                "DELETE AD",
+                                style: TextStyle(
+                                  fontSize: 16.sp,
+                                  fontWeight: FontWeight.bold,
+                                  color: AppColor.white,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                     SizedBox(height: 24.h),
                   ],

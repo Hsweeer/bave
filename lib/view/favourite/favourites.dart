@@ -1,12 +1,10 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../const/colors.dart'; // Make sure this import is correct
 import '../../const/images.dart'; // Make sure this import is correct
-import 'ad_details.dart';
+import '../ads/ad_details.dart';
 
 class Ad {
   final String category;
@@ -26,13 +24,14 @@ class Ad {
   });
 }
 
-class MyAdsPage extends StatefulWidget {
+class Favourite extends StatefulWidget {
   @override
-  _MyAdsPageState createState() => _MyAdsPageState();
+  _FavouriteState createState() => _FavouriteState();
 }
 
-class _MyAdsPageState extends State<MyAdsPage> with SingleTickerProviderStateMixin {
+class _FavouriteState extends State<Favourite> with SingleTickerProviderStateMixin {
   TabController? _tabController;
+  bool isGridViewSelected = true;
 
   List<Ad> ads = [
     Ad(
@@ -108,67 +107,54 @@ class _MyAdsPageState extends State<MyAdsPage> with SingleTickerProviderStateMix
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.only(left: 16.w),
+              padding: EdgeInsets.only(left: 16.0), // Use standard padding
               child: RichText(
                 text: TextSpan(
                   children: [
                     TextSpan(
-                      text: "MY ",
+                      text: "FAVORITES",
                       style: TextStyle(
                         color: AppColor.black,
                         fontWeight: FontWeight.bold,
-                        fontSize: 24.sp,
-                      ),
-                    ),
-                    TextSpan(
-                      text: "ADS",
-                      style: TextStyle(
-                        color: AppColor.green,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24.sp,
+                        fontSize: 24.0, // Use a standard font size
                       ),
                     ),
                   ],
                 ),
               ),
             ),
-          ],
-        ),
-        bottom: PreferredSize(
-          preferredSize: Size.fromHeight(48.h),
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 16.w),
-            child: TabBar(
-              controller: _tabController,
-              tabs: [
-                Container(
-                  height: 42.h,  // Set your desired height
-                  width: 171.w,  // Set your desired width
-                  child: Tab(text: "Pending Ads"),
+            Spacer(),
+            Row(
+              children: [
+                IconButton(
+                  icon: Icon(
+                    Icons.grid_view,
+                    color: isGridViewSelected ? AppColor.green : AppColor.black,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      isGridViewSelected = true;
+                    });
+                    // Handle the first button action (Grid View)
+                  },
                 ),
-                Container(
-                  height: 42.h,  // Set your desired height
-                  width: 171.w,  // Set your desired width
-                  child: Tab(text: "Active Ads"),
+                IconButton(
+                  icon: Icon(
+                    Icons.view_list,
+                    color: !isGridViewSelected ? AppColor.green : AppColor.black,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      isGridViewSelected = false;
+                    });
+                    // Handle the second button action (List View)
+                  },
                 ),
               ],
-              labelColor: AppColor.white,
-              unselectedLabelColor: AppColor.grey,
-              indicator: BoxDecoration(
-                color: AppColor.green,
-                borderRadius: BorderRadius.circular(8.r),
-              ),
-              // Optional: adjust or remove this based on your tab sizes
-              indicatorPadding: EdgeInsets.symmetric(vertical: 6.h),
-              labelStyle: TextStyle(
-                fontSize: 16.sp,
-                fontWeight: FontWeight.w600,
-              ),
             ),
-          ),
+          ],
         ),
       ),
-
       body: TabBarView(
         controller: _tabController,
         children: [
@@ -187,7 +173,7 @@ class _MyAdsPageState extends State<MyAdsPage> with SingleTickerProviderStateMix
           crossAxisCount: 2,
           crossAxisSpacing: 8.w,
           mainAxisSpacing: 8.h,
-          childAspectRatio: 0.777,  // Updated aspect ratio
+          childAspectRatio: 0.777, // Updated aspect ratio
         ),
         itemBuilder: (context, index) {
           final ad = ads[index];
@@ -260,8 +246,8 @@ class _MyAdsPageState extends State<MyAdsPage> with SingleTickerProviderStateMix
                         ),
                       ),
                       IconButton(
-                        icon: Icon(Icons.favorite_border),
-                        color: AppColor.black,
+                        icon: Icon(Icons.favorite),
+                        color: AppColor.red,
                         onPressed: () {
                           // Handle heart icon press
                         },
