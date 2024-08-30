@@ -18,7 +18,7 @@ class AppImages {
   static const shoe = 'assets/images/shoe.png';
   static const tag = 'assets/images/tag.png';
   static const location = 'assets/images/location.png';
-  static const clock = 'assets/images/location.png';
+  static const clock = 'assets/images/clock.png';
   static const done = 'assets/images/Done.png';
   static const camera = 'assets/images/camera.png';
   static const headphone = 'assets/images/headphone.png';
@@ -27,6 +27,19 @@ class AppImages {
   static const mac = 'assets/images/mac.png';
   static const mobile = 'assets/images/mobile.png';
   static const map = 'assets/images/map.png';
+  static const searchscr = 'assets/images/searchscr.png';
+  static const property = 'assets/images/property.png';
+  static const car = 'assets/images/car.png';
+  static const hosptality = 'assets/images/hosptality.png';
+  static const edu = 'assets/images/edu.png';
+  static const buis = 'assets/images/buis.png';
+  static const agri = 'assets/images/agri.png';
+  static const camh = 'assets/images/camh.png';
+  static const comp = 'assets/images/comp.png';
+  static const drownh = 'assets/images/drownh.png';
+  static const mob = 'assets/images/mob.png';
+  static const recth = 'assets/images/recth.png';
+
 
 }
 
