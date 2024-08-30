@@ -4,8 +4,9 @@ class AppSvgs{
   static const heart = 'assets/svg/heart.svg';
   static const ads = 'assets/svg/ads.svg';
   static const file = 'assets/svg/file.svg';
-  static const box = 'assets/images/box.svg';
-  static const list = 'assets/images/list.svg';
+  static const box = 'assets/svg/box.svg';
+  static const list = 'assets/svg/list.svg';
+  static const circles = 'assets/svg/circles.svg';
   // static const user = 'assets/svg/user.svg';
   // static const user = 'assets/svg/user.svg';
 
