@@ -1,3 +1,4 @@
+import 'package:bon_achat/splash/splash_screen.dart';
 import 'package:bon_achat/view/Category/all_category.dart';
 import 'package:bon_achat/view/ads/ad_details.dart';
 import 'package:bon_achat/view/ads/my_ads.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       designSize: const Size(375, 812), // Adjust this as per your design dimensions
       builder: (context, child) {
         return GetMaterialApp(
-          home:CategoriesScreen(),
+          home:SplashScreen(),
         );
       },
     );
