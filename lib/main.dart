@@ -1,5 +1,7 @@
 import 'package:bon_achat/splash/splash_screen.dart';
 import 'package:bon_achat/view/Category/all_category.dart';
+import 'package:bon_achat/view/Filter_choice/filtered_result.dart';
+import 'package:bon_achat/view/Notification_scr/notifications.dart';
 import 'package:bon_achat/view/ads/ad_details.dart';
 import 'package:bon_achat/view/ads/my_ads.dart';
 import 'package:bon_achat/view/home/home_scr.dart';
@@ -21,7 +23,7 @@ class MyApp extends StatelessWidget {
       designSize: const Size(375, 812), // Adjust this as per your design dimensions
       builder: (context, child) {
         return GetMaterialApp(
-          home:SplashScreen(),
+          home:FilterResultScreen(),
         );
       },
     );
