@@ -58,7 +58,7 @@ class _SearchState extends State<Search> {
                       child: Padding(
                         padding: EdgeInsets.all(8.0),
                         child: Image.asset(
-                          AppImages.Search,
+                          AppImages.search,
                           width: 16.w,
                           height: 16.h,
                         ),

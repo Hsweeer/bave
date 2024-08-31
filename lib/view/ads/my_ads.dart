@@ -392,7 +392,7 @@ class _MyAdsPageState extends State<MyAdsPage>
             child: Container(
               height: 177.h,
               decoration: BoxDecoration(
-                color: AppColor.lightgrey,
+                color: AppColor.lightGrey,
                 borderRadius: BorderRadius.circular(8.r),
               ),
               child: Column(

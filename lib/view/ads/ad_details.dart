@@ -391,7 +391,7 @@ height: 286.h,
                       width: 352.w,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8.r),
-                        color: AppColor.lightgrey,
+                        color: AppColor.lightGrey,
                       ),
                       child:  Image.asset(
                         AppImages.map,

@@ -520,7 +520,7 @@ class _FavouriteState extends State<Favourite> with SingleTickerProviderStateMix
       child: Container(
         margin: EdgeInsets.only(bottom: 10.h), // Added margin for ListView
         decoration: BoxDecoration(
-          color: AppColor.lightgrey,
+          color: AppColor.lightGrey,
           borderRadius: BorderRadius.circular(8.r),
         ),
         child: Column(

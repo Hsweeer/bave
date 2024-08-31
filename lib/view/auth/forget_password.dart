@@ -100,15 +100,15 @@ Widget _buildTextField(String hintText, IconData icon, {bool obscureText = false
       contentPadding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 12.w),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8.r),
-        borderSide: BorderSide(color: AppColor.lightgreen),
+        borderSide: BorderSide(color: AppColor.lightGreen),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8.r),
-        borderSide: BorderSide(color: AppColor.lightgreen),
+        borderSide: BorderSide(color: AppColor.lightGreen),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8.r),
-        borderSide: BorderSide(color: AppColor.lightgreen),
+        borderSide: BorderSide(color: AppColor.lightGreen),
       ),
     ),
     style: lemonMilkWithColor500(AppColor.black, 14.sp),

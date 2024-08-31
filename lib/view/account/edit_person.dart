@@ -136,7 +136,7 @@ SizedBox(height: 40.h,),
               prefixIcon: Icon(icon, color: AppColor.grey),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8.r),
-                borderSide: BorderSide(color: AppColor.lightgreen),
+                borderSide: BorderSide(color: AppColor.lightGreen),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8.r),

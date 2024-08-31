@@ -105,7 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
       'category': 'Automobile / Cycle',
       'title': 'LOREM IPSUM DOLOR SIT AMET CONSECTETUR...',
       'price': '\$383',
-      'image': AppImages.bycycle,
+      'image': AppImages.bicycle,
       'location': 'UTTARA, DHAKA',
       'time': '30 MINS AGO',
     },
@@ -160,7 +160,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ],
                 ),
-                Image.asset(AppImages.bellicon, height: 24.h, width: 24.w),
+                Image.asset(AppImages.bellIcon, height: 24.h, width: 24.w),
               ],
             ),
             SizedBox(height: 20.h),
@@ -193,7 +193,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Padding(
                           padding: EdgeInsets.all(8.0),
                           child: Image.asset(
-                            AppImages.Search,
+                            AppImages.search,
                             width: 16.w,
                             height: 16.h,
                           ),
@@ -339,7 +339,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
                         child: Container(
                           decoration: BoxDecoration(
-                            color: AppColor.lightgrey,
+                            color: AppColor.lightGrey,
                             borderRadius: BorderRadius.circular(8.r),
                           ),
                           child: Column(
@@ -469,7 +469,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
                         child: Container(
                           decoration: BoxDecoration(
-                            color: AppColor.lightgrey,
+                            color: AppColor.lightGrey,
                             borderRadius: BorderRadius.circular(8.r),
                           ),
                           margin: EdgeInsets.only(bottom: 10.h),
