@@ -171,6 +171,8 @@ class _otpVerificationScreenState
                   ),
                 ),
               ),
+              SizedBox(height: 20.h,)
+
             ],
           ),
         ),

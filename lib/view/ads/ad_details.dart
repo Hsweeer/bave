@@ -8,8 +8,14 @@ import '../../const/text_style.dart';
 
 class AdDetailsPage extends StatefulWidget {
   final String imagePath;
+  final String title;
+  final String location;
 
-  AdDetailsPage({required this.imagePath});
+  AdDetailsPage({
+    required this.imagePath,
+    required this.title,
+    required this.location,
+  });
 
   @override
   State<AdDetailsPage> createState() => _AdDetailsPageState();
@@ -225,12 +231,8 @@ class _AdDetailsPageState extends State<AdDetailsPage> {
 
                     // Title, Price, and Call to Action
                     Text(
-                      "APPLE MACBOOK PRO WITH M1 CHIP...",
-                      style: TextStyle(
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.bold,
-                        color: AppColor.black,
-                      ),
+widget.title,
+                      style: lemonMilk500(20.sp,AppColor.black)
                     ),
                     SizedBox(height: 8.h),
                     Row(
@@ -251,11 +253,7 @@ class _AdDetailsPageState extends State<AdDetailsPage> {
                             children: [
                               Text(
                                 "\$2347",
-                                style: TextStyle(
-                                  color: AppColor.white,
-                                  fontSize: 16.sp,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                                style:  lemonMilk500(16.sp,AppColor.white)
                               ),
                               SizedBox(width: 8.w),
                               Icon(Icons.edit_attributes, color: AppColor.white, size: 18.sp),
@@ -275,11 +273,7 @@ class _AdDetailsPageState extends State<AdDetailsPage> {
                             children: [
                               Text(
                                 "(+800)",
-                                style: TextStyle(
-                                  color: AppColor.white,
-                                  fontSize: 16.sp,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                                style:  lemonMilk500(16.sp,AppColor.white)
                               ),
                               SizedBox(width: 8.w),
                               Icon(Icons.phone, color: AppColor.white, size: 18.sp),
@@ -307,20 +301,15 @@ class _AdDetailsPageState extends State<AdDetailsPage> {
 
                     Container(
                       width: 353.w,
-                      height: 46.h,
-
+height: 286.h,
                       padding: EdgeInsets.all(12.h),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8.r),
                           color: AppColor.greyl
                       ),
                       child: Text(
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna utas vitae qui... ",
-                        style: TextStyle(
-                          color: AppColor.grey,
-                          fontSize: 14.sp,
-                          height: 1.5,
-                        ),
+                        "Lorem ipsum dolor sit amet, cLorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna utas vitae qui...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna utas vitae qui...onsectetur adipiscing elit. Ut magna utas vitae qui...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna utas vitae qui...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna utas vitae qui...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna utas vitae qui...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna utas vitae qui... ",
+                        style:  lemonMilk400(AppColor.grey,12.sp,)
                       ),
                     ),
                     SizedBox(height: 16.h),
@@ -358,11 +347,9 @@ class _AdDetailsPageState extends State<AdDetailsPage> {
                                 ),
                                 Text(
                                   'JOINED: FEBRUARY 02, 2021',
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    color: Colors.grey,
-                                  ),
-                                ),
+                                   style:  lemonMilk400(AppColor.grey,12.sp,)
+
+                  ),
                               ],
                             ),
                           ],
@@ -370,11 +357,9 @@ class _AdDetailsPageState extends State<AdDetailsPage> {
                         SizedBox(height: 16),
                         Text(
                           'CORPORIS DOLORE LIBERO TEMPORIBUS MINUS TEMPORA QUIA VOLUPTAS NESCIUNT.',
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.grey[800],
-                          ),
-                        ),
+                           style:  lemonMilk400(AppColor.grey,12.sp,)
+
+              ),
                         SizedBox(height: 16),
                         Divider(),
                         Padding(
@@ -384,18 +369,14 @@ class _AdDetailsPageState extends State<AdDetailsPage> {
                             children: [
                               Text(
                                 'TOTAL ADS',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
+                              style:  lemonMilk500(13.sp,AppColor.black)
+
+                        ),
                               Text(
                                 '134',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
+                                style: lemonMilk500(13.sp,AppColor.black)
+
+                        ),
                             ],
                           ),
                         ),
@@ -436,12 +417,9 @@ class _AdDetailsPageState extends State<AdDetailsPage> {
 
                       child: Text(
                         "PLEASE WAIT FOR ADMIN APPROVAL",
-                        style: TextStyle(
-                          color: AppColor.black,
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        textAlign: TextAlign.center,
+                   style: lemonMilk500(12.sp,AppColor.black),
+
+                      textAlign: TextAlign.center,
                       ),
                     ),
                     SizedBox(height: 16.h),
@@ -466,11 +444,8 @@ class _AdDetailsPageState extends State<AdDetailsPage> {
                             child: Center(
                               child: Text(
                                 "MARK AS SOLD",
-                                style: TextStyle(
-                                  fontSize: 16.sp,
-                                  fontWeight: FontWeight.bold,
-                                  color: AppColor.white,
-                                ),
+                                  style: lemonMilk500(15.sp,AppColor.white)
+
                               ),
                             ),
                           ),
@@ -492,11 +467,8 @@ class _AdDetailsPageState extends State<AdDetailsPage> {
                             child: Center(
                               child: Text(
                                 "DELETE AD",
-                                style: TextStyle(
-                                  fontSize: 16.sp,
-                                  fontWeight: FontWeight.bold,
-                                  color: AppColor.white,
-                                ),
+                                  style: lemonMilk500(15.sp,AppColor.white)
+
                               ),
                             ),
                           ),
@@ -520,12 +492,9 @@ class _AdDetailsPageState extends State<AdDetailsPage> {
       padding: EdgeInsets.symmetric(vertical: 8.h),
       child: Text(
         title,
-        style: TextStyle(
-          fontSize: 16.sp,
-          fontWeight: FontWeight.bold,
-          color: AppColor.black,
-        ),
-      ),
+        style:lemonMilk500(15.sp,AppColor.black)
+
+    ),
     );
   }
 
@@ -547,21 +516,16 @@ class _AdDetailsPageState extends State<AdDetailsPage> {
           children: [
             Text(
               key,
-              style: TextStyle(
-                color: AppColor.black,
-                fontSize: 14.sp,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+              style: lemonMilk500(12.sp,AppColor.black)
+
+      ),
             Spacer(),
 
               Text(
                 value,
-                style: TextStyle(
-                  color: AppColor.black,
-                  fontSize: 14.sp,
-                ),
-              ),
+                style :lemonMilk400(AppColor.grey,12.sp),
+
+      ),
 
           ],
         ),
@@ -589,11 +553,9 @@ class _AdDetailsPageState extends State<AdDetailsPage> {
             Expanded(
               child: Text(
                 tip,
-                style: TextStyle(
-                  color: AppColor.black,
-                  fontSize: 14.sp,
-                ),
-              ),
+                  style :lemonMilk400(AppColor.black,12.sp),
+
+            ),
             ),
           ],
         ),

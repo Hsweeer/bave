@@ -46,7 +46,7 @@ class _MyAdsPageState extends State<MyAdsPage>
       id: '1', // Added unique ID for favorite tracking
 
       category: "GADGET / LAPTOP",
-      title: "Apple MacBook Pro with M1 Chip...",
+      title: "Apple MacBook Pro with M1 ...",
       price: "\$800",
       location: "Uttara, Dhaka",
       timeAgo: "30 mins ago",
@@ -56,7 +56,7 @@ class _MyAdsPageState extends State<MyAdsPage>
       id: '2', // Added unique ID for favorite tracking
 
       category: "GADGET / COMPUTER",
-      title: "Lorem Ipsum Dolor Sit Amet Consectetur...",
+      title: "Lorem Ipsum Dolor Sit Amet ...",
       price: "\$400",
       location: "Uttara, Dhaka",
       timeAgo: "30 mins ago",
@@ -66,7 +66,7 @@ class _MyAdsPageState extends State<MyAdsPage>
       id: '3', // Added unique ID for favorite tracking
 
       category: "GADGET / MOBILE",
-      title: "Apple iPhone 15 Pro Max Natural Titanium...",
+      title: "Apple iPhone 15 Pro Max Natural...",
       price: "\$1000",
       location: "Uttara, Dhaka",
       timeAgo: "30 mins ago",
@@ -76,7 +76,7 @@ class _MyAdsPageState extends State<MyAdsPage>
       id: '4', // Added unique ID for favorite tracking
 
       category: "GADGET / HEADPHONES",
-      title: "Lorem Ipsum Dolor Sit Amet Consectetur...",
+      title: "Lorem Ipsum Dolor Sit  ...",
       price: "\$200",
       location: "Uttara, Dhaka",
       timeAgo: "30 mins ago",
@@ -86,7 +86,7 @@ class _MyAdsPageState extends State<MyAdsPage>
       id: '5', // Added unique ID for favorite tracking
 
       category: "GADGET / CAMERA",
-      title: "Sony A7 III Camera with Lens...",
+      title: "Sony A7 III Camera ...",
       price: "\$1200",
       location: "Uttara, Dhaka",
       timeAgo: "30 mins ago",
@@ -133,19 +133,11 @@ class _MyAdsPageState extends State<MyAdsPage>
                   children: [
                     TextSpan(
                       text: "MY ",
-                      style: TextStyle(
-                        color: AppColor.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24.sp,
-                      ),
+                      style: lemonMilk500(25.sp,AppColor.black)
                     ),
                     TextSpan(
                       text: "ADS",
-                      style: TextStyle(
-                        color: AppColor.green,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24.sp,
-                      ),
+                        style: lemonMilk500(25.sp,AppColor.green)
                     ),
                   ],
                 ),
@@ -163,7 +155,7 @@ class _MyAdsPageState extends State<MyAdsPage>
                 Container(
                   height: 42.h, // Set your desired height
                   width: 171.w, // Set your desired width
-                  child: Tab(text: "Pending Ads"),
+                  child: Tab(text: "Pending Ads",),
                 ),
                 Container(
                   height: 42.h, // Set your desired height
@@ -197,34 +189,208 @@ class _MyAdsPageState extends State<MyAdsPage>
     );
   }
 
+//   Widget _buildAdsList() {
+//     return Padding(
+//       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+//       child: GridView.builder(
+//         gridDelegate:
+//         SliverGridDelegateWithFixedCrossAxisCount(
+//           crossAxisCount: 2,
+//           crossAxisSpacing: 10.w,
+//           mainAxisSpacing: 10.h,
+//           childAspectRatio: 0.70,
+//         ),
+//         padding: EdgeInsets.zero, // Ensure there’s no extra padding
+//
+//         itemCount: ads.length,
+//         itemBuilder: (context, index) {
+//           final ad = ads[index];
+//           return GestureDetector(
+//             onTap: (){
+//               Navigator.push(
+//                 context,
+//                 MaterialPageRoute(
+//                   builder: (context) => AdDetailsPage(
+//                     imagePath:ad.imagePath,
+//                     title: ad.title,
+//                     location: ad.location,
+//
+//
+//                   ),
+//                 ),
+//               );
+//             },
+//             child: Container(
+//               height: 177.h,
+//               decoration: BoxDecoration(
+//                 color: AppColor.lightgrey,
+//                 borderRadius: BorderRadius.circular(8.r),
+//               ),
+//               child: Column(
+//                 crossAxisAlignment: CrossAxisAlignment.start,
+//                 children: [
+//                   ClipRRect(
+//                     borderRadius: BorderRadius.vertical(
+//                         top: Radius.circular(8.r)),
+//                     child: Image.asset(
+//                       ad.imagePath,
+//                       fit: BoxFit.cover,
+//                       width: double.infinity,
+//                       // height: 140.h,
+//                     ),
+//                   ),
+//                   Padding(
+//                     padding: EdgeInsets.all(8.0),
+//                     child: Column(
+//                       crossAxisAlignment:
+//                       CrossAxisAlignment.start,
+//                       children: [
+//                         Row(
+//                           crossAxisAlignment:
+//                           CrossAxisAlignment.center,
+//                           mainAxisAlignment:
+//                           MainAxisAlignment.spaceBetween,
+//                           children: [
+//                             Row(
+//                               crossAxisAlignment:
+//                               CrossAxisAlignment.center,
+//                               children: [
+//                                 Image.asset(AppImages.tag,
+//                                     height: 10.h, width: 10.w),
+//                                 Padding(
+//                                   padding:
+//                                   const EdgeInsets.only(
+//                                       left: 4.0),
+//                                   child: Text(
+//                                     ad.category,
+//                                     style: lemonMilk400(
+//                                         AppColor.orange, 8.sp),
+//                                   ),
+//                                 ),
+//                               ],
+//                             ),
+//                             InkWell(
+//                               onTap: () {
+//                                 favoriteController
+//                                     .toggleFavorite(ad.id);
+//                               },
+//                               child: Icon(
+//                                 favoriteController
+//                                     .isFavorite(ad.id)
+//                                     ? Icons.favorite
+//                                     : Icons.favorite_outline,
+//                                 size: 16.h,
+//                                 color: favoriteController
+//                                     .isFavorite(ad.id)
+//                                     ? Colors.red
+//                                     : Colors.black,
+//                               ),
+//                             ),
+//                           ],
+//                         ),
+//                         Container(
+//                           padding: EdgeInsets.only(bottom: 4),
+//                           decoration: BoxDecoration(
+//                             border: Border(
+//                               bottom: BorderSide(
+//                                 color: Color.fromRGBO(
+//                                     0, 0, 0, 0.08),
+//                                 width: 1,
+//                               ),
+//                             ),
+//                           ),
+//                         ),
+//                         SizedBox(height: 4.h),
+//                         Text(
+//                           ad.title,
+//                           style: lemonMilk500(
+//                               11.sp, AppColor.black),
+//                         ),
+//                         SizedBox(height: 4.h),
+//                         Text(
+// ad.price,                          style: lemonMilk400(
+//                               AppColor.orange, 10.sp),
+//                         ),
+//                         SizedBox(height: 4.h),
+//                         Row(
+//                           mainAxisAlignment:
+//                           MainAxisAlignment.spaceBetween,
+//                           children: [
+//                             Row(
+//                               children: [
+//                                 Padding(
+//                                   padding:
+//                                   const EdgeInsets.only(
+//                                       right: 4.0),
+//                                   child: Image.asset(
+//                                       AppImages.location,
+//                                       height: 10.h),
+//                                 ),
+//                                 Text(
+// ad.location,
+//                                   style: lemonMilk400(
+//                                       AppColor.grey, 8.sp),
+//                                 ),
+//                               ],
+//                             ),
+//                             Row(
+//                               children: [
+//                                 Padding(
+//                                   padding:
+//                                   const EdgeInsets.only(
+//                                       right: 4.0),
+//                                   child: Image.asset(
+//                                       AppImages.clock,
+//                                       height: 10.h),
+//                                 ),
+//                                 Text(
+// ad.timeAgo,                                  style: lemonMilk400(
+//                                       AppColor.grey, 8.sp),
+//                                 ),
+//                               ],
+//                             ),
+//                           ],
+//                         ),
+//                       ],
+//                     ),
+//                   ),
+//                 ],
+//               ),
+//             ),
+//           );
+//         },
+//       ),
+//     );
+//   }
   Widget _buildAdsList() {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
       child: GridView.builder(
-        gridDelegate:
-        SliverGridDelegateWithFixedCrossAxisCount(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           crossAxisSpacing: 10.w,
           mainAxisSpacing: 10.h,
           childAspectRatio: 0.70,
         ),
         padding: EdgeInsets.zero, // Ensure there’s no extra padding
-
         itemCount: ads.length,
         itemBuilder: (context, index) {
           final ad = ads[index];
           return GestureDetector(
-            onTap: (){
+            onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => AdDetailsPage(imagePath:                        ad.imagePath,
-
+                  builder: (context) => AdDetailsPage(
+                    imagePath: ad.imagePath,
+                    title: ad.title,
+                    location: ad.location,
                   ),
                 ),
               );
             },
             child: Container(
+              height: 177.h,
               decoration: BoxDecoration(
                 color: AppColor.lightgrey,
                 borderRadius: BorderRadius.circular(8.r),
@@ -233,58 +399,44 @@ class _MyAdsPageState extends State<MyAdsPage>
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ClipRRect(
-                    borderRadius: BorderRadius.vertical(
-                        top: Radius.circular(8.r)),
+                    borderRadius: BorderRadius.vertical(top: Radius.circular(8.r)),
                     child: Image.asset(
                       ad.imagePath,
                       fit: BoxFit.cover,
                       width: double.infinity,
-                      // height: 140.h,
                     ),
                   ),
                   Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Column(
-                      crossAxisAlignment:
-                      CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(
-                          crossAxisAlignment:
-                          CrossAxisAlignment.center,
-                          mainAxisAlignment:
-                          MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Row(
-                              crossAxisAlignment:
-                              CrossAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Image.asset(AppImages.tag,
-                                    height: 10.h, width: 10.w),
-                                Padding(
-                                  padding:
-                                  const EdgeInsets.only(
-                                      left: 4.0),
-                                  child: Text(
-                                    ad.category,
-                                    style: lemonMilk400(
-                                        AppColor.orange, 8.sp),
-                                  ),
+                                Image.asset(AppImages.tag, height: 10.h, width: 10.w),
+                                SizedBox(width: 4.w),
+                                Text(
+                                  ad.category,
+                                  style: lemonMilk400(AppColor.orange, 8.sp),
+                                  overflow: TextOverflow.ellipsis, // Prevent overflow
                                 ),
                               ],
                             ),
                             InkWell(
                               onTap: () {
-                                favoriteController
-                                    .toggleFavorite(ad.id);
+                                favoriteController.toggleFavorite(ad.id);
                               },
                               child: Icon(
-                                favoriteController
-                                    .isFavorite(ad.id)
+                                favoriteController.isFavorite(ad.id)
                                     ? Icons.favorite
                                     : Icons.favorite_outline,
                                 size: 16.h,
-                                color: favoriteController
-                                    .isFavorite(ad.id)
+                                color: favoriteController.isFavorite(ad.id)
                                     ? Colors.red
                                     : Colors.black,
                               ),
@@ -296,8 +448,7 @@ class _MyAdsPageState extends State<MyAdsPage>
                           decoration: BoxDecoration(
                             border: Border(
                               bottom: BorderSide(
-                                color: Color.fromRGBO(
-                                    0, 0, 0, 0.08),
+                                color: Color.fromRGBO(0, 0, 0, 0.08),
                                 width: 1,
                               ),
                             ),
@@ -306,49 +457,41 @@ class _MyAdsPageState extends State<MyAdsPage>
                         SizedBox(height: 4.h),
                         Text(
                           ad.title,
-                          style: lemonMilk500(
-                              11.sp, AppColor.black),
+                          style: lemonMilk500(11.sp, AppColor.black),
+                          overflow: TextOverflow.ellipsis, // Prevent overflow
                         ),
                         SizedBox(height: 4.h),
                         Text(
-ad.price,                          style: lemonMilk400(
-                              AppColor.orange, 10.sp),
+                          ad.price,
+                          style: lemonMilk400(AppColor.orange, 10.sp),
                         ),
                         SizedBox(height: 4.h),
                         Row(
-                          mainAxisAlignment:
-                          MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Row(
                               children: [
                                 Padding(
-                                  padding:
-                                  const EdgeInsets.only(
-                                      right: 4.0),
-                                  child: Image.asset(
-                                      AppImages.location,
-                                      height: 10.h),
+                                  padding: const EdgeInsets.only(right: 4.0),
+                                  child: Image.asset(AppImages.location, height: 10.h),
                                 ),
                                 Text(
-ad.location,
-                                  style: lemonMilk400(
-                                      AppColor.grey, 8.sp),
+                                  ad.location,
+                                  style: lemonMilk400(AppColor.grey, 7.sp),
+                                  overflow: TextOverflow.ellipsis, // Prevent overflow
                                 ),
                               ],
                             ),
                             Row(
                               children: [
                                 Padding(
-                                  padding:
-                                  const EdgeInsets.only(
-                                      right: 4.0),
-                                  child: Image.asset(
-                                      AppImages.clock,
-                                      height: 10.h),
+                                  padding: const EdgeInsets.only(right: 2.0),
+                                  child: Image.asset(AppImages.clock, height: 10.h),
                                 ),
                                 Text(
-ad.timeAgo,                                  style: lemonMilk400(
-                                      AppColor.grey, 8.sp),
+                                  ad.timeAgo,
+                                  style: lemonMilk400(AppColor.grey, 7.sp),
+                                  overflow: TextOverflow.ellipsis, // Prevent overflow
                                 ),
                               ],
                             ),
@@ -365,5 +508,6 @@ ad.timeAgo,                                  style: lemonMilk400(
       ),
     );
   }
+
 
 }
