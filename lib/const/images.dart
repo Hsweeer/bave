@@ -44,6 +44,7 @@ class AppImages {
   static const mob = 'assets/images/mob.png';
   static const recth = 'assets/images/recth.png';
   static const profile = 'assets/images/profile.png';
+  static const bycycle = 'assets/images/bycycle.png';
 
 
 }

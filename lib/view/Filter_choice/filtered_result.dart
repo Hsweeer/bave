@@ -194,13 +194,13 @@ class FilterResultScreen extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => AdDetailsPage(imagePath: ad['image']!),
+                              builder: (context) => AdDetailsPage(imagePath: ad['image']!, title:ad['title']!, location:ad['location']!,),
                             ),
                           );
                         },
                         child: Container(
                           decoration: BoxDecoration(
-                            color: AppColor.lightgrey,
+                            color: AppColor.greyl,
                             borderRadius: BorderRadius.circular(8.r),
                           ),
                           child: Column(
@@ -322,13 +322,13 @@ class FilterResultScreen extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => AdDetailsPage(imagePath: ad['image']!),
+                              builder: (context) => AdDetailsPage(imagePath: ad['image']!, title:ad['title']!, location:ad['location']!,),
                             ),
                           );
                         },
                         child: Container(
                           decoration: BoxDecoration(
-                            color: AppColor.lightgrey,
+                            color: AppColor.greyl,
                             borderRadius: BorderRadius.circular(8.r),
                           ),
                           margin: EdgeInsets.only(bottom: 10.h),

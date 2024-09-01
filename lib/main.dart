@@ -4,6 +4,7 @@ import 'package:bon_achat/view/Filter_choice/filtered_result.dart';
 import 'package:bon_achat/view/Notification_scr/notifications.dart';
 import 'package:bon_achat/view/ads/ad_details.dart';
 import 'package:bon_achat/view/ads/my_ads.dart';
+import 'package:bon_achat/view/home/HomePagenavv.dart';
 import 'package:bon_achat/view/home/home_scr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,61 +20,17 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
     return ScreenUtilInit(
       designSize: const Size(375, 812), // Adjust this as per your design dimensions
       builder: (context, child) {
         return GetMaterialApp(
-          home:SplashScreen(),
+          home:HomePagenav(),
         );
       },
     );
   }
 }
 
-class HomePage extends StatefulWidget {
-  @override
-  _HomePageState createState() => _HomePageState();
-}
 
-class _HomePageState extends State<HomePage> {
-  int _currentIndex = 0;
-
-  final List<Widget> _pages = [
-    HomeScreen(),
-    // PostAdScreen(),
-    MyAdsPage(),
-    Container(), // Placeholder for FAB, no actual page
-    MyAdsPage(), // Replace with your Favorites page
-    MyAdsPage(), // Replace with your Account page
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: _pages[_currentIndex],
-      bottomNavigationBar: CustomBottomAppBar(
-        currentIndex: _currentIndex,
-        onItemSelected: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-      ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: AppColor.orange,
-        onPressed: () {
-          // Handle FAB action
-          Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => PostAdScreen(),
-          ),
-        );
-        },
-        child: Icon(Icons.add, color: AppColor.white),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-    );
-  }
-}
 
