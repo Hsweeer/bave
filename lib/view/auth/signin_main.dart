@@ -23,8 +23,14 @@ class SignInScreenmain extends StatelessWidget {
                 padding: EdgeInsets.only(top: 10.h),
                 child: Row(
                   children: [
-                    Icon(Icons.arrow_back, color: AppColor.black, size: 24.sp),
-                    SizedBox(width: 8.w),
+                    IconButton(
+                      icon: Icon(Icons.arrow_back, color: AppColor.black),
+                      onPressed: () {
+                        // Handle back action.
+                        Navigator.pop(context);
+
+                      },
+                    ),                    SizedBox(width: 8.w),
                     Text(
                       "SIGN IN",
                       style: lemonMilk600(AppColor.black, 20.sp),

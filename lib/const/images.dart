@@ -4,8 +4,8 @@ class AppImages {
   static const circles = 'assets/images/circles.png';
   static const google = 'assets/images/google.png';
   static const fb = 'assets/images/fb.png';
-  static const bellicon = 'assets/images/bellicon.png';
-  static const Search = 'assets/images/Search.png';
+  static const bellIcon = 'assets/images/bellicon.png';
+  static const search = 'assets/images/Search.png';
   static const fashion = 'assets/images/fashion.png';
   static const electronics = 'assets/images/electronics.png';
   static const furniture = 'assets/images/furniture.png';
@@ -15,7 +15,7 @@ class AppImages {
   static const house = 'assets/images/house.png';
   static const televison = 'assets/images/televison.png';
   static const hedset = 'assets/images/hedset.png';
-  static const bycycle = 'assets/images/bycycle.png';
+  static const bicycle = 'assets/images/bycycle.png';
   static const ios2 = 'assets/images/ios2.png';
   static const cat = 'assets/images/cat.png';
   static const bmw = 'assets/images/bmw.png';

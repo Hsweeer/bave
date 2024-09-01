@@ -7,6 +7,7 @@ class AppSvgs{
   static const box = 'assets/svg/box.svg';
   static const list = 'assets/svg/list.svg';
   static const circles = 'assets/svg/circles.svg';
+  static const upload = 'assets/svg/upload.svg';
   // static const user = 'assets/svg/user.svg';
   // static const user = 'assets/svg/user.svg';
 

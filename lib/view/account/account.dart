@@ -122,7 +122,7 @@ class AccountScreen extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
           decoration: BoxDecoration(
-            border: Border.all(color: AppColor.lightgreen), // Border color set to green for all options
+            border: Border.all(color: AppColor.lightGreen), // Border color set to green for all options
             borderRadius: BorderRadius.circular(8.r),
           ),
           child: Row(

@@ -8,7 +8,6 @@ import '../../const/text_style.dart';
 import '../../controllers/home_scr_controllers/favourate.dart';
 import '../../controllers/home_scr_controllers/view_controller.dart';
 import '../Category/all_category.dart';
-import '../Notification_scr/notifications.dart';
 import '../ads/ad_details.dart';
 import 'Search.dart';
 
@@ -49,8 +48,8 @@ class _HomeScreenState extends State<HomeScreen> {
     },
     {
       'id': '2',
-      'category': 'AUTOMOBILES / PRIVATE CAR',
-      'title': 'LOREM IPSUM DOLOR SIT AMET CONSECTETUR...',
+      'category': 'AUTOMOBILES /  CAR',
+      'title': 'LOREM IPSUM DOLOR SIT AMET ...',
       'price': '\$3300',
       'image': AppImages.bmw,
       'location': 'UTTARA, DHAKA',
@@ -106,7 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
       'category': 'Automobile / Cycle',
       'title': 'LOREM IPSUM DOLOR SIT AMET CONSECTETUR...',
       'price': '\$383',
-      'image': AppImages.bycycle,
+      'image': AppImages.bicycle,
       'location': 'UTTARA, DHAKA',
       'time': '30 MINS AGO',
     },
@@ -161,15 +160,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ],
                 ),
-                GestureDetector(
-                  onTap: () {
-                    Get.to(NotificationScreen()); // Replace NewScreen with your target screen
-                  },
-                  child: Image.asset(
-                    AppImages.bellicon, // Replace with the actual image path
-                    height: 24.h,
-                    width: 24.w,
-                  ),)              ],
+                Image.asset(AppImages.bellIcon, height: 24.h, width: 24.w),
+              ],
             ),
             SizedBox(height: 20.h),
             InkWell(
@@ -201,7 +193,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Padding(
                           padding: EdgeInsets.all(8.0),
                           child: Image.asset(
-                            AppImages.Search,
+                            AppImages.search,
                             width: 16.w,
                             height: 16.h,
                           ),
@@ -234,7 +226,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             SizedBox(height: 10.h),
             Container(
-              height: 90.h,
+              height: 95.h,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: categories.length,
@@ -337,13 +329,17 @@ class _HomeScreenState extends State<HomeScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => AdDetailsPage(imagePath: ad['image']!),
+                              builder: (context) => AdDetailsPage(
+                                  imagePath: ad['image']!,
+                                  location: ad['location']!,
+                                  title: ad['title']!
+                              ),
                             ),
                           );
                         },
                         child: Container(
                           decoration: BoxDecoration(
-                            color: AppColor.lightgrey,
+                            color: AppColor.lightGrey,
                             borderRadius: BorderRadius.circular(8.r),
                           ),
                           child: Column(
@@ -409,7 +405,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     SizedBox(height: 4.h),
                                     Text(
                                       ad['title']!,
-                                      style: lemonMilk500(11.sp, AppColor.black),
+                                      style: lemonMilk500(10.sp, AppColor.black),
                                     ),
                                     SizedBox(height: 4.h),
                                     Text(
@@ -428,19 +424,19 @@ class _HomeScreenState extends State<HomeScreen> {
                                             ),
                                             Text(
                                               ad['location']!,
-                                              style: lemonMilk400(AppColor.grey, 8.sp),
+                                              style: lemonMilk400(AppColor.grey, 7.sp),
                                             ),
                                           ],
                                         ),
                                         Row(
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsets.only(right: 4.0),
+                                              padding: const EdgeInsets.only(right: 2.0),
                                               child: Image.asset(AppImages.clock, height: 10.h),
                                             ),
                                             Text(
                                               ad['time']!,
-                                              style: lemonMilk400(AppColor.grey, 8.sp),
+                                              style: lemonMilk400(AppColor.grey, 7.sp),
                                             ),
                                           ],
                                         ),
@@ -465,13 +461,15 @@ class _HomeScreenState extends State<HomeScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => AdDetailsPage(imagePath: ad['image']!),
+                              builder: (context) => AdDetailsPage(imagePath: ad['image']!,
+                                  location: ad['location']!,
+                                  title: ad['title']!),
                             ),
                           );
                         },
                         child: Container(
                           decoration: BoxDecoration(
-                            color: AppColor.lightgrey,
+                            color: AppColor.lightGrey,
                             borderRadius: BorderRadius.circular(8.r),
                           ),
                           margin: EdgeInsets.only(bottom: 10.h),
@@ -519,7 +517,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       SizedBox(height: 4.h),
                                       Text(
                                         ad['title']!,
-                                        style: lemonMilk600(AppColor.black, 12.sp),
+                                        style: lemonMilk600(AppColor.black, 11.sp),
                                       ),
                                       SizedBox(height: 4.h),
                                       Row(
@@ -528,24 +526,24 @@ class _HomeScreenState extends State<HomeScreen> {
                                           Row(
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsets.only(right: 4.0),
+                                                padding: const EdgeInsets.only(right: 2.0),
                                                 child: Image.asset(AppImages.location, height: 10.h),
                                               ),
                                               Text(
                                                 ad['location']!,
-                                                style: lemonMilk400(AppColor.grey, 8.sp),
+                                                style: lemonMilk400(AppColor.grey, 7.sp),
                                               ),
                                             ],
                                           ),
                                           Row(
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsets.only(right: 4.0),
+                                                padding: const EdgeInsets.only(right: 2.0),
                                                 child: Image.asset(AppImages.clock, height: 10.h),
                                               ),
                                               Text(
                                                 ad['time']!,
-                                                style: lemonMilk400(AppColor.grey, 8.sp),
+                                                style: lemonMilk400(AppColor.grey, 7.sp),
                                               ),
                                             ],
                                           ),
