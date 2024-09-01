@@ -1,3 +1,4 @@
+import 'package:bon_achat/const/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -36,7 +37,7 @@ class NotificationScreen extends StatelessWidget {
               title: 'AD APPROVED',
               description: 'CONGRATULATION! YOUR AD HAS BEEN APPROVED.',
               actionText: 'VIEW AD',
-              backgroundColor: Colors.green,
+              backgroundColor: AppColor.green,
               timeAgo: '1H AGO',
             ),
             NotificationTile(

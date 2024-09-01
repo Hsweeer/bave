@@ -1,3 +1,4 @@
+import 'package:bon_achat/view/Category/syb_categry/gadgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -5,7 +6,6 @@ import 'package:get/get.dart';
 import '../../../const/colors.dart';
 import '../../../const/images.dart';
 import '../../../const/text_style.dart';
-
 
 class CategoriesScreen extends StatefulWidget {
   const CategoriesScreen({super.key});
@@ -20,73 +20,73 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
       'image': AppImages.ios,
       'title': 'Gadgets',
       'adsCount': '100 ADS',
-      'page': () => 'GadgetsScreen()', // Use widget function for navigation
+      'page': () => GadgetsScreen(),  // Updated
     },
     {
       'image': AppImages.electronics,
       'title': 'ELECTRONICS',
       'adsCount': '22 ADS',
-      'page': () => 'GadgetsScreen()', // Use widget function for navigation
+      'page': () => GadgetsScreen(),  // Updated
     },
     {
       'image': AppImages.furniture,
       'title': 'FURNITURE',
       'adsCount': '150 ADS',
-      'page': () => 'GadgetsScreen()', // Use widget function for navigation
+      'page': () => GadgetsScreen(),  // Updated
     },
     {
       'image': AppImages.dog,
       'title': 'ANIMALS',
       'adsCount': '100 ADS',
-      'page': () => 'GadgetsScreen()', // Use widget function for navigation
+      'page': () => GadgetsScreen(),  // Updated
     },
     {
       'image': AppImages.fashion,
       'title': 'FASHION',
       'adsCount': '1K ADS',
-      'page': () => 'GadgetsScreen()', // Use widget function for navigation
+      'page': () => GadgetsScreen(),  // Updated
     },
     {
       'image': AppImages.bike,
       'title': 'MOTORBIKES',
       'adsCount': '200 ADS',
-      'page': () => 'GadgetsScreen()', // Use widget function for navigation
+      'page': () => GadgetsScreen(),  // Updated
     },
     {
       'image': AppImages.property,
       'title': 'PROPERTY',
       'adsCount': '150 ADS',
-      'page': () => 'GadgetsScreen()', // Use widget function for navigation
+      'page': () => GadgetsScreen(),  // Updated
     },
     {
       'image': AppImages.car,
       'title': 'AUTOMOBILES',
       'adsCount': '100 ADS',
-      'page': () => 'GadgetsScreen()', // Use widget function for navigation
+      'page': () => GadgetsScreen(),  // Updated
     },
     {
       'image': AppImages.hosptality,
       'title': 'HOSPITALITY',
       'adsCount': '1K ADS',
-      'page': () => 'GadgetsScreen()', // Use widget function for navigation
+      'page': () => GadgetsScreen(),  // Updated
     },
     {
       'image': AppImages.agri,
       'title': 'AGRICULTURE',
       'adsCount': '120 ADS',
-      'page': () => 'GadgetsScreen()', // Use widget function for navigation
+      'page': () => GadgetsScreen(),  // Updated
     },
     {
       'image': AppImages.buis,
       'title': 'BUSINESS',
       'adsCount': '400 ADS',
-      'page': () => 'GadgetsScreen()', // Use widget function for navigation
+      'page': () => GadgetsScreen(),  // Updated
     },
     {
       'image': AppImages.edu,
       'title': 'EDUCATION',
       'adsCount': '130 ADS',
-      'page': () => 'GadgetsScreen()', // Use widget function for navigation
+      'page': () => GadgetsScreen(),  // Updated
     },
   ];
 
@@ -119,7 +119,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
           final category = categories[index];
           return InkWell(
             onTap: () {
-              Get.to(() => category['page']()); // Call the widget function for navigation
+              Get.to(category['page']); // Navigating to the desired page
             },
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 16.w),

@@ -6,88 +6,42 @@ import '../../../const/colors.dart';
 import '../../../const/images.dart';
 import '../../../const/text_style.dart';
 
-
-class CategoriesScreen extends StatefulWidget {
-  const CategoriesScreen({super.key});
+class GadgetsScreen extends StatefulWidget {
+  const GadgetsScreen({super.key});
 
   @override
-  _CategoriesScreenState createState() => _CategoriesScreenState();
+  _GadgetsScreenState createState() => _GadgetsScreenState();
 }
 
-class _CategoriesScreenState extends State<CategoriesScreen> {
+class _GadgetsScreenState extends State<GadgetsScreen> {
   final List<Map<String, dynamic>> categories = [
     {
-      'image': AppImages.ios,
+      'image': AppImages.comp,
       'title': 'Gadgets',
       'adsCount': '100 ADS',
-      'page': () => 'GadgetsScreen()', // Use widget function for navigation
     },
     {
-      'image': AppImages.electronics,
+      'image': AppImages.mob,
       'title': 'ELECTRONICS',
       'adsCount': '22 ADS',
-      'page': () => 'GadgetsScreen()', // Use widget function for navigation
     },
     {
-      'image': AppImages.furniture,
+      'image': AppImages.camh,
       'title': 'FURNITURE',
       'adsCount': '150 ADS',
-      'page': () => 'GadgetsScreen()', // Use widget function for navigation
     },
     {
-      'image': AppImages.dog,
+      'image': AppImages.drownh,
       'title': 'ANIMALS',
       'adsCount': '100 ADS',
-      'page': () => 'GadgetsScreen()', // Use widget function for navigation
     },
     {
-      'image': AppImages.fashion,
+      'image': AppImages.recth,
       'title': 'FASHION',
       'adsCount': '1K ADS',
-      'page': () => 'GadgetsScreen()', // Use widget function for navigation
     },
-    {
-      'image': AppImages.bike,
-      'title': 'MOTORBIKES',
-      'adsCount': '200 ADS',
-      'page': () => 'GadgetsScreen()', // Use widget function for navigation
-    },
-    {
-      'image': AppImages.property,
-      'title': 'PROPERTY',
-      'adsCount': '150 ADS',
-      'page': () => 'GadgetsScreen()', // Use widget function for navigation
-    },
-    {
-      'image': AppImages.car,
-      'title': 'AUTOMOBILES',
-      'adsCount': '100 ADS',
-      'page': () => 'GadgetsScreen()', // Use widget function for navigation
-    },
-    {
-      'image': AppImages.hosptality,
-      'title': 'HOSPITALITY',
-      'adsCount': '1K ADS',
-      'page': () => 'GadgetsScreen()', // Use widget function for navigation
-    },
-    {
-      'image': AppImages.agri,
-      'title': 'AGRICULTURE',
-      'adsCount': '120 ADS',
-      'page': () => 'GadgetsScreen()', // Use widget function for navigation
-    },
-    {
-      'image': AppImages.buis,
-      'title': 'BUSINESS',
-      'adsCount': '400 ADS',
-      'page': () => 'GadgetsScreen()', // Use widget function for navigation
-    },
-    {
-      'image': AppImages.edu,
-      'title': 'EDUCATION',
-      'adsCount': '130 ADS',
-      'page': () => 'GadgetsScreen()', // Use widget function for navigation
-    },
+
+
   ];
 
   @override
@@ -100,7 +54,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(
-              'ALL CATEGORIES',
+              'Gadgets',
               style: lemonMilk500(18.sp, AppColor.black),
             ),
           ],
@@ -117,64 +71,59 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
         itemCount: categories.length,
         itemBuilder: (context, index) {
           final category = categories[index];
-          return InkWell(
-            onTap: () {
-              Get.to(() => category['page']()); // Call the widget function for navigation
-            },
-            child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 16.w),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 6.0),
-                    child: Row(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(0.r),
-                          child: Image.asset(
-                            category['image'],
-                            width: 50.w,
-                            height: 60.h,
-                            fit: BoxFit.cover,
-                          ),
+          return Padding(
+            padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 16.w),
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 6.0),
+                  child: Row(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(0.r),
+                        child: Image.asset(
+                          category['image'],
+                          width: 50.w,
+                          height: 60.h,
+                          fit: BoxFit.cover,
                         ),
-                        SizedBox(width: 16.w),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                category['title'],
-                                style: lemonMilk400(AppColor.black, 14.sp),
-                              ),
-                              Text(
-                                category['adsCount'],
-                                style: lemonMilk400(AppColor.grey, 12.sp),
-                              ),
-                            ],
-                          ),
+                      ),
+                      SizedBox(width: 16.w),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              category['title'],
+                              style: lemonMilk400(AppColor.black, 14.sp),
+                            ),
+                            Text(
+                              category['adsCount'],
+                              style: lemonMilk400(AppColor.grey, 12.sp),
+                            ),
+                          ],
                         ),
-                        Icon(
-                          Icons.arrow_forward_ios,
-                          color: AppColor.orange,
-                          size: 16.h,
-                        ),
-                      ],
-                    ),
+                      ),
+                      Icon(
+                        Icons.arrow_forward_ios,
+                        color: AppColor.orange,
+                        size: 16.h,
+                      ),
+                    ],
                   ),
-                  Container(
-                    padding: EdgeInsets.only(bottom: 4),
-                    decoration: BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(
-                          color: Color.fromRGBO(0, 0, 0, 0.08),
-                          width: 1,
-                        ),
+                ),
+                Container(
+                  padding: EdgeInsets.only(bottom: 4),
+                  decoration: BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(
+                        color: Color.fromRGBO(0, 0, 0, 0.08),
+                        width: 1,
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           );
         },

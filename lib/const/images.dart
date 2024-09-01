@@ -43,6 +43,7 @@ class AppImages {
   static const drownh = 'assets/images/drownh.png';
   static const mob = 'assets/images/mob.png';
   static const recth = 'assets/images/recth.png';
+  static const profile = 'assets/images/profile.png';
 
 
 }
