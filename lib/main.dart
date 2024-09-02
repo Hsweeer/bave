@@ -25,7 +25,8 @@ class MyApp extends StatelessWidget {
       designSize: const Size(375, 812), // Adjust this as per your design dimensions
       builder: (context, child) {
         return GetMaterialApp(
-          home:HomePagenav(),
+          home:SplashScreen(),
+          debugShowCheckedModeBanner: false,
         );
       },
     );
