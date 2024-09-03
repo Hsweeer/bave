@@ -7,7 +7,14 @@ import '../../const/text_style.dart';
 import '../home/HomePagenavv.dart';
 import 'forget_password.dart';
 
-class SignInScreenmain extends StatelessWidget {
+class SignInScreenmain extends StatefulWidget {
+  @override
+  _SignInScreenmainState createState() => _SignInScreenmainState();
+}
+
+class _SignInScreenmainState extends State<SignInScreenmain> {
+  bool _isPasswordVisible = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,11 +33,10 @@ class SignInScreenmain extends StatelessWidget {
                     IconButton(
                       icon: Icon(Icons.arrow_back, color: AppColor.black),
                       onPressed: () {
-                        // Handle back action.
                         Navigator.pop(context);
-
                       },
-                    ),                    SizedBox(width: 8.w),
+                    ),
+                    SizedBox(width: 8.w),
                     Text(
                       "SIGN IN",
                       style: lemonMilk600(AppColor.black, 20.sp),
@@ -57,7 +63,7 @@ class SignInScreenmain extends StatelessWidget {
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.r),
-                    borderSide: BorderSide(color: AppColor.green), // Green color when focused
+                    borderSide: BorderSide(color: AppColor.green),
                   ),
                 ),
                 keyboardType: TextInputType.phone,
@@ -66,10 +72,20 @@ class SignInScreenmain extends StatelessWidget {
 
               // Password Input
               TextField(
-                obscureText: true,
+                obscureText: !_isPasswordVisible,
                 decoration: InputDecoration(
                   prefixIcon: Icon(Icons.lock_outline, color: AppColor.grey),
-                  suffixIcon: Icon(Icons.visibility_off_outlined, color: AppColor.grey),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                      color: AppColor.grey,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _isPasswordVisible = !_isPasswordVisible;
+                      });
+                    },
+                  ),
                   hintText: "PASSWORD",
                   hintStyle: lemonMilk500(12.sp, AppColor.grey),
                   contentPadding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 16.w),
@@ -79,7 +95,7 @@ class SignInScreenmain extends StatelessWidget {
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.r),
-                    borderSide: BorderSide(color: AppColor.green), // Green color when focused
+                    borderSide: BorderSide(color: AppColor.green),
                   ),
                 ),
               ),
@@ -89,10 +105,10 @@ class SignInScreenmain extends StatelessWidget {
               Align(
                 alignment: Alignment.centerRight,
                 child: GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => forgetpassword()), // Replace SignUpScreen with your sign-up page
+                      MaterialPageRoute(builder: (context) => forgetpassword()),
                     );
                   },
                   child: Text(
@@ -117,7 +133,7 @@ class SignInScreenmain extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => HomePagenav()), // Replace SignUpScreen with your sign-up page
+                      MaterialPageRoute(builder: (context) => HomePagenav()),
                     );
                   },
                   child: Text(
@@ -132,10 +148,9 @@ class SignInScreenmain extends StatelessWidget {
               Center(
                 child: GestureDetector(
                   onTap: () {
-                    // Navigate to the SignUpScreen
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => SignUpScreen()), // Replace SignUpScreen with your sign-up page
+                      MaterialPageRoute(builder: (context) => SignUpScreen()),
                     );
                   },
                   child: RichText(
@@ -160,6 +175,3 @@ class SignInScreenmain extends StatelessWidget {
     );
   }
 }
-
-// Your SignUpScreen Widget (Replace with your actual sign-up page)
-

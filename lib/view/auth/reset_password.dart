@@ -7,7 +7,16 @@ import '../../const/text_style.dart';
 import '../home/HomePagenavv.dart';
 import 'forget_password.dart';
 
-class resetpassword extends StatelessWidget {
+class resetpassword extends StatefulWidget {
+  @override
+  _resetpasswordState createState() => _resetpasswordState();
+}
+
+class _resetpasswordState extends State<resetpassword> {
+  // State variables to control password visibility
+  bool _isPasswordVisible = false;
+  bool _isConfirmPasswordVisible = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +37,6 @@ class resetpassword extends StatelessWidget {
                       onPressed: () {
                         // Handle back action.
                         Navigator.pop(context);
-
                       },
                     ),
                     SizedBox(width: 8.w),
@@ -40,18 +48,28 @@ class resetpassword extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 5.h),
-Text(
-  "Create a new password",
-  style: lemonMilk400(AppColor.black, 12.sp),
-),
+              Text(
+                "Create a new password",
+                style: lemonMilk400(AppColor.black, 12.sp),
+              ),
               // Phone Number Input
               SizedBox(height: 10.h),
-
+              // Password Input
               TextField(
-                obscureText: true,
+                obscureText: !_isPasswordVisible,
                 decoration: InputDecoration(
                   prefixIcon: Icon(Icons.lock_outline, color: AppColor.grey),
-                  suffixIcon: Icon(Icons.visibility_off_outlined, color: AppColor.grey),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                      color: AppColor.grey,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _isPasswordVisible = !_isPasswordVisible;
+                      });
+                    },
+                  ),
                   hintText: "PASSWORD",
                   hintStyle: lemonMilk500(12.sp, AppColor.grey),
                   contentPadding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 16.w),
@@ -67,12 +85,22 @@ Text(
               ),
               SizedBox(height: 16.h),
 
-              // Password Input
+              // Confirm Password Input
               TextField(
-                obscureText: true,
+                obscureText: !_isConfirmPasswordVisible,
                 decoration: InputDecoration(
                   prefixIcon: Icon(Icons.lock_outline, color: AppColor.grey),
-                  suffixIcon: Icon(Icons.visibility_off_outlined, color: AppColor.grey),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      _isConfirmPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                      color: AppColor.grey,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _isConfirmPasswordVisible = !_isConfirmPasswordVisible;
+                      });
+                    },
+                  ),
                   hintText: "CONFIRM PASSWORD",
                   hintStyle: lemonMilk500(12.sp, AppColor.grey),
                   contentPadding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 16.w),
@@ -89,7 +117,7 @@ Text(
 
               Spacer(),
 
-              // Sign In Button
+              // Continue Button
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
@@ -103,7 +131,7 @@ Text(
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => HomePagenav()), // Replace SignUpScreen with your sign-up page
+                      MaterialPageRoute(builder: (context) => HomePagenav()), // Navigate to HomePage
                     );
                   },
                   child: Text(
@@ -112,7 +140,7 @@ Text(
                   ),
                 ),
               ),
-SizedBox(height: 20.h,)
+              SizedBox(height: 20.h),
             ],
           ),
         ),
@@ -120,6 +148,3 @@ SizedBox(height: 20.h,)
     );
   }
 }
-
-// Your SignUpScreen Widget (Replace with your actual sign-up page)
-

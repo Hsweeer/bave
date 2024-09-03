@@ -83,8 +83,8 @@ class _GadgetsScreenState extends State<GadgetsScreen> {
                         borderRadius: BorderRadius.circular(0.r),
                         child: Image.asset(
                           category['image'],
-                          width: 50.w,
-                          height: 60.h,
+                          width: 45.w,
+                          height: 55.h,
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -95,11 +95,11 @@ class _GadgetsScreenState extends State<GadgetsScreen> {
                           children: [
                             Text(
                               category['title'],
-                              style: lemonMilk400(AppColor.black, 14.sp),
+                              style: lemonMilk400(AppColor.black, 12.sp),
                             ),
                             Text(
                               category['adsCount'],
-                              style: lemonMilk400(AppColor.grey, 12.sp),
+                              style: lemonMilk400(AppColor.grey, 9.sp),
                             ),
                           ],
                         ),
@@ -113,7 +113,7 @@ class _GadgetsScreenState extends State<GadgetsScreen> {
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.only(bottom: 4),
+                  padding: EdgeInsets.only(bottom: 2),
                   decoration: BoxDecoration(
                     border: Border(
                       bottom: BorderSide(

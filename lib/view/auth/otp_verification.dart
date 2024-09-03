@@ -181,34 +181,35 @@ class _otpVerificationScreenState
   }
 
   // Helper Widget to Create OTP Input Boxes
+// Helper Widget to Create OTP Input Boxes
   Widget _buildOtpBox(BuildContext context, int index) {
+    bool isFilled = otp[index].isNotEmpty; // Check if the OTP box has a value
+
     return Container(
       width: 50.w,
-      height: 60.h,
+      height: 64.h,
       alignment: Alignment.center,
       margin: EdgeInsets.symmetric(horizontal: 8.w),
+      decoration: BoxDecoration(
+        color: isFilled ? AppColor.green : AppColor.white, // Change background color
+        borderRadius: BorderRadius.circular(8.r),
+        border: Border.all(
+          color: AppColor.grey,
+          width: 2,
+        ),
+      ),
       child: TextField(
         onChanged: (value) => onOtpFieldChanged(value, index),
         keyboardType: TextInputType.number,
         maxLength: 1,
         textAlign: TextAlign.center,
-        style: lemonMilkWithColor800(AppColor.green, 20.sp),
+        style: lemonMilkWithColor800(
+          isFilled ? AppColor.white : AppColor.green, // Change text color
+          28.sp,
+        ),
         decoration: InputDecoration(
           counterText: "", // Hide character counter
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: AppColor.grey,
-              width: 2,
-            ),
-            borderRadius: BorderRadius.circular(8.r),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: AppColor.green,
-              width: 2,
-            ),
-            borderRadius: BorderRadius.circular(8.r),
-          ),
+          border: InputBorder.none, // Remove default border
         ),
       ),
     );

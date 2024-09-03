@@ -45,6 +45,16 @@ class AppImages {
   static const recth = 'assets/images/recth.png';
   static const profile = 'assets/images/profile.png';
   static const bycycle = 'assets/images/bycycle.png';
+  static const globe = 'assets/images/globe.png';
+  static const email = 'assets/images/email.png';
+  static const Lock = 'assets/images/Lock.png';
+  static const user = 'assets/images/user.png';
+  static const activeadds = 'assets/images/activeadds.png';
+  static const delete = 'assets/images/delete.png';
+  static const logout = 'assets/images/logout.png';
+  static const lock = 'assets/images/lock.png';
+  static const user_grey = 'assets/images/user_grey.png';
+  static const line = 'assets/images/line.png';
 
 
 }

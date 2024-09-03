@@ -62,7 +62,7 @@ class _PostAdScreenState extends State<PostAdScreen> {
                       child: Center(
                         child: Image.asset(
                           AppImages.done,
-                          width: 150.w,
+                          width: 130.w,
                           height: 140.h,
                           fit: BoxFit.fill,
                         ),
@@ -72,13 +72,13 @@ class _PostAdScreenState extends State<PostAdScreen> {
                     Text(
                       'AD POSTED\nSUCCESSFULLY',
                       textAlign: TextAlign.center,
-                      style: lemonMilkWithColor500(AppColor.white, 18.sp),
+                      style: lemonMilkWithColor500(AppColor.white, 16.sp),
                     ),
-                    SizedBox(height: 15.h),
+                    SizedBox(height: 10.h),
                     Text(
                       'PLEASE WAIT FOR ADMIN APPROVAL.',
                       textAlign: TextAlign.center,
-                      style: lemonMilk500(12.sp, AppColor.white),
+                      style: lemonMilk500(10.sp, AppColor.white),
                     ),
                     SizedBox(height: 24.h),
                     SizedBox(
@@ -96,7 +96,7 @@ class _PostAdScreenState extends State<PostAdScreen> {
                         ),
                         child: Text(
                           'GREAT',
-                          style: lemonMilkWithColor500(AppColor.white, 16.sp),
+                          style: lemonMilkWithColor500(AppColor.white, 15.sp),
                         ),
                       ),
                     ),
@@ -159,12 +159,12 @@ class _PostAdScreenState extends State<PostAdScreen> {
               'ENTER THE FOLLOWING DETAILS ',
               style: lemonMilk500( 12.sp,AppColor.grey),
             ),
-            SizedBox(height: 10.h),
+            SizedBox(height: 20.h),
             Text(
               'AD INFORMATION:',
               style: lemonMilkWithColor500(AppColor.black, 15.sp),
             ),
-            SizedBox(height: 10.h),
+            SizedBox(height: 15.h),
             _buildTextField('PRODUCT TITLE'),
             SizedBox(height: 20.h),
             _buildPhotoUploadBox(),
@@ -351,21 +351,23 @@ class _PostAdScreenState extends State<PostAdScreen> {
                   ),
                   Positioned(
                     top: 4.0,
-                    right: 4.0,
+                    right: 8.0,
                     child: GestureDetector(
                       onTap: () => _removeImage(index),
                       child: Container(
-                        width: 20.w,
-                        height: 20.h,
+                        width: 24.w,
+                        height: 25.h,
                         decoration: const BoxDecoration(
-                          color: AppColor.white,
-                          shape: BoxShape.circle,
-                        ),
-                        child: Icon(
-                          Icons.cancel,
                           color: AppColor.red,
-                          size: 16.0,
+                            borderRadius: BorderRadius.vertical(
+                              top: Radius.circular(6), // Use Radius.circular(8) instead of just 8
+                              bottom: Radius.circular(6), // Use Radius.circular(8) instead of just 8
+                            )
                         ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: Image.asset(AppImages.delete,height: 15.h,width: 15.w,),
+                        )
                       ),
                     ),
                   ),

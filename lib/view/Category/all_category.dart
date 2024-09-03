@@ -19,73 +19,73 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
     {
       'image': AppImages.ios,
       'title': 'Gadgets',
-      'adsCount': '100 ADS',
+      'adsCount': '(100 ADS)',
       'page': () => GadgetsScreen(),  // Updated
     },
     {
       'image': AppImages.electronics,
       'title': 'ELECTRONICS',
-      'adsCount': '22 ADS',
+      'adsCount': '(22 ads)',
       'page': () => GadgetsScreen(),  // Updated
     },
     {
       'image': AppImages.furniture,
       'title': 'FURNITURE',
-      'adsCount': '150 ADS',
+      'adsCount': '(150 ads)',
       'page': () => GadgetsScreen(),  // Updated
     },
     {
       'image': AppImages.dog,
       'title': 'ANIMALS',
-      'adsCount': '100 ADS',
+      'adsCount': '(100 ADS)',
       'page': () => GadgetsScreen(),  // Updated
     },
     {
       'image': AppImages.fashion,
       'title': 'FASHION',
-      'adsCount': '1K ADS',
+      'adsCount': '(1k ads)',
       'page': () => GadgetsScreen(),  // Updated
     },
     {
       'image': AppImages.bike,
       'title': 'MOTORBIKES',
-      'adsCount': '200 ADS',
+      'adsCount': '(1k ADS)',
       'page': () => GadgetsScreen(),  // Updated
     },
     {
       'image': AppImages.property,
       'title': 'PROPERTY',
-      'adsCount': '150 ADS',
+      'adsCount': '(200 ads)',
       'page': () => GadgetsScreen(),  // Updated
     },
     {
       'image': AppImages.car,
       'title': 'AUTOMOBILES',
-      'adsCount': '100 ADS',
+      'adsCount': '(150 ADS)',
       'page': () => GadgetsScreen(),  // Updated
     },
     {
       'image': AppImages.hosptality,
       'title': 'HOSPITALITY',
-      'adsCount': '1K ADS',
+      'adsCount': '(1k ADS)',
       'page': () => GadgetsScreen(),  // Updated
     },
     {
       'image': AppImages.agri,
       'title': 'AGRICULTURE',
-      'adsCount': '120 ADS',
+      'adsCount': '(100 ADS)',
       'page': () => GadgetsScreen(),  // Updated
     },
     {
       'image': AppImages.buis,
       'title': 'BUSINESS',
-      'adsCount': '400 ADS',
+      'adsCount': '(22 ads)',
       'page': () => GadgetsScreen(),  // Updated
     },
     {
       'image': AppImages.edu,
       'title': 'EDUCATION',
-      'adsCount': '130 ADS',
+      'adsCount': '(100 ADS)',
       'page': () => GadgetsScreen(),  // Updated
     },
   ];
@@ -122,19 +122,19 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
               Get.to(category['page']); // Navigating to the desired page
             },
             child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 16.w),
+              padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 10.w),
               child: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(bottom: 6.0),
+                    padding: const EdgeInsets.only(bottom: 2.0),
                     child: Row(
                       children: [
                         ClipRRect(
                           borderRadius: BorderRadius.circular(0.r),
                           child: Image.asset(
                             category['image'],
-                            width: 50.w,
-                            height: 60.h,
+                            width: 45.w,
+                            height: 55.h,
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -145,11 +145,11 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                             children: [
                               Text(
                                 category['title'],
-                                style: lemonMilk400(AppColor.black, 14.sp),
+                                style: lemonMilk400(AppColor.black, 12.sp),
                               ),
                               Text(
                                 category['adsCount'],
-                                style: lemonMilk400(AppColor.grey, 12.sp),
+                                style: lemonMilk400(AppColor.grey, 9.sp),
                               ),
                             ],
                           ),

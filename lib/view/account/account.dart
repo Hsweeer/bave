@@ -14,33 +14,43 @@ class AccountScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title:
+        Row(
+
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Text(
+              'ACCOUNT',
+              style: lemonMilkWithColor800(AppColor.black, 24.sp),
+            ),
+          ],
+        ),
+
+      ),
       body: Center(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24.w),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                'ACCOUNT',
-                style: lemonMilkWithColor800(AppColor.black, 24.sp),
-              ),
-              SizedBox(height: 16.h),
+              // SizedBox(height: 16.h),
               CircleAvatar(
-                radius: 50.r,
+                radius: 80.r,
                 backgroundColor: Colors.yellow,
                 backgroundImage: AssetImage(AppImages.person),
               ),
-
               SizedBox(height: 16.h),
               Text(
                 'CAMERON WILLIAMSON',
-                style: lemonMilkWithColor700(AppColor.black, 20.sp),
+                style: lemonMilkWithColor700(AppColor.black, 18.sp),
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: 4.h),
               Text(
                 'someone123@gmail.com',
-                style: lemonMilk400(AppColor.grey, 14.sp),
+                style: lemonMilk400(AppColor.grey, 10.sp),
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: 32.h),
@@ -53,10 +63,11 @@ class AccountScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) =>EditPersonalInfoScreen(),
+                      builder: (context) => EditPersonalInfoScreen(),
                     ),
                   );
                 },
+                imagePath: AppImages.user, // Ensure to provide the correct image path
               ),
               _buildAccountOption(
                 icon: Icons.lock,
@@ -67,39 +78,56 @@ class AccountScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) =>ChangePasswordScreen(),
+                      builder: (context) => ChangePasswordScreen(),
                     ),
                   );
-                },              ),
+                },
+                imagePath: AppImages.lock, // Ensure to provide the correct image path
+              ),
               _buildAccountOption(
                 icon: Icons.logout_sharp,
-                text: 'LOG OUT',
-                textColor: AppColor.orange,
-                iconColor: AppColor.green, // Border color set to green
+                text: 'Change Language',
+                textColor: AppColor.black,
+                iconColor: AppColor.green,
                 onTap: () {
                   showModalBottomSheet(
                     context: context,
                     isScrollControlled: true,
-                    backgroundColor: Colors.transparent, // Make the background transparent
+                    backgroundColor: Colors.transparent,
                     builder: (context) => LogoutBottomSheet(),
                   );
-
                 },
+                imagePath: AppImages.globe, // Ensure to provide the correct image path
+              ),
+              _buildAccountOption(
+                icon: Icons.logout_sharp,
+                text: 'LOG OUT',
+                textColor: AppColor.orange,
+                iconColor: AppColor.green,
+                onTap: () {
+                  showModalBottomSheet(
+                    context: context,
+                    isScrollControlled: true,
+                    backgroundColor: Colors.transparent,
+                    builder: (context) => LogoutBottomSheet(),
+                  );
+                },
+                imagePath: AppImages.logout, // Ensure to provide the correct image path
               ),
               _buildAccountOption(
                 icon: Icons.delete,
                 text: 'DELETE ACCOUNT',
                 textColor: AppColor.red,
-                iconColor: AppColor.red, // Border color set to green
+                iconColor: AppColor.red,
                 onTap: () {
                   showModalBottomSheet(
                     context: context,
                     isScrollControlled: true,
-                    backgroundColor: Colors.transparent, // Make the background transparent
-                    builder: (context) => DeletetBottomSheet(),
+                    backgroundColor: Colors.transparent,
+                    builder: (context) => DeletetBottomSheet(), // Ensure to provide the correct class name
                   );
-
                 },
+                imagePath: AppImages.delete, // Ensure to provide the correct image path
               ),
             ],
           ),
@@ -114,6 +142,7 @@ class AccountScreen extends StatelessWidget {
     required Color textColor,
     required Color iconColor,
     required VoidCallback onTap,
+    required String imagePath, // Added parameter for the image path
   }) {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 8.h),
@@ -122,12 +151,27 @@ class AccountScreen extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
           decoration: BoxDecoration(
-            border: Border.all(color: AppColor.lightGreen), // Border color set to green for all options
+            border: Border.all(color: AppColor.lightGreen),
             borderRadius: BorderRadius.circular(8.r),
           ),
           child: Row(
             children: [
-              Icon(icon, color: iconColor, size: 24.sp),
+              Container(
+                width: 40.w,
+                height: 40.h,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.green,
+                ),
+                child: Center(
+                  child: Image.asset(
+                    imagePath, // Image path
+                    width: 16.w,
+                    height: 16.h,
+                    fit: BoxFit.contain, // Changed fit to contain
+                  ),
+                ),
+              ),
               SizedBox(width: 16.w),
               Expanded(
                 child: Text(

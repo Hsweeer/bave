@@ -26,90 +26,129 @@ class EditPersonalInfoScreen extends StatelessWidget {
         ),
         centerTitle: false,
       ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24.w),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: 2.h),
-            Text(
-              'EDIT PERSONAL DETAILS',
-              style: lemonMilkWithColor500(AppColor.grey, 14.sp),
-            ),
-            SizedBox(height: 16.h),
-            Center(
-              child: Stack(
-                children: [
-                  CircleAvatar(
-                    radius: 50.r,
-                    backgroundColor: Colors.yellow,
-                    backgroundImage:
-                    AssetImage(AppImages.person), // Replace with your image path
-                  ),
-                  Positioned(
-                    bottom: 0,
-                    right: 0,
-                    child: CircleAvatar(
-                      radius: 15.r,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 24.w),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 2.h),
+              Text(
+                'EDIT PERSONAL DETAILS',
+                style: lemonMilkWithColor500(AppColor.grey, 14.sp),
+              ),
+              SizedBox(height: 16.h),
+              Center(
+                child: Stack(
+                  children: [
+                    CircleAvatar(
+                      radius: 50.r,
+                      backgroundColor: Colors.yellow,
+                      backgroundImage:
+                      AssetImage(AppImages.person), // Replace with your image path
+                    ),
+                    Positioned(
+                      bottom: 0,
+                      right: 0,
+                      child: CircleAvatar(
+                        radius: 15.r,
+                        backgroundColor: AppColor.orange,
+                        child: Icon(Icons.camera_alt, color: AppColor.white, size: 16.sp),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 8.h),
+              Center(
+                child: Text(
+                  'CHANGE IMAGE',
+                  style: lemonMilkWithColor700(AppColor.black, 16.sp),
+                ),
+              ),
+              SizedBox(height: 24.h),
+              _buildTextField(
+                label: 'FULL NAME:',
+                imagePath: AppImages.user_grey, // Ensure to provide the correct image path
+                initialValue: 'CAMERON WILLIAMSON',
+              ),
+        Text('Phone Number:',            style: lemonMilkWithColor500(AppColor.black, 11.sp),
+        ),
+        
+        Center(
+        child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8.0),
+        child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 12.0),
+        decoration: BoxDecoration(
+        border: Border.all(color: Colors.green),
+        borderRadius: BorderRadius.circular(8.0),
+        ),
+        child: Row(
+        children: [
+        Text(
+        '+1',
+        style: TextStyle(
+        fontSize: 16.0,
+        fontWeight: FontWeight.bold,
+        ),
+        ),
+        SizedBox(width: 8.0),
+          Image.asset(AppImages.line,height: 25.h,width: 1.5.w,),
+        
+        SizedBox(width: 8.0),
+        Expanded(
+        child: TextFormField(
+        keyboardType: TextInputType.phone,
+        decoration: InputDecoration(
+        hintText: '123456798',
+        border: InputBorder.none,
+        ),
+        ),
+        ),
+        ],
+        ),
+        ),
+        ),
+        ),
+        
+        
+        
+            _buildTextField(
+                label: 'EMAIL ADDRESS:',
+                imagePath: AppImages.email, // Ensure to provide the correct image path
+                initialValue: 'someone@gmail.com',
+              ),
+              _buildTextField(
+                label: 'LOCATION:',
+                imagePath: AppImages.location, // Ensure to provide the correct image path
+                initialValue: '6391 Elgin St. Celina, Delaware 10299',
+              ),
+              SizedBox(height: 40.h),
+              Padding(
+                padding: EdgeInsets.only(bottom: 20.h),
+                child: SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.symmetric(vertical: 16.h),
                       backgroundColor: AppColor.orange,
-                      child: Icon(Icons.camera_alt, color: AppColor.white, size: 16.sp),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.r),
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 8.h),
-            Center(
-              child: Text(
-                'CHANGE IMAGE',
-                style: lemonMilkWithColor700(AppColor.black, 16.sp),
-              ),
-            ),
-            SizedBox(height: 24.h),
-            _buildTextField(
-              label: 'FULL NAME:',
-              icon: Icons.person,
-              initialValue: 'CAMERON WILLIAMSON',
-            ),
-            _buildTextField(
-              label: 'PHONE NUMBER:',
-              icon: Icons.phone,
-              initialValue: '+1 123456798',
-            ),
-            _buildTextField(
-              label: 'EMAIL ADDRESS:',
-              icon: Icons.email,
-              initialValue: 'someone@gmail.com',
-            ),
-            _buildTextField(
-              label: 'LOCATION:',
-              icon: Icons.location_on,
-              initialValue: '6391 Elgin St. Celina, Delaware 10299',
-            ),
-SizedBox(height: 40.h,),
-            Padding(
-              padding: EdgeInsets.only(bottom: 20.h),
-              child: SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(vertical: 16.h),
-                    backgroundColor: AppColor.orange,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.r),
+                    onPressed: () {
+                      // Add your save action here
+                    },
+                    child: Text(
+                      'SAVE CHANGES',
+                      style: lemonMilkWithColor700(AppColor.white, 16.sp),
                     ),
-                  ),
-                  onPressed: () {
-                    // Add your save action here
-                  },
-                  child: Text(
-                    'SAVE CHANGES',
-                    style: lemonMilkWithColor700(AppColor.white, 16.sp),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -117,7 +156,7 @@ SizedBox(height: 40.h,),
 
   Widget _buildTextField({
     required String label,
-    required IconData icon,
+    required String imagePath,
     required String initialValue,
   }) {
     return Padding(
@@ -127,13 +166,20 @@ SizedBox(height: 40.h,),
         children: [
           Text(
             label,
-            style: lemonMilkWithColor700(AppColor.black, 14.sp),
+            style: lemonMilkWithColor700(AppColor.black, 11.sp),
           ),
           SizedBox(height: 4.h),
           TextFormField(
             initialValue: initialValue,
             decoration: InputDecoration(
-              prefixIcon: Icon(icon, color: AppColor.grey),
+              prefixIcon: Padding(
+                padding: EdgeInsets.all(14.w), // Adjust padding as needed
+                child: Image.asset(
+                  imagePath, // Image path
+                  width: 15.w,
+                  height: 15.h,
+                ),
+              ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8.r),
                 borderSide: BorderSide(color: AppColor.lightGreen),
@@ -144,7 +190,7 @@ SizedBox(height: 40.h,),
               ),
               contentPadding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 14.h),
             ),
-            style: lemonMilkWithColor500(AppColor.black, 12.sp),
+            style: lemonMilkWithColor500(AppColor.black, 11.sp),
           ),
         ],
       ),

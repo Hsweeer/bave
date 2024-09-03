@@ -135,23 +135,23 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     Text(
                       '   Current Location',
-                      style: lemonMilk500(9.sp, AppColor.grey),
+                      style: lemonMilk500(6.sp, AppColor.grey),
                     ),
                     Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Icon(Icons.location_on_sharp,
-                            color: AppColor.green, size: 13.h),
-                        SizedBox(width: 5.w),
+                            color: AppColor.green, size: 18.h),
+                        SizedBox(width: 3.w),
                         Row(
                           children: [
                             Text(
                               'Uttara, Dhaka',
-                              style: lemonMilk500(13.sp, AppColor.black),
+                              style: lemonMilk500(12.sp, AppColor.black),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(top: 5.0),
-                              child: Icon(Icons.keyboard_arrow_down_outlined,color: Color.fromRGBO(0, 0, 0, 0.2),size: 18.h,),
+                              child: Icon(Icons.keyboard_arrow_down_outlined,color: Color.fromRGBO(0, 0, 0, 0.2),size: 20.h,),
                             )
                           ],
 
@@ -183,7 +183,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       Text(
                         'What are you looking for?',
-                        style: lemonMilk400(AppColor.black2, 10.sp),
+                        style: lemonMilk400(AppColor.black2, 9.sp),
                       ),
                       Container(
                         decoration: BoxDecoration(
@@ -210,7 +210,7 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Text(
                   'BROWSE BY CATEGORIES',
-                  style: lemonMilk500(16.sp, AppColor.black),
+                  style: lemonMilk500(14.sp, AppColor.black),
                 ),
                 InkWell(
                   onTap: () {
@@ -219,14 +219,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                   child: Text(
                     'view all',
-                    style: lemonMilk400(AppColor.green, 12.sp),
+                    style: lemonMilk400(AppColor.green, 11.sp),
                   ),
                 )
               ],
             ),
             SizedBox(height: 10.h),
             Container(
-              height: 95.h,
+              height: 90.h,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: categories.length,
@@ -234,7 +234,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   final category = categories[index];
                   return Container(
                     width: 60.w,
-                    height: 60.h,
+                    height: 6.h,
                     margin: EdgeInsets.only(right: 10.w),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
@@ -253,7 +253,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         SizedBox(height: 5.h),
                         Text(
                           category['text']!,
-                          style: lemonMilk500(10.sp, AppColor.black),
+                          style: lemonMilk500(8.sp, AppColor.black),
                           textAlign: TextAlign.center,
                         ),
                       ],
@@ -517,7 +517,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       SizedBox(height: 4.h),
                                       Text(
                                         ad['title']!,
-                                        style: lemonMilk600(AppColor.black, 11.sp),
+                                        style: lemonMilk600(AppColor.black, 10.sp),
                                       ),
                                       SizedBox(height: 4.h),
                                       Row(
@@ -561,9 +561,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                         ),
                                       ),
                                       SizedBox(height: 4.h),
-                                      Text(
-                                        ad['price']!,
-                                        style: lemonMilk600(AppColor.green, 14.sp),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                                        children: [
+                                          Text(
+                                            ad['price']!,
+                                            style: lemonMilk600(AppColor.orange, 11.sp),
+                                          ),
+                                          Icon(Icons.favorite_outline,size: 14.sp,)
+                                        ],
                                       ),
                                     ],
                                   ),

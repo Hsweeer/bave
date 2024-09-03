@@ -3,6 +3,8 @@
 import 'package:bon_achat/view/auth/signin_main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 import '../../const/colors.dart';
 import '../../const/images.dart';
@@ -22,14 +24,33 @@ class SignInScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(height: 40.h), // Space for the top part (e.g., status bar)
-            Align(
-              alignment: Alignment.topLeft,
-              child: IconButton(
-                icon: Icon(Icons.close, color: AppColor.white, size: 24.w),
-                onPressed: () {
-                  // Handle close button action
-                },
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                IconButton(
+                  icon: Icon(Icons.close, color: AppColor.white, size: 24.w),
+                  onPressed: () {
+                    // Handle close button action
+                  },
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8.r),
+                    color: AppColor.orange
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 4.0,vertical: 6),
+                    child: Row(
+                      children: [
+                        Image.asset(AppImages.globe,height: 12.h,width: 12.w,),
+                        Text(' English ',style: lemonMilk400(AppColor.white, 10.sp),
+                        ),
+                        Icon(Icons.arrow_drop_down,size: 14.h,color: AppColor.white,)
+                      ],
+                    ),
+                  ),
+                )
+              ],
             ),
             SizedBox(height: 20.h),
             Center(
@@ -81,19 +102,34 @@ class SignInScreen extends StatelessWidget {
                     },
                   ),
                   SizedBox(height: 220.h),
-                  _buildButton(
-                    'SIGN IN',
-                    AppColor.orange,
-                    AppColor.white,
-                        () {
-                      // Handle sign-in button action
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => SignInScreenmain()), // Replace SignUpScreen() with your actual sign-up screen class
-                          );
-
+                  GestureDetector(
+                    onTap: () {
+                      // Navigate to the new screen
+                      Get.to(SignInScreenmain());
                     },
-                  ),
+                    child: Container(
+                      width: double.infinity,
+                      height: 62.h,
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8),
+                                color: AppColor.orange,
+                              ),
+                              child: Center(
+                                child: Text(
+                                  'SIGN IN',
+                                  style: lemonMilk500(15.sp, AppColor.white),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  )
                 ],
               ),
             ),
