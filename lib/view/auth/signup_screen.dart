@@ -1,3 +1,4 @@
+import 'package:bon_achat/const/images.dart';
 import 'package:bon_achat/view/auth/phone_verification.dart';
 import 'package:bon_achat/view/auth/signin_main.dart';
 import 'package:flutter/material.dart';
@@ -22,38 +23,29 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
     return Scaffold(
       backgroundColor: AppColor.white,
+      appBar: AppBar(
+        title:
+        Text(
+          'JOIN WITH EMAIL',
+          style: lemonMilkWithColor800(AppColor.black, 18.sp),
+        ),
+
+      ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.w),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 40.h),
-              Row(
-                children: [
-                  IconButton(
-                    icon: Icon(Icons.arrow_back, color: AppColor.black, size: 24.w),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                  ),
-                  SizedBox(width: 8.w), // Space between icon and text
-                  Text(
-                    'JOIN WITH EMAIL',
-                    style: lemonMilkWithColor800(AppColor.black, 18.sp),
-                  ),
-                ],
-              ),
+              _buildTextField('FULL NAME', AppImages.user,), // Replace with your image path
               SizedBox(height: 20.h),
-              _buildTextField('FULL NAME', Icons.person),
+              _buildTextField('PHONE NUMBER', 'assets/icons/phone.png', prefixText: '+1  '), // Replace with your image path
               SizedBox(height: 20.h),
-              _buildTextField('PHONE NUMBER', Icons.phone, prefixText: '+1  '),
+              _buildTextField('EMAIL', AppImages.email), // Replace with your image path
               SizedBox(height: 20.h),
-              _buildTextField('EMAIL', Icons.email),
+              _buildTextField('PASSWORD', AppImages.lock, obscureText: !_isPasswordVisible, isPasswordField: true), // Replace with your image path
               SizedBox(height: 20.h),
-              _buildTextField('PASSWORD', Icons.lock, obscureText: !_isPasswordVisible, isPasswordField: true),
-              SizedBox(height: 20.h),
-              _buildTextField('CONFIRM PASSWORD', Icons.lock, obscureText: !_isConfirmPasswordVisible, isPasswordField: true),
+              _buildTextField('CONFIRM PASSWORD', AppImages.lock, obscureText: !_isConfirmPasswordVisible, isPasswordField: true), // Replace with your image path
               SizedBox(height: 20.h), // Space before the button
               _buildSignUpButton(),
               SizedBox(height: 10.h),
@@ -63,7 +55,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   children: [
                     Text(
                       'ALREADY HAVE AN ACCOUNT?',
-                      style: lemonMilk400(AppColor.black, 14.sp),
+                      style: lemonMilk400(AppColor.black, 12.sp),
                     ),
                     SizedBox(width: 5.w),
                     GestureDetector(
@@ -75,7 +67,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       },
                       child: Text(
                         'SIGN IN',
-                        style: lemonMilkWithColor500(AppColor.green, 14.sp),
+                        style: lemonMilkWithColor500(AppColor.green, 12.sp),
                       ),
                     ),
                   ],
@@ -89,12 +81,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-  Widget _buildTextField(String hintText, IconData icon, {bool obscureText = false, String? prefixText, bool isPasswordField = false}) {
+  Widget _buildTextField(String hintText, String imagePath, {bool obscureText = false, String? prefixText, bool isPasswordField = false}) {
     return TextField(
       obscureText: obscureText,
       decoration: InputDecoration(
         hintText: hintText,
-        hintStyle: lemonMilkWithColor500(AppColor.grey, 14.sp),
+        hintStyle: lemonMilkWithColor500(AppColor.grey, 12.sp),
         prefixIcon: prefixText != null
             ? Container(
           padding: EdgeInsets.symmetric(horizontal: 12.w),
@@ -102,15 +94,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
           width: 90.w,
           child: Text(
             prefixText,
-            style: lemonMilkWithColor500(AppColor.black, 14.sp),
+            style: lemonMilkWithColor500(AppColor.black, 12.sp),
           ),
         )
-            : Icon(icon, color: AppColor.grey, size: 20.w),
+            : Padding(
+              padding: const EdgeInsets.all(14.0),
+              child: Image.asset(
+                        imagePath,
+                        color: Color.fromRGBO(162, 162, 162, 1),
+                        width: 20.w, // Adjust size as needed
+                        height: 20.h, // Adjust size as needed
+                      ),
+            ),
         suffixIcon: isPasswordField
             ? IconButton(
           icon: Icon(
             obscureText ? Icons.visibility_off : Icons.visibility,
-            color: AppColor.grey,
+            color: Color.fromRGBO(162, 162, 162, 1),
           ),
           onPressed: () {
             setState(() {
@@ -137,7 +137,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           borderSide: BorderSide(color: AppColor.lightGreen),
         ),
       ),
-      style: lemonMilkWithColor500(AppColor.black, 14.sp),
+      style: lemonMilkWithColor500(AppColor.black, 12.sp),
     );
   }
 
@@ -159,7 +159,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         child: Center(
           child: Text(
             'SIGN UP',
-            style: lemonMilkWithColor500(AppColor.white, 16.sp),
+            style: lemonMilkWithColor500(AppColor.white, 14.sp),
           ),
         ),
       ),

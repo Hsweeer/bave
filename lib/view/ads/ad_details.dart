@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../const/colors.dart';
 import '../../const/images.dart';
 import '../../const/text_style.dart';
+import '../person_profile/person_profile.dart';
 
 class AdDetailsPage extends StatefulWidget {
   final String imagePath;
@@ -153,7 +154,7 @@ class _AdDetailsPageState extends State<AdDetailsPage> {
                     ),
                     SizedBox(height: 20.h),
                     Text(
-                   'ARE YOU SURE?',
+                      'ARE YOU SURE?',
                       textAlign: TextAlign.center,
                       style: lemonMilkWithColor800(AppColor.white, 18.sp),
                     ),
@@ -212,14 +213,77 @@ class _AdDetailsPageState extends State<AdDetailsPage> {
               Container(
                 width: 393,
                 height: 313,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8.0), // Optional: Add rounded corners
-                  child: Image.asset(
-                    widget.imagePath,
-                    fit: BoxFit.cover, // Adjust this property as needed
-                  ),
+                child: Stack(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(8.0),
+                      child: Image.asset(
+                        widget.imagePath,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    Positioned(
+                      top: 8,  // Adjust these values to position the icons
+                      right: 8,
+                      child:
+                      Row(
+                        children: [
+                          // Circular container with an image for edit action
+                          GestureDetector(
+                            onTap: () {
+                              // Handle edit action
+                            },
+                            child: Container(
+                              width: 40.w, // Adjust size as needed
+                              height: 40.h, // Adjust size as needed
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: AppColor.green, // Optional background color
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Center(
+                                  child: Image.asset(
+                                    AppImages.heart, // Replace with your edit icon image path
+                                    width: 24.w, // Adjust size as needed
+                                    height: 24.h, // Adjust size as needed
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: 5.w), // Space between the icons
+                          // Circular container with an image for share action
+                          GestureDetector(
+                            onTap: () {
+                              // Handle share action
+                            },
+                            child: Container(
+                              width: 40.w, // Adjust size as needed
+                              height: 40.h, // Adjust size as needed
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: AppColor.green, // Optional background color
+                              ),
+                              child: Center(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Image.asset(
+                                    AppImages.setting, // Replace with your share icon image path
+                                    width: 24.w, // Adjust size as needed
+                                    height: 24.h, // Adjust size as needed
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      )
+                    ),
+                  ],
                 ),
               ),
+
 
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
@@ -228,11 +292,68 @@ class _AdDetailsPageState extends State<AdDetailsPage> {
                   children: [
                     // Image Section
 
+                    Row(
+                      children: [
+                        Image.asset(
+                          AppImages.tagg, // Replace with your category icon image path
+                          color: Colors.grey,
+                          width: 14.w, // Adjust size as needed
+                          height: 14.h, // Adjust size as needed
+                        ),
+                        SizedBox(width: 4.w),
+                        Text(
+                          'GADGET / LAPTOP',
+                          style: lemonMilk400(AppColor.grey, 10.sp),
+                        ),
+                        Spacer(),
+                        Row(
+                          children: [
+                            Image.asset(
+                              AppImages.eye, // Replace with your preview icon image path
+                              width: 24.w, // Adjust size as needed
+                              height: 24.h, // Adjust size as needed
+                            ),
+                            SizedBox(width: 4.w),
+                            Text(
+                              '(134) PREVIEW',
+                              style: lemonMilk500(8.sp, AppColor.black),
+                            ),
+                            SizedBox(width: 16.w), // Spacing between preview and clicks
+                            Image.asset(
+                              AppImages.mouse, // Replace with your clicks icon image path
+                              width: 24.w, // Adjust size as needed
+                              height: 24.h, // Adjust size as needed
+                            ),
+                            SizedBox(width: 4.w),
+                            Text(
+                              '(76) CLICKS',
+                              style: lemonMilk500(8.sp, AppColor.black),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 8.h), // Spacing between rows
+                    Row(
+                      children: [
+                        Image.asset(
+                          AppImages.location, // Replace with your location icon image path
+                          color: Colors.grey,
+                          width: 12.w, // Adjust size as needed
+                          height: 12.h, // Adjust size as needed
+                        ),
+                        SizedBox(width: 4.w),
+                        Text(
+                          widget.location,
+                          style: lemonMilk500(10.sp, AppColor.black),
+                        ),
+                      ],
+                    ),
 
                     // Title, Price, and Call to Action
                     Text(
-widget.title,
-                      style: lemonMilk500(20.sp,AppColor.black)
+                        widget.title,
+                        style: lemonMilkWithColor500(AppColor.black,20.sp)
                     ),
                     SizedBox(height: 8.h),
                     Row(
@@ -240,44 +361,54 @@ widget.title,
                       children: [
                         // SizedBox(width: 40.w,),
 
-                        ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: AppColor.orange,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8.r),
-                            ),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "\$2347",
-                                style:  lemonMilk500(16.sp,AppColor.white)
+                        Container(
+                          width: 150.w,
+                          height: 60.h,
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: AppColor.orange,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8.r),
                               ),
-                              SizedBox(width: 8.w),
-                              Icon(Icons.edit_attributes, color: AppColor.white, size: 18.sp),
-                            ],
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                    "\$2347",
+                                    style:  lemonMilk500(16.sp,AppColor.white)
+                                ),
+                                SizedBox(width: 0.w),
+                                Icon(Icons.edit_attributes, color: AppColor.white, size: 18.sp),
+                              ],
+                            ),
                           ),
                         ),
                         SizedBox(width: 12.w),
-                        ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: AppColor.green,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8.r),
-                            ),
-                          ),
-                          child: Row(
-                            children: [
-                              Text(
-                                "(+800)",
-                                style:  lemonMilk500(16.sp,AppColor.white)
+                        Container(
+                          width: 150.w,
+                          height: 60.h,
+                          child: ElevatedButton(
+
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: AppColor.green,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8.r),
                               ),
-                              SizedBox(width: 8.w),
-                              Icon(Icons.phone, color: AppColor.white, size: 18.sp),
-                            ],
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                    "(+800)",
+                                    style:  lemonMilk500(16.sp,AppColor.white)
+                                ),
+                                SizedBox(width: 8.w),
+                                Icon(Icons.phone, color: AppColor.white, size: 18.sp),
+                              ],
+                            ),
                           ),
                         ),
                       ],
@@ -301,93 +432,107 @@ widget.title,
 
                     Container(
                       width: 353.w,
-height: 286.h,
+                      height: 286.h,
                       padding: EdgeInsets.all(12.h),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8.r),
                           color: AppColor.greyl
                       ),
                       child: Text(
-                        "Lorem ipsum dolor sit amet, cLorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna utas vitae qui...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna utas vitae qui...onsectetur adipiscing elit. Ut magna utas vitae qui...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna utas vitae qui...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna utas vitae qui...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna utas vitae qui...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna utas vitae qui... ",
-                        style:  lemonMilk400(AppColor.grey,12.sp,)
+                          "Lorem ipsum dolor sit amet, cLorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna utas vitae qui...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna utas vitae qui...onsectetur adipiscing elit. Ut magna utas vitae qui...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna utas vitae qui...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna utas vitae qui...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna utas vitae qui...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna utas vitae qui... ",
+                          style:  lemonMilk400(AppColor.grey,12.sp,)
                       ),
                     ),
                     SizedBox(height: 16.h),
 
                     // Author Info
                     _buildSectionTitle("AUTHOR INFO"),
-                  Container(
-                    width: 353.w,
+                    SizedBox(height: 10.h),
 
-                    padding: EdgeInsets.all(12.h),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8.r),
-                        color: AppColor.greyl
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            CircleAvatar(
-                              radius: 30,
-                              backgroundColor: Colors.yellow,
-                              child: Icon(Icons.person, color: Colors.black, size: 30),
-                            ),
-                            SizedBox(width: 16),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'YOU',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
+                    Container(
+                      width: 353.w,
+
+                      padding: EdgeInsets.all(12.h),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8.r),
+                          color: AppColor.greyl
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              CircleAvatar(
+                                radius: 30,
+                                backgroundColor: Colors.yellow,
+                                child: GestureDetector(
+                                  onTap: (){
+                                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                                      // builder: (context) => HomePagenav(), // Replace with your next page widget
+                                      builder: (context) => ProfileScreen(), // Replace with your next page widget
+                                    ));
+                                  },
+
+                                  child: Image.asset(
+                                    AppImages.profile,
+                                    fit: BoxFit.cover, // Adjust this property as needed
                                   ),
                                 ),
-                                Text(
-                                  'JOINED: FEBRUARY 02, 2021',
-                                   style:  lemonMilk400(AppColor.grey,12.sp,)
+                              ),
+                              SizedBox(width: 16),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Jackon Honson',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  Text(
+                                      'JOINED: FEBRUARY 02, 2021',
+                                      style:  lemonMilk400(AppColor.grey,12.sp,)
 
-                  ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 16),
-                        Text(
-                          'CORPORIS DOLORE LIBERO TEMPORIBUS MINUS TEMPORA QUIA VOLUPTAS NESCIUNT.',
-                           style:  lemonMilk400(AppColor.grey,12.sp,)
-
-              ),
-                        SizedBox(height: 16),
-                        Divider(),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 8.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'TOTAL ADS',
-                              style:  lemonMilk500(13.sp,AppColor.black)
-
-                        ),
-                              Text(
-                                '134',
-                                style: lemonMilk500(13.sp,AppColor.black)
-
-                        ),
+                                  ),
+                                ],
+                              ),
                             ],
                           ),
-                        ),
-                      ],
-                    ),
-                  ),              SizedBox(height: 16.h),
+                          SizedBox(height: 16),
+                          Text(
+                              'CORPORIS DOLORE LIBERO TEMPORIBUS MINUS TEMPORA QUIA VOLUPTAS NESCIUNT.',
+                              style:  lemonMilk400(AppColor.grey,12.sp,)
+
+                          ),
+                          SizedBox(height: 16),
+                          Divider(),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                    'TOTAL ADS',
+                                    style:  lemonMilk500(13.sp,AppColor.black)
+
+                                ),
+                                Text(
+                                    '134',
+                                    style: lemonMilk500(13.sp,AppColor.black)
+
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),              SizedBox(height: 16.h),
 
                     // Location Section
                     _buildSectionTitle("LOCATION"),
                     Container(
-                      height: 354.h,
+                      height: 370.h,
                       width: 352.w,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8.r),
@@ -400,14 +545,22 @@ height: 286.h,
                     ),
                     SizedBox(height: 16.h),
 
-                    // Safety Tips Section
                     _buildSectionTitle("SAFETY TIPS"),
-                    _buildSafetyTip("Check the item before you buy"),
-                    _buildSafetyTip("Pay only after collecting the item"),
-                    _buildSafetyTip("Beware of unrealistic offers"),
-                    _buildSafetyTip("Meet seller at a safe location"),
-                    _buildSafetyTip("Do not make an abrupt decision"),
-                    _buildSafetyTip("Be honest with the ad you post"),
+                   Container(
+                     decoration: BoxDecoration(
+                       borderRadius: BorderRadius.circular(8),
+                       color: Color.fromRGBO(247, 247, 247, 1),
+
+                     ),
+                     child: Column(children: [
+                       _buildSafetyTip("Check the item before you buy"),
+                       _buildSafetyTip("Pay only after collecting the item"),
+                       _buildSafetyTip("Beware of unrealistic offers"),
+                       _buildSafetyTip("Meet seller at a safe location"),
+                       _buildSafetyTip("Do not make an abrupt decision"),
+                       _buildSafetyTip("Be honest with the ad you post"),
+                     ],),
+                   ),
 
                     SizedBox(height: 16.h),
 
@@ -417,9 +570,9 @@ height: 286.h,
 
                       child: Text(
                         "PLEASE WAIT FOR ADMIN APPROVAL",
-                   style: lemonMilk500(12.sp,AppColor.black),
+                        style: lemonMilk500(12.sp,AppColor.black),
 
-                      textAlign: TextAlign.center,
+                        textAlign: TextAlign.center,
                       ),
                     ),
                     SizedBox(height: 16.h),
@@ -430,7 +583,7 @@ height: 286.h,
                       children: [
                         SizedBox(
                           width: 160.w,
-                        height: 55.h,
+                          height: 55.h,
                           child: ElevatedButton(
                             onPressed: _showSuccessDialog,
 
@@ -443,7 +596,7 @@ height: 286.h,
                             ),
                             child: Center(
                               child: Text(
-                                "MARK AS SOLD",
+                                  "MARK AS SOLD",
                                   style: lemonMilk500(15.sp,AppColor.white)
 
                               ),
@@ -466,7 +619,7 @@ height: 286.h,
                             ),
                             child: Center(
                               child: Text(
-                                "DELETE AD",
+                                  "DELETE AD",
                                   style: lemonMilk500(15.sp,AppColor.white)
 
                               ),
@@ -491,10 +644,10 @@ height: 286.h,
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 8.h),
       child: Text(
-        title,
-        style:lemonMilk500(15.sp,AppColor.black)
+          title,
+          style:lemonMilk500(15.sp,AppColor.black)
 
-    ),
+      ),
     );
   }
 
@@ -508,24 +661,24 @@ height: 286.h,
 
         padding: EdgeInsets.all(12.h),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8.r),
-          color: AppColor.greyl
+            borderRadius: BorderRadius.circular(8.r),
+            color: AppColor.greyl
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              key,
-              style: lemonMilk500(12.sp,AppColor.black)
+                key,
+                style: lemonMilk500(12.sp,AppColor.black)
 
-      ),
+            ),
             Spacer(),
 
-              Text(
-                value,
-                style :lemonMilk400(AppColor.grey,12.sp),
+            Text(
+              value,
+              style :lemonMilk400(AppColor.grey,12.sp),
 
-      ),
+            ),
 
           ],
         ),
@@ -553,9 +706,9 @@ height: 286.h,
             Expanded(
               child: Text(
                 tip,
-                  style :lemonMilk400(AppColor.black,12.sp),
+                style :lemonMilk400(AppColor.black,12.sp),
 
-            ),
+              ),
             ),
           ],
         ),

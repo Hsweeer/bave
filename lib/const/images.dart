@@ -55,6 +55,12 @@ class AppImages {
   static const lock = 'assets/images/lock.png';
   static const user_grey = 'assets/images/user_grey.png';
   static const line = 'assets/images/line.png';
+  static const setting = 'assets/images/setting.png';
+  static const edit = 'assets/images/edit.png';
+  static const tagg = 'assets/images/tagg.png';
+  static const eye = 'assets/images/eye.png';
+  static const mouse = 'assets/images/mouse.png';
+  static const heart = 'assets/images/heart.png';
 
 
 }

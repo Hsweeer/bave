@@ -44,8 +44,8 @@ class EditPersonalInfoScreen extends StatelessWidget {
                     CircleAvatar(
                       radius: 50.r,
                       backgroundColor: Colors.yellow,
-                      backgroundImage:
-                      AssetImage(AppImages.person), // Replace with your image path
+                      backgroundImage: AssetImage(
+                          AppImages.person), // Replace with your image path
                     ),
                     Positioned(
                       bottom: 0,
@@ -53,7 +53,8 @@ class EditPersonalInfoScreen extends StatelessWidget {
                       child: CircleAvatar(
                         radius: 15.r,
                         backgroundColor: AppColor.orange,
-                        child: Icon(Icons.camera_alt, color: AppColor.white, size: 16.sp),
+                        child: Icon(Icons.camera_alt,
+                            color: AppColor.white, size: 16.sp),
                       ),
                     ),
                   ],
@@ -69,59 +70,63 @@ class EditPersonalInfoScreen extends StatelessWidget {
               SizedBox(height: 24.h),
               _buildTextField(
                 label: 'FULL NAME:',
-                imagePath: AppImages.user_grey, // Ensure to provide the correct image path
+                imagePath: AppImages
+                    .user_grey, // Ensure to provide the correct image path
                 initialValue: 'CAMERON WILLIAMSON',
               ),
-        Text('Phone Number:',            style: lemonMilkWithColor500(AppColor.black, 11.sp),
-        ),
-        
-        Center(
-        child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8.0),
-        child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 12.0),
-        decoration: BoxDecoration(
-        border: Border.all(color: Colors.green),
-        borderRadius: BorderRadius.circular(8.0),
-        ),
-        child: Row(
-        children: [
-        Text(
-        '+1',
-        style: TextStyle(
-        fontSize: 16.0,
-        fontWeight: FontWeight.bold,
-        ),
-        ),
-        SizedBox(width: 8.0),
-          Image.asset(AppImages.line,height: 25.h,width: 1.5.w,),
-        
-        SizedBox(width: 8.0),
-        Expanded(
-        child: TextFormField(
-        keyboardType: TextInputType.phone,
-        decoration: InputDecoration(
-        hintText: '123456798',
-        border: InputBorder.none,
-        ),
-        ),
-        ),
-        ],
-        ),
-        ),
-        ),
-        ),
-        
-        
-        
-            _buildTextField(
+              Text(
+                'Phone Number:',
+                style: lemonMilkWithColor500(AppColor.black, 11.sp),
+              ),
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 12.0),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.green),
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    child: Row(
+                      children: [
+                        Text(
+                          '+1',
+                          style: TextStyle(
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(width: 8.0),
+                        Image.asset(
+                          AppImages.line,
+                          height: 25.h,
+                          width: 1.5.w,
+                        ),
+                        SizedBox(width: 8.0),
+                        Expanded(
+                          child: TextFormField(
+                            keyboardType: TextInputType.phone,
+                            decoration: InputDecoration(
+                              hintText: '123456798',
+                              border: InputBorder.none,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              _buildTextField(
                 label: 'EMAIL ADDRESS:',
-                imagePath: AppImages.email, // Ensure to provide the correct image path
+                imagePath:
+                    AppImages.email, // Ensure to provide the correct image path
                 initialValue: 'someone@gmail.com',
               ),
               _buildTextField(
                 label: 'LOCATION:',
-                imagePath: AppImages.location, // Ensure to provide the correct image path
+                imagePath: AppImages
+                    .location, // Ensure to provide the correct image path
                 initialValue: '6391 Elgin St. Celina, Delaware 10299',
               ),
               SizedBox(height: 40.h),
@@ -188,7 +193,8 @@ class EditPersonalInfoScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8.r),
                 borderSide: BorderSide(color: AppColor.green),
               ),
-              contentPadding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 14.h),
+              contentPadding:
+                  EdgeInsets.symmetric(horizontal: 12.w, vertical: 14.h),
             ),
             style: lemonMilkWithColor500(AppColor.black, 11.sp),
           ),

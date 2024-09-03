@@ -1,4 +1,5 @@
 import 'package:bon_achat/const/colors.dart';
+import 'package:bon_achat/const/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -20,11 +21,7 @@ class NotificationScreen extends StatelessWidget {
           children: [
             Text(
               'NOTIFICATIONS',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 24.sp,
-                fontWeight: FontWeight.bold,
-              ),
+              style: lemonMilk500(25.sp, Colors.black)
             ),
           ],
         ),
@@ -85,13 +82,11 @@ class NotificationTile extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+
               Text(
                 title,
-                style: TextStyle(
-                  color: backgroundColor == Colors.white ? Colors.black : Colors.white,
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: lemonMilk500(15.sp, backgroundColor == Colors.white ? Colors.black : Colors.white,
+                )
               ),
               SizedBox(height: 0.h),
               Row(
@@ -99,11 +94,7 @@ class NotificationTile extends StatelessWidget {
                   Expanded(
                     child: Text(
                       description,
-                      style: TextStyle(
-                        color: backgroundColor == Colors.white ? Colors.grey : Colors.white,
-                        fontSize: 10.sp,
-                        fontWeight: FontWeight.w500,
-                      ),
+                      style:lemonMilk500(9.sp,  backgroundColor == Colors.white ? Colors.black : Colors.white,)
                     ),
                   ),
                 ],
@@ -115,11 +106,7 @@ class NotificationTile extends StatelessWidget {
                   },
                   child: Text(
                     actionText!,
-                    style: TextStyle(
-                      color: Colors.orange,
-                      fontSize: 10.sp,
-                      fontWeight: FontWeight.w400,
-                    ),
+                    style: lemonMilk500(8.sp, AppColor.orange)
                   ),
                 ),
               Align(

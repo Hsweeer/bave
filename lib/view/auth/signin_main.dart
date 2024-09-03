@@ -39,7 +39,7 @@ class _SignInScreenmainState extends State<SignInScreenmain> {
                     SizedBox(width: 8.w),
                     Text(
                       "SIGN IN",
-                      style: lemonMilk600(AppColor.black, 20.sp),
+                      style: lemonMilk600(AppColor.black, 18.sp),
                     ),
                   ],
                 ),
@@ -51,7 +51,7 @@ class _SignInScreenmainState extends State<SignInScreenmain> {
                 decoration: InputDecoration(
                   prefixIcon: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 12.w),
-                    child: Text("+1", style: lemonMilk500(16.sp, AppColor.grey)),
+                    child: Text("+1", style: lemonMilk500(14.sp, AppColor.grey)),
                   ),
                   prefixIconConstraints: BoxConstraints(minWidth: 0, minHeight: 0),
                   hintText: "PHONE NUMBER",
@@ -113,7 +113,7 @@ class _SignInScreenmainState extends State<SignInScreenmain> {
                   },
                   child: Text(
                     "FORGOT PASSWORD?",
-                    style: lemonMilkWithColor700(AppColor.green, 14.sp),
+                    style: lemonMilkWithColor700(AppColor.green, 12.sp),
                   ),
                 ),
               ),
@@ -138,7 +138,7 @@ class _SignInScreenmainState extends State<SignInScreenmain> {
                   },
                   child: Text(
                     "SIGN IN",
-                    style: lemonMilk600(AppColor.white, 18.sp),
+                    style: lemonMilk600(AppColor.white, 16.sp),
                   ),
                 ),
               ),
@@ -156,11 +156,11 @@ class _SignInScreenmainState extends State<SignInScreenmain> {
                   child: RichText(
                     text: TextSpan(
                       text: "DON'T YOU HAVE AN ACCOUNT? ",
-                      style: lemonMilk400(AppColor.grey, 14.sp),
+                      style: lemonMilk400(AppColor.grey, 12.sp),
                       children: [
                         TextSpan(
                           text: "SIGN UP",
-                          style: lemonMilk600(AppColor.green, 14.sp),
+                          style: lemonMilk600(AppColor.green, 12.sp),
                         ),
                       ],
                     ),
