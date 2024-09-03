@@ -20,7 +20,6 @@ class ChangePasswordScreen extends StatelessWidget {
               onPressed: () {
                 // Handle back action.
                 Navigator.pop(context);
-
               },
             ),
             title: Text(
@@ -58,6 +57,7 @@ class ChangePasswordScreen extends StatelessWidget {
 
   Widget _buildPasswordField(String label) {
     return Container(
+      height: 55.w,
       padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8.r),
@@ -68,9 +68,13 @@ class ChangePasswordScreen extends StatelessWidget {
           Icon(Icons.lock, color: AppColor.grey),
           SizedBox(width: 10.w),
           Expanded(
-            child: Text(
-              label,
-              style: lemonMilkWithColor500(AppColor.grey, 12.sp),
+            child: TextField(
+              obscureText: true,
+              decoration: InputDecoration(
+                hintText: label,
+                hintStyle: lemonMilkWithColor500(AppColor.grey, 12.sp),
+                border: InputBorder.none,
+              ),
             ),
           ),
           Icon(Icons.visibility_off_outlined, color: AppColor.grey),
@@ -81,8 +85,8 @@ class ChangePasswordScreen extends StatelessWidget {
 
   Widget _buildContinueButton() {
     return SizedBox(
-      width: 342.w,
       height: 55.h,
+      width: 342.w,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColor.orange,

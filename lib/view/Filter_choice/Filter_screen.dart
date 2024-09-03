@@ -8,6 +8,7 @@ import '../../controllers/home_scr_controllers/favourate.dart';
 import '../../controllers/home_scr_controllers/view_controller.dart';
 import '../ads/ad_details.dart';
 import 'bottom_sheet.dart';
+import 'filtered_result.dart';
 import 'filtered_screen.dart'; // Ensure this import points to the correct file containing FilterBottomSheet
 
 class FilterScreen extends StatefulWidget {
@@ -102,7 +103,7 @@ class _FilterScreenState extends State<FilterScreen> {
 
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
+        padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
         child: Column(
           children: [
             Row(
@@ -114,7 +115,7 @@ class _FilterScreenState extends State<FilterScreen> {
                   icon: Icon(Icons.tune, color:AppColor.orange, size: 18),
                   label: Text(
                     'FILTER',
-                    style: lemonMilk400(Colors.white, 14.sp)
+                    style: lemonMilk400(Colors.white, 12.sp)
                   ),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColor.green,
@@ -427,29 +428,29 @@ class _FilterScreenState extends State<FilterScreen> {
       ),
       child: Text(
         text,
-        style: lemonMilk400(AppColor.black, 14.sp)
+        style: lemonMilk400(AppColor.black, 12.sp)
       ),
     );
   }
 
   Widget _buildLocationButton(String location) {
-    return OutlinedButton.icon(
-      onPressed: () {
-        // Select location
-      },
-      icon: Icon(Icons.location_on, color:AppColor.orange, size: 18),
-      label: Text(
-        location,
-        style: TextStyle(
-          fontSize: 16,
-          color: Colors.black,
+    return SizedBox(
+      width: 148.w,
+      child: OutlinedButton.icon(
+        onPressed: () {
+          // Select location
+        },
+        icon: Icon(Icons.location_on, color:AppColor.orange, size: 16),
+        label: Text(
+          location,
+          style: lemonMilk400(AppColor.black, 12.sp)
         ),
-      ),
-      style: OutlinedButton.styleFrom(
-        side: BorderSide(color: AppColor.green),
-        padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8.0),
+        style: OutlinedButton.styleFrom(
+          side: BorderSide(color: AppColor.green),
+          padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8.0),
+          ),
         ),
       ),
     );
@@ -527,7 +528,7 @@ class FilterBottomSheet extends StatelessWidget {
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () {
-               Get.to(filtered_screen());
+               Get.to(FilterResultScreen());
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColor.orange,

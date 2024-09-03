@@ -5,7 +5,7 @@ TextStyle lemonMilkWithColor800(Color color, double fontSize) {
     fontSize: fontSize,
     fontWeight: FontWeight.w800,
     color: color,
-    fontFamily: 'LEMONMILK',
+    fontFamily: 'LEMON MILK',
   );
 }
 
@@ -16,7 +16,7 @@ TextStyle lemonMilkWithColor700(Color color, double fontSize) {
     fontSize: fontSize,
     fontWeight: FontWeight.w700,
     color: color,
-    fontFamily: 'LEMONMILK',
+    fontFamily: 'LEMON MILK',
   );
 }
 
