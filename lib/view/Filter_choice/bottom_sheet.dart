@@ -136,7 +136,7 @@ class _FilterScreenState extends State<FilterScreen> {
                     ),
                   ),
                   Spacer(),
-                  _buildPriceField('\$00.00'),
+                  _buildPriceField('\$0.00'),
                   SizedBox(width: 10),
                   Text(
                     '-',

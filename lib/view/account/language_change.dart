@@ -27,9 +27,16 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
             Navigator.pop(context);
           },
         ),
-        title: Text(
-          'CHANGE LANGUAGE',
-          style: lemonMilkWithColor800(AppColor.black, 20.sp),
+        title: Column(
+          children: [
+            Text(
+              'CHANGE LANGUAGE',
+              style: lemonMilkWithColor800(AppColor.black, 18.sp),
+            ),
+            SizedBox(height: 5.h),
+
+
+          ],
         ),
       ),
       body: Padding(
@@ -39,15 +46,15 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
           children: [
             Text(
               'CHOOSE YOUR PROFFERED LANGUAGE',
-              style: lemonMilkWithColor500(AppColor.grey, 14.sp),
+              style: lemonMilkWithColor500(AppColor.grey, 12.sp),
             ),
-            SizedBox(height: 24.h),
+            SizedBox(height: 20.h,),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   'ENGLISH',
-                  style: lemonMilkWithColor800(AppColor.black, 18.sp),
+                  style: lemonMilkWithColor500(AppColor.black, 15.sp),
                 ),
                 Switch(
                   value: isEnglishSelected,
@@ -70,7 +77,7 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
               children: [
                 Text(
                   'FRENCH',
-                  style: lemonMilkWithColor800(AppColor.black, 18.sp),
+                  style: lemonMilkWithColor500(AppColor.black, 15.sp),
                 ),
                 Switch(
                   value: isFrenchSelected,

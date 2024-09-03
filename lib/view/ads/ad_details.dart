@@ -211,9 +211,9 @@ class _AdDetailsPageState extends State<AdDetailsPage> {
           child: Column(
             children: [
               Container(
-                width: 393,
-                height: 313,
-                child: Stack(
+          width: double.infinity, // Set the width to the full screen width
+          height: 313.h, //
+                     child: Stack(
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.circular(8.0),
@@ -286,7 +286,7 @@ class _AdDetailsPageState extends State<AdDetailsPage> {
 
 
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+                padding: EdgeInsets.symmetric(horizontal: 16.w),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

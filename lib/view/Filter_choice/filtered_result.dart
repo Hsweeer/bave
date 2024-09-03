@@ -27,7 +27,7 @@ class FilterResultScreen extends StatelessWidget {
     },
     {
       'id': '2',
-      'category': 'AUTOMOBILES / PRIVATE CAR',
+      'category': 'AUTOMOBILES /  CAR',
       'title': 'LOREM IPSUM DOLOR SIT AMET CONSECTETUR...',
       'price': '\$3300',
       'image': AppImages.bmw,
@@ -103,11 +103,13 @@ class FilterResultScreen extends StatelessWidget {
         elevation: 0,
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
         title: Text(
           'FILTER RESULT',
-          style: lemonMilk500(18.sp, Colors.black)
+          style: lemonMilk500(16.sp, Colors.black)
         ),
         centerTitle: false,
         actions: [
@@ -226,9 +228,9 @@ class FilterResultScreen extends StatelessWidget {
                                         Row(
                                           crossAxisAlignment: CrossAxisAlignment.center,
                                           children: [
-                                            Image.asset(AppImages.tag, height: 10.h, width: 10.w),
+                                            Image.asset(AppImages.tag, height: 9.h, width: 10.w),
                                             Padding(
-                                              padding: const EdgeInsets.only(left: 4.0),
+                                              padding: const EdgeInsets.only(left: 2.0),
                                               child: Text(
                                                 ad['category']!,
                                                 style: lemonMilk400(AppColor.orange, 8.sp),
@@ -266,12 +268,12 @@ class FilterResultScreen extends StatelessWidget {
                                     SizedBox(height: 4.h),
                                     Text(
                                       ad['title']!,
-                                      style: lemonMilk500(11.sp, AppColor.black),
+                                      style: lemonMilk500(9.sp, AppColor.black),
                                     ),
                                     SizedBox(height: 4.h),
                                     Text(
                                       ad['price']!,
-                                      style: lemonMilk400(AppColor.orange, 10.sp),
+                                      style: lemonMilk400(AppColor.orange, 8.sp),
                                     ),
                                     SizedBox(height: 4.h),
                                     Row(
@@ -281,7 +283,7 @@ class FilterResultScreen extends StatelessWidget {
                                           children: [
                                             Padding(
                                               padding: const EdgeInsets.only(right: 4.0),
-                                              child: Image.asset(AppImages.location, height: 10.h),
+                                              child: Image.asset(AppImages.location, height: 7.h),
                                             ),
                                             Text(
                                               ad['location']!,
@@ -292,8 +294,8 @@ class FilterResultScreen extends StatelessWidget {
                                         Row(
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsets.only(right: 4.0),
-                                              child: Image.asset(AppImages.clock, height: 10.h),
+                                              padding: const EdgeInsets.only(right: 2.0),
+                                              child: Image.asset(AppImages.clock, height: 7.h),
                                             ),
                                             Text(
                                               ad['time']!,
@@ -376,7 +378,7 @@ class FilterResultScreen extends StatelessWidget {
                                       SizedBox(height: 4.h),
                                       Text(
                                         ad['title']!,
-                                        style: lemonMilk600(AppColor.black, 12.sp),
+                                        style: lemonMilk600(AppColor.black, 9.sp),
                                       ),
                                       SizedBox(height: 4.h),
                                       Row(
@@ -422,7 +424,7 @@ class FilterResultScreen extends StatelessWidget {
                                       SizedBox(height: 4.h),
                                       Text(
                                         ad['price']!,
-                                        style: lemonMilk600(AppColor.green, 14.sp),
+                                        style: lemonMilk600(AppColor.green, 8.sp),
                                       ),
                                     ],
                                   ),

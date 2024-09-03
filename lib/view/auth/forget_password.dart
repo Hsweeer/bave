@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../const/colors.dart';
 import '../../const/text_style.dart';
 import '../home/HomePagenavv.dart';
-import 'change_password.dart';
+import '../account/change_password.dart';
 import 'otp_verification.dart';
 
 class forgetpassword extends StatelessWidget {
@@ -25,7 +25,7 @@ class forgetpassword extends StatelessWidget {
                 child: Row(
                   children: [
                     IconButton(
-                      icon: Icon(Icons.arrow_back, color: AppColor.black, size: 18.w),
+                      icon: Icon(Icons.arrow_back, color: AppColor.black, size: 20.w),
                       onPressed: () {
                         // Handle back button action
                         Navigator.pop(context);
@@ -33,14 +33,14 @@ class forgetpassword extends StatelessWidget {
                     ),                    SizedBox(width: 8.w),
                     Text(
                       "FORGOT PASSWORD",
-                      style: lemonMilk600(AppColor.black, 20.sp),
+                      style: lemonMilk600(AppColor.black, 18.sp),
                     ),
                   ],
                 ),
               ),
               Text(
                 "Enter the email address to get verification code \nto reset password",
-                style: lemonMilkWithColor500(AppColor.grey, 13.sp),
+                style: lemonMilkWithColor500(AppColor.grey, 12.sp),
               ),
               SizedBox(height: 75.h),
               _buildTextField('Email address', Icons.email),
@@ -66,7 +66,7 @@ class forgetpassword extends StatelessWidget {
                   },
                   child: Text(
                     "SEND CODE",
-                    style: lemonMilk600(AppColor.white, 18.sp),
+                    style: lemonMilk600(AppColor.white, 15.sp),
                   ),
                 ),
               ),
@@ -84,7 +84,7 @@ Widget _buildTextField(String hintText, IconData icon, {bool obscureText = false
     obscureText: obscureText,
     decoration: InputDecoration(
       hintText: hintText,
-      hintStyle: lemonMilkWithColor500(AppColor.grey, 14.sp),
+      hintStyle: lemonMilkWithColor500(AppColor.grey, 12.sp),
       prefixIcon: prefixText != null
           ? Container(
         padding: EdgeInsets.symmetric(horizontal: 12.w),

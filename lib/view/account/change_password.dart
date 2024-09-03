@@ -4,7 +4,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../const/colors.dart';
 import '../../const/text_style.dart';
 
-class ChangePasswordScreen extends StatelessWidget {
+class ChangePasswordScreen extends StatefulWidget {
+  @override
+  _ChangePasswordScreenState createState() => _ChangePasswordScreenState();
+}
+
+class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
+  bool _isOldPasswordVisible = false;
+  bool _isNewPasswordVisible = false;
+  bool _isConfirmPasswordVisible = false;
+
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -18,7 +27,6 @@ class ChangePasswordScreen extends StatelessWidget {
             leading: IconButton(
               icon: Icon(Icons.arrow_back, color: AppColor.black),
               onPressed: () {
-                // Handle back action.
                 Navigator.pop(context);
               },
             ),
@@ -38,12 +46,36 @@ class ChangePasswordScreen extends StatelessWidget {
                   'CREATE A NEW PASSWORD FOR YOUR ACCOUNT',
                   style: lemonMilkWithColor500(AppColor.grey, 12.sp),
                 ),
-                SizedBox(height: 30.h),
-                _buildPasswordField('OLD PASSWORD'),
+                SizedBox(height: 15.h),
+                _buildPasswordField(
+                  label: 'OLD PASSWORD',
+                  isVisible: _isOldPasswordVisible,
+                  onVisibilityToggle: () {
+                    setState(() {
+                      _isOldPasswordVisible = !_isOldPasswordVisible;
+                    });
+                  },
+                ),
                 SizedBox(height: 10.h),
-                _buildPasswordField('NEW PASSWORD'),
+                _buildPasswordField(
+                  label: 'NEW PASSWORD',
+                  isVisible: _isNewPasswordVisible,
+                  onVisibilityToggle: () {
+                    setState(() {
+                      _isNewPasswordVisible = !_isNewPasswordVisible;
+                    });
+                  },
+                ),
                 SizedBox(height: 10.h),
-                _buildPasswordField('CONFIRM PASSWORD'),
+                _buildPasswordField(
+                  label: 'CONFIRM PASSWORD',
+                  isVisible: _isConfirmPasswordVisible,
+                  onVisibilityToggle: () {
+                    setState(() {
+                      _isConfirmPasswordVisible = !_isConfirmPasswordVisible;
+                    });
+                  },
+                ),
                 Spacer(),
                 _buildContinueButton(),
                 SizedBox(height: 20.h),
@@ -55,7 +87,11 @@ class ChangePasswordScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildPasswordField(String label) {
+  Widget _buildPasswordField({
+    required String label,
+    required bool isVisible,
+    required VoidCallback onVisibilityToggle,
+  }) {
     return Container(
       height: 55.w,
       padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
@@ -69,7 +105,7 @@ class ChangePasswordScreen extends StatelessWidget {
           SizedBox(width: 10.w),
           Expanded(
             child: TextField(
-              obscureText: true,
+              obscureText: !isVisible,
               decoration: InputDecoration(
                 hintText: label,
                 hintStyle: lemonMilkWithColor500(AppColor.grey, 12.sp),
@@ -77,7 +113,13 @@ class ChangePasswordScreen extends StatelessWidget {
               ),
             ),
           ),
-          Icon(Icons.visibility_off_outlined, color: AppColor.grey),
+          GestureDetector(
+            onTap: onVisibilityToggle,
+            child: Icon(
+              isVisible ? Icons.visibility_outlined : Icons.visibility_off_outlined,
+              color: AppColor.grey,
+            ),
+          ),
         ],
       ),
     );

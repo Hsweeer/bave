@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../const/colors.dart';
+import '../../const/images.dart';
 import '../../const/text_style.dart';
 import '../home/HomePagenavv.dart';
 import 'forget_password.dart';
@@ -47,61 +48,58 @@ class _SignInScreenmainState extends State<SignInScreenmain> {
               SizedBox(height: 5.h),
 
               // Phone Number Input
-              TextField(
-                decoration: InputDecoration(
-                  prefixIcon: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 12.w),
-                    child: Text("+1", style: lemonMilk500(14.sp, AppColor.grey)),
-                  ),
-                  prefixIconConstraints: BoxConstraints(minWidth: 0, minHeight: 0),
-                  hintText: "PHONE NUMBER",
-                  hintStyle: lemonMilk500(12.sp, AppColor.grey),
-                  contentPadding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 16.w),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.r),
-                    borderSide: BorderSide(color: AppColor.green),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.r),
-                    borderSide: BorderSide(color: AppColor.green),
-                  ),
-                ),
-                keyboardType: TextInputType.phone,
-              ),
-              SizedBox(height: 16.h),
-
-              // Password Input
-              TextField(
-                obscureText: !_isPasswordVisible,
-                decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.lock_outline, color: AppColor.grey),
-                  suffixIcon: IconButton(
-                    icon: Icon(
-                      _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
-                      color: AppColor.grey,
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: Container(
+                    height: 55.w,
+                    padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8.r),
+                      border: Border.all(color: AppColor.lightGreen),
                     ),
-                    onPressed: () {
-                      setState(() {
-                        _isPasswordVisible = !_isPasswordVisible;
-                      });
-                    },
-                  ),
-                  hintText: "PASSWORD",
-                  hintStyle: lemonMilk500(12.sp, AppColor.grey),
-                  contentPadding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 16.w),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.r),
-                    borderSide: BorderSide(color: AppColor.green),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.r),
-                    borderSide: BorderSide(color: AppColor.green),
+                    child: Row(
+                      children: [
+                        Text(
+                          '+1',
+                          style: TextStyle(
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(width: 8.0),
+                        Image.asset(
+                          AppImages.line,
+                          height: 25.h,
+                          width: 1.5.w,
+                        ),
+                        SizedBox(width: 8.0),
+                        Expanded(
+                          child: TextFormField(
+                            keyboardType: TextInputType.phone,
+                            decoration: InputDecoration(
+                              hintText: 'PHONE NUMBERgit ',
+                              border: InputBorder.none,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-              SizedBox(height: 16.h),
+              SizedBox(height: 15.h),
 
-              // Forgot Password
+              _buildPasswordField(
+                label: ' PASSWORD',
+                isVisible: _isPasswordVisible,
+                onVisibilityToggle: () {
+                  setState(() {
+                    _isPasswordVisible = !_isPasswordVisible;
+                  });
+                },
+              ),
+              SizedBox(height: 15.h),
               Align(
                 alignment: Alignment.centerRight,
                 child: GestureDetector(
@@ -138,7 +136,7 @@ class _SignInScreenmainState extends State<SignInScreenmain> {
                   },
                   child: Text(
                     "SIGN IN",
-                    style: lemonMilk600(AppColor.white, 16.sp),
+                    style: lemonMilk600(AppColor.white, 15.sp),
                   ),
                 ),
               ),
@@ -174,4 +172,42 @@ class _SignInScreenmainState extends State<SignInScreenmain> {
       ),
     );
   }
+  Widget _buildPasswordField({
+    required String label,
+    required bool isVisible,
+    required VoidCallback onVisibilityToggle,
+  }) {
+    return Container(
+      height: 55.w,
+      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8.r),
+        border: Border.all(color: AppColor.lightGreen),
+      ),
+      child: Row(
+        children: [
+          Icon(Icons.lock, color: AppColor.grey),
+          SizedBox(width: 10.w),
+          Expanded(
+            child: TextField(
+              obscureText: !isVisible,
+              decoration: InputDecoration(
+                hintText: label,
+                hintStyle: lemonMilkWithColor500(AppColor.grey, 12.sp),
+                border: InputBorder.none,
+              ),
+            ),
+          ),
+          GestureDetector(
+            onTap: onVisibilityToggle,
+            child: Icon(
+              isVisible ? Icons.visibility_outlined : Icons.visibility_off_outlined,
+              color: AppColor.grey,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
 }

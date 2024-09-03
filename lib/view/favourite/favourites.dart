@@ -480,6 +480,12 @@ class _FavouriteState extends State<Favourite> with SingleTickerProviderStateMix
       appBar: AppBar(
         backgroundColor: AppColor.white,
         elevation: 0,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [

@@ -101,7 +101,7 @@ class _otpVerificationScreenState
                     // SizedBox(width: 5.w),
                     Text(
                       "OTP VERIFICATION",
-                      style: lemonMilkWithColor500(AppColor.black, 17.sp),
+                      style: lemonMilkWithColor500(AppColor.black, 18.sp),
                     ),
                   ],
                 ),
@@ -111,7 +111,7 @@ class _otpVerificationScreenState
               // Instructions Text
               Text(
                 "Enter the verification code sent to your email address",
-                style: lemonMilkWithColor500(AppColor.grey, 13.sp),
+                style: lemonMilkWithColor500(AppColor.grey, 12.sp),
               ),
               SizedBox(height: 80.h),
 
@@ -145,7 +145,7 @@ class _otpVerificationScreenState
                   // onPressed: onVerify,
                   child: Text(
                     "VERIFY",
-                    style: lemonMilk600(AppColor.white, 16.sp),
+                    style: lemonMilk600(AppColor.white, 15.sp),
                   ),
                 ),
               ),
@@ -158,13 +158,13 @@ class _otpVerificationScreenState
                   child: RichText(
                     text: TextSpan(
                       text: "RE-SEND CODE IN ",
-                      style: lemonMilkWithColor500(AppColor.black2, 14.sp),
+                      style: lemonMilkWithColor500(AppColor.black2, 12.sp),
                       children: [
                         TextSpan(
                           text: isTimerActive ? "0:$remainingSeconds" : "SEND NOW",
                           style: lemonMilkWithColor700(
                               isTimerActive ? AppColor.green : AppColor.red,
-                              14.sp),
+                              12.sp),
                         ),
                       ],
                     ),

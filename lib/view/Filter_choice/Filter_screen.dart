@@ -64,11 +64,8 @@ class _FilterScreenState extends State<FilterScreen> {
           children: [
             Text(
               'COMPUTER',
-              style: TextStyle(
-                fontSize: 20,
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-              ),
+              style: lemonMilk500( 18.sp,AppColor.black,),
+
             ),
             Obx(
                   () {
@@ -115,7 +112,7 @@ class _FilterScreenState extends State<FilterScreen> {
                   icon: Icon(Icons.tune, color:AppColor.orange, size: 18),
                   label: Text(
                     'FILTER',
-                    style: lemonMilk400(Colors.white, 12.sp)
+                    style: lemonMilk400(Colors.white, 11.sp)
                   ),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColor.green,
@@ -335,7 +332,7 @@ class _FilterScreenState extends State<FilterScreen> {
                                       SizedBox(height: 4.h),
                                       Text(
                                         ad['title']!,
-                                        style: lemonMilk600(AppColor.black, 12.sp),
+                                        style: lemonMilk500( 9.sp,AppColor.black,),
                                       ),
                                       SizedBox(height: 4.h),
                                       Row(
@@ -381,7 +378,7 @@ class _FilterScreenState extends State<FilterScreen> {
                                       SizedBox(height: 4.h),
                                       Text(
                                         ad['price']!,
-                                        style: lemonMilk600(AppColor.green, 14.sp),
+                                        style: lemonMilk600(AppColor.green, 8.sp),
                                       ),
                                     ],
                                   ),
@@ -428,7 +425,7 @@ class _FilterScreenState extends State<FilterScreen> {
       ),
       child: Text(
         text,
-        style: lemonMilk400(AppColor.black, 12.sp)
+        style: lemonMilk400(AppColor.black, 11.sp)
       ),
     );
   }

@@ -29,7 +29,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     },
     {
       'id': '2',
-      'category': 'AUTOMOBILES / PRIVATE CAR',
+      'category': 'AUTOMOBILES / PRIVATE ',
       'title': 'LOREM IPSUM DOLOR SIT AMET CONSECTETUR...',
       'price': '\$3300',
       'image': AppImages.bmw,
@@ -105,6 +105,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         toolbarHeight: 50.h,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: AppColor.black),
+          onPressed: () {
+            // Handle back action.
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: Padding(
         padding: EdgeInsets.all(16.w), // Using ScreenUtil for padding
@@ -293,12 +300,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     SizedBox(height: 4.h),
                                     Text(
                                       ad['title']!,
-                                      style: lemonMilk500(11.sp, AppColor.black),
+                                      style: lemonMilk500(9.sp, AppColor.black),
                                     ),
                                     SizedBox(height: 4.h),
                                     Text(
                                       ad['price']!,
-                                      style: lemonMilk400(AppColor.orange, 10.sp),
+                                      style: lemonMilk400(AppColor.orange, 8.sp),
                                     ),
                                     SizedBox(height: 4.h),
                                     Row(
@@ -308,11 +315,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           children: [
                                             Padding(
                                               padding: const EdgeInsets.only(right: 4.0),
-                                              child: Image.asset(AppImages.location, height: 10.h),
+                                              child: Image.asset(AppImages.location, height: 7.h),
                                             ),
                                             Text(
                                               ad['location']!,
-                                              style: lemonMilk400(AppColor.grey, 8.sp),
+                                              style: lemonMilk400(AppColor.grey, 6.sp),
                                             ),
                                           ],
                                         ),
@@ -320,11 +327,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           children: [
                                             Padding(
                                               padding: const EdgeInsets.only(right: 4.0),
-                                              child: Image.asset(AppImages.clock, height: 10.h),
+                                              child: Image.asset(AppImages.clock, height: 7.h),
                                             ),
                                             Text(
                                               ad['time']!,
-                                              style: lemonMilk400(AppColor.grey, 8.sp),
+                                              style: lemonMilk400(AppColor.grey, 6.sp),
                                             ),
                                           ],
                                         ),
@@ -349,13 +356,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => AdDetailsPage(imagePath: ad['image']!, title:ad['title']!, location:ad['location']!,),
+                              builder: (context) => AdDetailsPage(imagePath: ad['image']!,
+                                  location: ad['location']!,
+                                  title: ad['title']!),
                             ),
                           );
                         },
                         child: Container(
                           decoration: BoxDecoration(
-                            color: AppColor.greyl,
+                            color: AppColor.lightGrey,
                             borderRadius: BorderRadius.circular(8.r),
                           ),
                           margin: EdgeInsets.only(bottom: 10.h),
@@ -403,7 +412,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       SizedBox(height: 4.h),
                                       Text(
                                         ad['title']!,
-                                        style: lemonMilk600(AppColor.black, 12.sp),
+                                        style: lemonMilk600(AppColor.black, 10.sp),
                                       ),
                                       SizedBox(height: 4.h),
                                       Row(
@@ -412,24 +421,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           Row(
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsets.only(right: 4.0),
+                                                padding: const EdgeInsets.only(right: 2.0),
                                                 child: Image.asset(AppImages.location, height: 10.h),
                                               ),
                                               Text(
                                                 ad['location']!,
-                                                style: lemonMilk400(AppColor.grey, 8.sp),
+                                                style: lemonMilk400(AppColor.grey, 7.sp),
                                               ),
                                             ],
                                           ),
                                           Row(
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsets.only(right: 4.0),
+                                                padding: const EdgeInsets.only(right: 2.0),
                                                 child: Image.asset(AppImages.clock, height: 10.h),
                                               ),
                                               Text(
                                                 ad['time']!,
-                                                style: lemonMilk400(AppColor.grey, 8.sp),
+                                                style: lemonMilk400(AppColor.grey, 7.sp),
                                               ),
                                             ],
                                           ),
@@ -447,9 +456,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         ),
                                       ),
                                       SizedBox(height: 4.h),
-                                      Text(
-                                        ad['price']!,
-                                        style: lemonMilk600(AppColor.green, 14.sp),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                                        children: [
+                                          Text(
+                                            ad['price']!,
+                                            style: lemonMilk600(AppColor.orange, 11.sp),
+                                          ),
+                                          Icon(Icons.favorite_outline,size: 14.sp,)
+                                        ],
                                       ),
                                     ],
                                   ),

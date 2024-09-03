@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../const/colors.dart';
+import '../../const/images.dart';
 import '../../const/text_style.dart';
 import '../home/HomePagenavv.dart';
 import 'forget_password.dart';
@@ -42,7 +43,7 @@ class _resetpasswordState extends State<resetpassword> {
                     SizedBox(width: 8.w),
                     Text(
                       "RESET PASSWORD",
-                      style: lemonMilk600(AppColor.black, 20.sp),
+                      style: lemonMilk600(AppColor.black, 18.sp),
                     ),
                   ],
                 ),
@@ -58,7 +59,16 @@ class _resetpasswordState extends State<resetpassword> {
               TextField(
                 obscureText: !_isPasswordVisible,
                 decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.lock_outline, color: AppColor.grey),
+                  prefixIcon: Padding(
+                    padding: const EdgeInsets.all(12.0), // Adjust padding as needed
+                    child: Image.asset(
+                      AppImages.Lock,
+                      color: AppColor.lightGreyl, // Optional: To apply a color filter to the image
+                      fit: BoxFit.contain, // Adjust to control how the image fits within the space
+                      width: 8, // Set the width of the image
+                      height: 7.25, // Set the height of the image
+                    ),
+                  ),
                   suffixIcon: IconButton(
                     icon: Icon(
                       _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
@@ -89,7 +99,16 @@ class _resetpasswordState extends State<resetpassword> {
               TextField(
                 obscureText: !_isConfirmPasswordVisible,
                 decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.lock_outline, color: AppColor.grey),
+                  prefixIcon: Padding(
+                    padding: const EdgeInsets.all(12.0), // Adjust padding as needed
+                    child: Image.asset(
+                      AppImages.Lock,
+                      color: AppColor.lightGreyl, // Optional: To apply a color filter to the image
+                      fit: BoxFit.contain, // Adjust to control how the image fits within the space
+                      width: 8, // Set the width of the image
+                      height: 7.25, // Set the height of the image
+                    ),
+                  ),
                   suffixIcon: IconButton(
                     icon: Icon(
                       _isConfirmPasswordVisible ? Icons.visibility : Icons.visibility_off,
@@ -136,7 +155,7 @@ class _resetpasswordState extends State<resetpassword> {
                   },
                   child: Text(
                     "CONTINUE",
-                    style: lemonMilk600(AppColor.white, 18.sp),
+                    style: lemonMilk500( 15.sp,AppColor.white,),
                   ),
                 ),
               ),

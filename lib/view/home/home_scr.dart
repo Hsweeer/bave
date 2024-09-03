@@ -8,6 +8,8 @@ import '../../const/text_style.dart';
 import '../../controllers/home_scr_controllers/favourate.dart';
 import '../../controllers/home_scr_controllers/view_controller.dart';
 import '../Category/all_category.dart';
+import '../Filter_choice/Filter_screen.dart';
+import '../Notification_scr/notifications.dart';
 import '../ads/ad_details.dart';
 import 'Search.dart';
 
@@ -160,7 +162,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ],
                 ),
-                Image.asset(AppImages.bellIcon, height: 24.h, width: 24.w),
+                GestureDetector(
+                  onTap: (){
+                    Get.to(NotificationScreen());
+
+                  },
+                    child: Image.asset(AppImages.bellIcon, height: 24.h, width: 24.w)),
               ],
             ),
             SizedBox(height: 20.h),
@@ -232,31 +239,37 @@ class _HomeScreenState extends State<HomeScreen> {
                 itemCount: categories.length,
                 itemBuilder: (context, index) {
                   final category = categories[index];
-                  return Container(
-                    width: 60.w,
-                    height: 6.h,
-                    margin: EdgeInsets.only(right: 10.w),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Container(
-                          width: 60.w,
-                          height: 60.h,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                              image: AssetImage(category['image']!),
-                              fit: BoxFit.cover,
+                  return GestureDetector(
+                    onTap: (){
+                      Get.to(    FilterScreen());
+
+                    },
+                    child: Container(
+                      width: 60.w,
+                      height: 6.h,
+                      margin: EdgeInsets.only(right: 10.w),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Container(
+                            width: 60.w,
+                            height: 60.h,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                image: AssetImage(category['image']!),
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
-                        ),
-                        SizedBox(height: 5.h),
-                        Text(
-                          category['text']!,
-                          style: lemonMilk500(8.sp, AppColor.black),
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
+                          SizedBox(height: 5.h),
+                          Text(
+                            category['text']!,
+                            style: lemonMilk500(8.sp, AppColor.black),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
                     ),
                   );
                 },
