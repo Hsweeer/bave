@@ -45,15 +45,14 @@ class _SignInScreenmainState extends State<SignInScreenmain> {
                   ],
                 ),
               ),
-              SizedBox(height: 5.h),
 
               // Phone Number Input
               Center(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: Container(
-                    height: 55.w,
-                    padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+                    height: 45.w,
+                    padding: EdgeInsets.symmetric(horizontal: 10.w),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8.r),
                       border: Border.all(color: AppColor.lightGreen),
@@ -62,11 +61,9 @@ class _SignInScreenmainState extends State<SignInScreenmain> {
                       children: [
                         Text(
                           '+1',
-                          style: TextStyle(
-                            fontSize: 16.0,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
+                          style:lemonMilkWithColor500(AppColor.grey, 15.sp),
+
+                  ),
                         SizedBox(width: 8.0),
                         Image.asset(
                           AppImages.line,
@@ -78,7 +75,8 @@ class _SignInScreenmainState extends State<SignInScreenmain> {
                           child: TextFormField(
                             keyboardType: TextInputType.phone,
                             decoration: InputDecoration(
-                              hintText: 'PHONE NUMBERgit ',
+                              hintText: 'PHONE NUMBER',
+                              hintStyle: lemonMilkWithColor500(AppColor.grey, 12.sp),
                               border: InputBorder.none,
                             ),
                           ),
@@ -88,10 +86,11 @@ class _SignInScreenmainState extends State<SignInScreenmain> {
                   ),
                 ),
               ),
-              SizedBox(height: 15.h),
+              SizedBox(height: 10.h),
 
               _buildPasswordField(
                 label: ' PASSWORD',
+
                 isVisible: _isPasswordVisible,
                 onVisibilityToggle: () {
                   setState(() {
@@ -111,7 +110,7 @@ class _SignInScreenmainState extends State<SignInScreenmain> {
                   },
                   child: Text(
                     "FORGOT PASSWORD?",
-                    style: lemonMilkWithColor700(AppColor.green, 12.sp),
+                    style: lemonMilk600(AppColor.green, 12.sp),
                   ),
                 ),
               ),
@@ -140,7 +139,7 @@ class _SignInScreenmainState extends State<SignInScreenmain> {
                   ),
                 ),
               ),
-              SizedBox(height: 16.h),
+              SizedBox(height: 20.h),
 
               // Sign Up Link with GestureDetector for Navigation
               Center(
@@ -178,7 +177,7 @@ class _SignInScreenmainState extends State<SignInScreenmain> {
     required VoidCallback onVisibilityToggle,
   }) {
     return Container(
-      height: 55.w,
+      height: 45.w,
       padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8.r),
@@ -191,10 +190,13 @@ class _SignInScreenmainState extends State<SignInScreenmain> {
           Expanded(
             child: TextField(
               obscureText: !isVisible,
+              style: lemonMilkWithColor500(AppColor.grey, 12.sp), // Ensuring the text style matches
               decoration: InputDecoration(
                 hintText: label,
                 hintStyle: lemonMilkWithColor500(AppColor.grey, 12.sp),
                 border: InputBorder.none,
+                isDense: true,  // Reduces padding
+                contentPadding: EdgeInsets.zero, // Ensures hint text aligns properly
               ),
             ),
           ),
@@ -209,5 +211,43 @@ class _SignInScreenmainState extends State<SignInScreenmain> {
       ),
     );
   }
+
+// Widget _buildPasswordField({
+  //   required String label,
+  //   required bool isVisible,
+  //   required VoidCallback onVisibilityToggle,
+  // }) {
+  //   return Container(
+  //     height: 55.w,
+  //     padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+  //     decoration: BoxDecoration(
+  //       borderRadius: BorderRadius.circular(8.r),
+  //       border: Border.all(color: AppColor.lightGreen),
+  //     ),
+  //     child: Row(
+  //       children: [
+  //         Icon(Icons.lock, color: AppColor.grey),
+  //         SizedBox(width: 10.w),
+  //         Expanded(
+  //           child: TextField(
+  //             obscureText: !isVisible,
+  //             decoration: InputDecoration(
+  //               hintText: label,
+  //               hintStyle: lemonMilkWithColor500(AppColor.grey, 12.sp),
+  //               border: InputBorder.none,
+  //             ),
+  //           ),
+  //         ),
+  //         GestureDetector(
+  //           onTap: onVisibilityToggle,
+  //           child: Icon(
+  //             isVisible ? Icons.visibility_outlined : Icons.visibility_off_outlined,
+  //             color: AppColor.grey,
+  //           ),
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
 
 }

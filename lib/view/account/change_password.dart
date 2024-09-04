@@ -41,7 +41,6 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 10.h),
                 Text(
                   'CREATE A NEW PASSWORD FOR YOUR ACCOUNT',
                   style: lemonMilkWithColor500(AppColor.grey, 12.sp),
@@ -94,23 +93,27 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
   }) {
     return Container(
       height: 55.w,
-      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+      padding: EdgeInsets.symmetric(horizontal: 10.w),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8.r),
         border: Border.all(color: AppColor.lightGreen),
       ),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center, // Aligns all child widgets to center vertically
         children: [
-          Icon(Icons.lock, color: AppColor.grey),
+          Icon(Icons.lock, color: AppColor.grey, size: 20.sp),
           SizedBox(width: 10.w),
           Expanded(
             child: TextField(
               obscureText: !isVisible,
               decoration: InputDecoration(
+                isCollapsed: true, // Ensures the text aligns with the icon
                 hintText: label,
                 hintStyle: lemonMilkWithColor500(AppColor.grey, 12.sp),
                 border: InputBorder.none,
+                contentPadding: EdgeInsets.zero, // Removes any default padding inside the text field
               ),
+              style: lemonMilkWithColor500(AppColor.black, 12.sp), // Text style inside the input
             ),
           ),
           GestureDetector(
@@ -118,6 +121,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
             child: Icon(
               isVisible ? Icons.visibility_outlined : Icons.visibility_off_outlined,
               color: AppColor.grey,
+              size: 20.sp,
             ),
           ),
         ],
@@ -125,9 +129,10 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
     );
   }
 
+
   Widget _buildContinueButton() {
     return SizedBox(
-      height: 55.h,
+      height: 45.h,
       width: 342.w,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
@@ -141,7 +146,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
         },
         child: Text(
           'CONTINUE',
-          style: lemonMilkWithColor800(AppColor.white, 16.sp),
+          style: lemonMilkWithColor500(AppColor.white, 12.sp),
         ),
       ),
     );

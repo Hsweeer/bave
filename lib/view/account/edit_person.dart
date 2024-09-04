@@ -22,7 +22,7 @@ class EditPersonalInfoScreen extends StatelessWidget {
         ),
         title: Text(
           'EDIT PERSONAL INFO',
-          style: lemonMilkWithColor800(AppColor.black, 18.sp),
+          style: lemonMilkWithColor800(AppColor.black2, 18.sp),
         ),
         centerTitle: false,
       ),
@@ -35,14 +35,14 @@ class EditPersonalInfoScreen extends StatelessWidget {
               SizedBox(height: 2.h),
               Text(
                 'EDIT PERSONAL DETAILS',
-                style: lemonMilkWithColor500(AppColor.grey, 14.sp),
+                style: lemonMilk500( 11.sp,AppColor.black,),
               ),
               SizedBox(height: 16.h),
               Center(
                 child: Stack(
                   children: [
                     CircleAvatar(
-                      radius: 50.r,
+                      radius: 60.r,
                       backgroundColor: Colors.yellow,
                       backgroundImage: AssetImage(
                           AppImages.person), // Replace with your image path
@@ -64,7 +64,7 @@ class EditPersonalInfoScreen extends StatelessWidget {
               Center(
                 child: Text(
                   'CHANGE IMAGE',
-                  style: lemonMilkWithColor700(AppColor.black, 16.sp),
+                  style: lemonMilkWithColor500(AppColor.black, 14.sp),
                 ),
               ),
               SizedBox(height: 24.h),
@@ -133,6 +133,7 @@ class EditPersonalInfoScreen extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(bottom: 20.h),
                 child: SizedBox(
+                  height: 55.h,
                   width: double.infinity,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
@@ -147,7 +148,7 @@ class EditPersonalInfoScreen extends StatelessWidget {
                     },
                     child: Text(
                       'SAVE CHANGES',
-                      style: lemonMilkWithColor700(AppColor.white, 16.sp),
+                      style: lemonMilkWithColor500(AppColor.white, 15.sp),
                     ),
                   ),
                 ),
@@ -196,7 +197,7 @@ class EditPersonalInfoScreen extends StatelessWidget {
               contentPadding:
                   EdgeInsets.symmetric(horizontal: 12.w, vertical: 14.h),
             ),
-            style: lemonMilkWithColor500(AppColor.black, 11.sp),
+            style: lemonMilk500( 10.sp,AppColor.black2,),
           ),
         ],
       ),

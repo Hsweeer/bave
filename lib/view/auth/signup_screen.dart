@@ -45,15 +45,53 @@ class _SignUpScreenState extends State<SignUpScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _buildTextField('FULL NAME', AppImages.user,), // Replace with your image path
-              SizedBox(height: 20.h),
-              _buildTextField('PHONE NUMBER', 'assets/icons/phone.png', prefixText: '+1'), // Replace with your image path
-              SizedBox(height: 20.h),
+              SizedBox(height: 10.h),
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: Container(
+                    height: 45.w,
+                    padding: EdgeInsets.symmetric(horizontal: 10.w),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8.r),
+                      border: Border.all(color: AppColor.lightGreen),
+                    ),
+                    child: Row(
+                      children: [
+                        Text(
+                          '+1',
+                          style:lemonMilkWithColor500(AppColor.grey, 15.sp),
+
+                        ),
+                        SizedBox(width: 8.0),
+                        Image.asset(
+                          AppImages.line,
+                          height: 25.h,
+                          width: 1.5.w,
+                        ),
+                        SizedBox(width: 8.0),
+                        Expanded(
+                          child: TextFormField(
+                            keyboardType: TextInputType.phone,
+                            decoration: InputDecoration(
+                              hintText: 'PHONE NUMBER',
+                              hintStyle: lemonMilkWithColor500(AppColor.grey, 12.sp),
+                              border: InputBorder.none,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 10.h),
               _buildTextField('EMAIL', AppImages.email), // Replace with your image path
-              SizedBox(height: 20.h),
+              SizedBox(height: 14.h),
               _buildTextField('PASSWORD', AppImages.Lock, obscureText: !_isPasswordVisible, isPasswordField: true), // Replace with your image path
-              SizedBox(height: 20.h),
+              SizedBox(height: 14.h),
               _buildTextField('CONFIRM PASSWORD', AppImages.Lock, obscureText: !_isConfirmPasswordVisible, isPasswordField: true), // Replace with your image path
-              SizedBox(height: 20.h), // Space before the button
+              SizedBox(height: 290.h), // Space before the button
               _buildSignUpButton(),
               SizedBox(height: 10.h),
               Center(
@@ -80,7 +118,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ],
                 ),
               ),
-              SizedBox(height: 20.h), // Space after the sign in link
+              SizedBox(height: 10.h), // Space after the sign in link
             ],
           ),
         ),

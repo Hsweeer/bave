@@ -7,22 +7,22 @@ import '../../const/images.dart';
 import '../../const/text_style.dart';
 import '../person_profile/person_profile.dart';
 
-class AdDetailsPage extends StatefulWidget {
+class prDetailsPage extends StatefulWidget {
   final String imagePath;
   final String title;
   final String location;
 
-  AdDetailsPage({
+  prDetailsPage({
     required this.imagePath,
     required this.title,
     required this.location,
   });
 
   @override
-  State<AdDetailsPage> createState() => _AdDetailsPageState();
+  State<prDetailsPage> createState() => _prDetailsPageState();
 }
 
-class _AdDetailsPageState extends State<AdDetailsPage> {
+class _prDetailsPageState extends State<prDetailsPage> {
   void _showSuccessDialog() {
     showDialog(
       context: context,
@@ -211,75 +211,75 @@ class _AdDetailsPageState extends State<AdDetailsPage> {
           child: Column(
             children: [
               Container(
-          width: double.infinity, // Set the width to the full screen width
-          height: 313.h, //
-                     child: Stack(
+                width: double.infinity, // Set the width to the full screen width
+                height: 313.h, //
+                child: Stack(
                   children: [
                     Container(
-                     height: 313.h ,
+                      height: 313.h ,
                       child: Image.asset(
-                          widget.imagePath,
-                          fit: BoxFit.cover,
-                        ),
+                        widget.imagePath,
+                        fit: BoxFit.cover,
+                      ),
                     ),
 
                     Positioned(
-                      top: 18,  // Adjust these values to position the icons
-                      right: 8,
-                      child:
-                      Row(
-                        children: [
-                          // Circular container with an image for edit action
-                          GestureDetector(
-                            onTap: () {
-                              // Handle edit action
-                            },
-                            child: Container(
-                              width: 40.w, // Adjust size as needed
-                              height: 40.h, // Adjust size as needed
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: AppColor.green, // Optional background color
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: Center(
-                                  child: Image.asset(
-                                    AppImages.heart, // Replace with your edit icon image path
-                                    width: 24.w, // Adjust size as needed
-                                    height: 24.h, // Adjust size as needed
-                                  ),
+                        top: 18,  // Adjust these values to position the icons
+                        right: 8,
+                        child:
+                        Row(
+                          children: [
+                            // Circular container with an image for edit action
+                            GestureDetector(
+                              onTap: () {
+                                // Handle edit action
+                              },
+                              child: Container(
+                                width: 40.w, // Adjust size as needed
+                                height: 40.h, // Adjust size as needed
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: AppColor.green, // Optional background color
                                 ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(width: 5.w), // Space between the icons
-                          // Circular container with an image for share action
-                          GestureDetector(
-                            onTap: () {
-                              // Handle share action
-                            },
-                            child: Container(
-                              width: 40.w, // Adjust size as needed
-                              height: 40.h, // Adjust size as needed
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: AppColor.green, // Optional background color
-                              ),
-                              child: Center(
                                 child: Padding(
                                   padding: const EdgeInsets.all(10.0),
-                                  child: Image.asset(
-                                    AppImages.setting, // Replace with your share icon image path
-                                    width: 24.w, // Adjust size as needed
-                                    height: 24.h, // Adjust size as needed
+                                  child: Center(
+                                    child: Image.asset(
+                                      AppImages.heart, // Replace with your edit icon image path
+                                      width: 24.w, // Adjust size as needed
+                                      height: 24.h, // Adjust size as needed
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
-                      )
+                            SizedBox(width: 5.w), // Space between the icons
+                            // Circular container with an image for share action
+                            GestureDetector(
+                              onTap: () {
+                                // Handle share action
+                              },
+                              child: Container(
+                                width: 40.w, // Adjust size as needed
+                                height: 40.h, // Adjust size as needed
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: AppColor.green, // Optional background color
+                                ),
+                                child: Center(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Image.asset(
+                                      AppImages.setting, // Replace with your share icon image path
+                                      width: 24.w, // Adjust size as needed
+                                      height: 24.h, // Adjust size as needed
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        )
                     ),
                   ],
                 ),
@@ -407,22 +407,9 @@ class _AdDetailsPageState extends State<AdDetailsPage> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    SizedBox(height: 5,),
-
-                                    Text(
-                                        "(+800)",
-                                        style:  lemonMilk500(16.sp,AppColor.white)
-                                    ),
-                                    SizedBox(height: 5,),
-                                    Text(
-                                        "  Click to show",
-                                        style:  lemonMilk400(AppColor.white,8.sp,)
-                                    ),
-                                  ],
+                                Text(
+                                    "(+800)",
+                                    style:  lemonMilk500(16.sp,AppColor.white)
                                 ),
                                 SizedBox(width: 8.w),
                                 Icon(Icons.phone, color: AppColor.white, size: 18.sp),
@@ -486,14 +473,14 @@ class _AdDetailsPageState extends State<AdDetailsPage> {
                                 backgroundColor: Colors.yellow,
                                 child: GestureDetector(
                                   onTap: (){
-                                    // Navigator.of(context).pushReplacement(MaterialPageRoute(
-                                    //   // builder: (context) => HomePagenav(), // Replace with your next page widget
-                                    //   builder: (context) => ProfileScreen(), // Replace with your next page widget
-                                    // ));
+                                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                                      // builder: (context) => HomePagenav(), // Replace with your next page widget
+                                      builder: (context) => ProfileScreen(), // Replace with your next page widget
+                                    ));
                                   },
 
                                   child: Image.asset(
-                                    AppImages.person,
+                                    AppImages.profile,
                                     fit: BoxFit.cover, // Adjust this property as needed
                                   ),
                                 ),
@@ -565,89 +552,89 @@ class _AdDetailsPageState extends State<AdDetailsPage> {
                     SizedBox(height: 16.h),
 
                     _buildSectionTitle("SAFETY TIPS"),
-                   Container(
-                     decoration: BoxDecoration(
-                       borderRadius: BorderRadius.circular(8),
-                       color: Color.fromRGBO(247, 247, 247, 1),
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        color: Color.fromRGBO(247, 247, 247, 1),
 
-                     ),
-                     child: Column(children: [
-                       _buildSafetyTip("Check the item before you buy"),
-                       _buildSafetyTip("Pay only after collecting the item"),
-                       _buildSafetyTip("Beware of unrealistic offers"),
-                       _buildSafetyTip("Meet seller at a safe location"),
-                       _buildSafetyTip("Do not make an abrupt decision"),
-                       _buildSafetyTip("Be honest with the ad you post"),
-                     ],),
-                   ),
+                      ),
+                      child: Column(children: [
+                        _buildSafetyTip("Check the item before you buy"),
+                        _buildSafetyTip("Pay only after collecting the item"),
+                        _buildSafetyTip("Beware of unrealistic offers"),
+                        _buildSafetyTip("Meet seller at a safe location"),
+                        _buildSafetyTip("Do not make an abrupt decision"),
+                        _buildSafetyTip("Be honest with the ad you post"),
+                      ],),
+                    ),
 
                     SizedBox(height: 16.h),
 
                     // Admin Approval Section
-                    Container(
-                      width: double.infinity,
-
-                      child: Text(
-                        "PLEASE WAIT FOR ADMIN APPROVAL",
-                        style: lemonMilk500(12.sp,AppColor.black),
-
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                    SizedBox(height: 16.h),
-
-                    // Delete Ad Button
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                          width: 160.w,
-                          height: 55.h,
-                          child: ElevatedButton(
-                            onPressed: _showSuccessDialog,
-
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: AppColor.orange,
-                              padding: EdgeInsets.symmetric(vertical: 12.h),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8.r),
-                              ),
-                            ),
-                            child: Center(
-                              child: Text(
-                                  "MARK AS SOLD",
-                                  style: lemonMilk500(15.sp,AppColor.white)
-
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: 5.w,),
-                        SizedBox(
-                          width: 160.w,
-                          height: 55.h,
-                          child: ElevatedButton(
-                            onPressed: _showSuccessDialog2,
-
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: AppColor.red,
-                              padding: EdgeInsets.symmetric(vertical: 12.h),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8.r),
-                              ),
-                            ),
-                            child: Center(
-                              child: Text(
-                                  "DELETE AD",
-                                  style: lemonMilk500(15.sp,AppColor.white)
-
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 24.h),
+                    // Container(
+                    //   width: double.infinity,
+                    //
+                    //   child: Text(
+                    //     "PLEASE WAIT FOR ADMIN APPROVAL",
+                    //     style: lemonMilk500(12.sp,AppColor.black),
+                    //
+                    //     textAlign: TextAlign.center,
+                    //   ),
+                    // ),
+                    // SizedBox(height: 16.h),
+                    //
+                    // // Delete Ad Button
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.center,
+                    //   children: [
+                    //     SizedBox(
+                    //       width: 160.w,
+                    //       height: 55.h,
+                    //       child: ElevatedButton(
+                    //         onPressed: _showSuccessDialog,
+                    //
+                    //         style: ElevatedButton.styleFrom(
+                    //           backgroundColor: AppColor.orange,
+                    //           padding: EdgeInsets.symmetric(vertical: 12.h),
+                    //           shape: RoundedRectangleBorder(
+                    //             borderRadius: BorderRadius.circular(8.r),
+                    //           ),
+                    //         ),
+                    //         child: Center(
+                    //           child: Text(
+                    //               "MARK AS SOLD",
+                    //               style: lemonMilk500(15.sp,AppColor.white)
+                    //
+                    //           ),
+                    //         ),
+                    //       ),
+                    //     ),
+                    //     SizedBox(width: 5.w,),
+                    //     SizedBox(
+                    //       width: 160.w,
+                    //       height: 55.h,
+                    //       child: ElevatedButton(
+                    //         onPressed: _showSuccessDialog2,
+                    //
+                    //         style: ElevatedButton.styleFrom(
+                    //           backgroundColor: AppColor.red,
+                    //           padding: EdgeInsets.symmetric(vertical: 12.h),
+                    //           shape: RoundedRectangleBorder(
+                    //             borderRadius: BorderRadius.circular(8.r),
+                    //           ),
+                    //         ),
+                    //         child: Center(
+                    //           child: Text(
+                    //               "DELETE AD",
+                    //               style: lemonMilk500(15.sp,AppColor.white)
+                    //
+                    //           ),
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   ],
+                    // ),
+                    // SizedBox(height: 24.h),
                   ],
                 ),
               ),

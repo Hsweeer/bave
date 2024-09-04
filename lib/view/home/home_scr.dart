@@ -1,3 +1,4 @@
+import 'package:bon_achat/view/home/product_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -190,7 +191,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       Text(
                         'What are you looking for?',
-                        style: lemonMilk400(AppColor.black2, 9.sp),
+                        style: lemonMilk400(AppColor.black2, 10.sp),
                       ),
                       Container(
                         decoration: BoxDecoration(
@@ -299,7 +300,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       children: [
                         IconButton(
                           icon: Icon(
-                            Icons.grid_view,
+                            Icons.grid_view_sharp,
                             color: isGridView ? AppColor.green : AppColor.black,
                           ),
                           onPressed: () {
@@ -342,7 +343,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => AdDetailsPage(
+                              builder: (context) => prDetailsPage(
                                   imagePath: ad['image']!,
                                   location: ad['location']!,
                                   title: ad['title']!
@@ -474,27 +475,33 @@ class _HomeScreenState extends State<HomeScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => AdDetailsPage(imagePath: ad['image']!,
+                              builder: (context) => prDetailsPage(imagePath: ad['image']!,
                                   location: ad['location']!,
                                   title: ad['title']!),
                             ),
                           );
                         },
                         child: Container(
+                          height: 106.h,
                           decoration: BoxDecoration(
                             color: AppColor.lightGrey,
                             borderRadius: BorderRadius.circular(8.r),
+                            border: Border.all(width: 1.w,color:AppColor.black3,)
                           ),
                           margin: EdgeInsets.only(bottom: 10.h),
                           child: Row(
                             children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.horizontal(left: Radius.circular(8.r)),
-                                child: Image.asset(
-                                  ad['image']!,
-                                  fit: BoxFit.cover,
-                                  width: 140.w,
-                                  height: 120.h,
+                              Padding(
+                                padding: const EdgeInsets.all(4.0),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.all(Radius.circular(4.r)),
+                                  // borderRadius: BorderRadius.horizontal(left: Radius.circular(8.r),right: Radius.circular(8.r),b),
+                                  child: Image.asset(
+                                    ad['image']!,
+                                    fit: BoxFit.cover,
+                                    width: 140.w,
+                                    height: 120.h,
+                                  ),
                                 ),
                               ),
                               Expanded(
@@ -511,7 +518,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             padding: const EdgeInsets.only(left: 6.0),
                                             child: Text(
                                               ad['category']!,
-                                              style: lemonMilk400(AppColor.orange, 9.sp),
+                                              style: lemonMilk400(AppColor.orange, 7.sp),
                                             ),
                                           ),
                                         ],
@@ -530,7 +537,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       SizedBox(height: 4.h),
                                       Text(
                                         ad['title']!,
-                                        style: lemonMilk600(AppColor.black, 10.sp),
+                                        style: lemonMilk500( 10.sp,AppColor.black,),
                                       ),
                                       SizedBox(height: 4.h),
                                       Row(
@@ -580,7 +587,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         children: [
                                           Text(
                                             ad['price']!,
-                                            style: lemonMilk600(AppColor.orange, 11.sp),
+                                            style: lemonMilk400(AppColor.orange, 11.sp),
                                           ),
                                           Icon(Icons.favorite_outline,size: 14.sp,)
                                         ],

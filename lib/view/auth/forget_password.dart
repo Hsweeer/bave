@@ -33,14 +33,14 @@ class forgetpassword extends StatelessWidget {
                     ),                    SizedBox(width: 8.w),
                     Text(
                       "FORGOT PASSWORD",
-                      style: lemonMilk600(AppColor.black, 18.sp),
+                      style: lemonMilk500( 18.sp,AppColor.black,),
                     ),
                   ],
                 ),
               ),
               Text(
                 "Enter the email address to get verification code \nto reset password",
-                style: lemonMilkWithColor500(AppColor.grey, 12.sp),
+                style: lemonMilkWithColor500(AppColor.grey, 11.sp),
               ),
               SizedBox(height: 75.h),
               _buildTextField('Email address', Icons.email),

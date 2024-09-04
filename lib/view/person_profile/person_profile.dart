@@ -10,6 +10,7 @@ import '../../const/colors.dart';
 import '../../controllers/home_scr_controllers/favourate.dart';
 import '../../controllers/home_scr_controllers/view_controller.dart';
 import '../ads/ad_details.dart';
+import '../home/product_details.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -228,7 +229,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => AdDetailsPage(imagePath: ad['image']!, title:ad['title']!, location:ad['location']!,),
+                              builder: (context) => prDetailsPage(imagePath: ad['image']!, title:ad['title']!, location:ad['location']!,),
                             ),
                           );
                         },
@@ -346,7 +347,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       );
                     },
                   )
-                      : ListView.builder(
+                      :ListView.builder(
                     padding: EdgeInsets.zero,
                     itemCount: recentAds.length,
                     itemBuilder: (context, index) {
@@ -356,27 +357,33 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => AdDetailsPage(imagePath: ad['image']!,
+                              builder: (context) => prDetailsPage(imagePath: ad['image']!,
                                   location: ad['location']!,
                                   title: ad['title']!),
                             ),
                           );
                         },
                         child: Container(
+                          height: 106.h,
                           decoration: BoxDecoration(
-                            color: AppColor.lightGrey,
-                            borderRadius: BorderRadius.circular(8.r),
+                              color: AppColor.lightGrey,
+                              borderRadius: BorderRadius.circular(8.r),
+                              border: Border.all(width: 1.w,color:AppColor.black3,)
                           ),
                           margin: EdgeInsets.only(bottom: 10.h),
                           child: Row(
                             children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.horizontal(left: Radius.circular(8.r)),
-                                child: Image.asset(
-                                  ad['image']!,
-                                  fit: BoxFit.cover,
-                                  width: 140.w,
-                                  height: 120.h,
+                              Padding(
+                                padding: const EdgeInsets.all(4.0),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.all(Radius.circular(4.r)),
+                                  // borderRadius: BorderRadius.horizontal(left: Radius.circular(8.r),right: Radius.circular(8.r),b),
+                                  child: Image.asset(
+                                    ad['image']!,
+                                    fit: BoxFit.cover,
+                                    width: 140.w,
+                                    height: 120.h,
+                                  ),
                                 ),
                               ),
                               Expanded(
@@ -393,7 +400,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             padding: const EdgeInsets.only(left: 6.0),
                                             child: Text(
                                               ad['category']!,
-                                              style: lemonMilk400(AppColor.orange, 9.sp),
+                                              style: lemonMilk400(AppColor.orange, 7.sp),
                                             ),
                                           ),
                                         ],
@@ -412,7 +419,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       SizedBox(height: 4.h),
                                       Text(
                                         ad['title']!,
-                                        style: lemonMilk600(AppColor.black, 10.sp),
+                                        style: lemonMilk500( 10.sp,AppColor.black,),
                                       ),
                                       SizedBox(height: 4.h),
                                       Row(
@@ -462,7 +469,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         children: [
                                           Text(
                                             ad['price']!,
-                                            style: lemonMilk600(AppColor.orange, 11.sp),
+                                            style: lemonMilk400(AppColor.orange, 11.sp),
                                           ),
                                           Icon(Icons.favorite_outline,size: 14.sp,)
                                         ],

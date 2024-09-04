@@ -106,14 +106,14 @@ class _otpVerificationScreenState
                   ],
                 ),
               ),
-              SizedBox(height: 8.h),
+              SizedBox(height: 6.h),
 
               // Instructions Text
               Text(
-                "Enter the verification code sent to your email address",
-                style: lemonMilkWithColor500(AppColor.grey, 12.sp),
+                "Enter the verification code sent to your email\n address",
+                style: lemonMilkWithColor500(AppColor.grey, 11.sp),
               ),
-              SizedBox(height: 80.h),
+              SizedBox(height: 100.h),
 
               // OTP Input Fields
               Row(

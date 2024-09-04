@@ -361,6 +361,7 @@ import '../../const/text_style.dart';
 import '../../controllers/home_scr_controllers/favourate.dart';
 import '../../controllers/home_scr_controllers/view_controller.dart';
 import '../ads/ad_details.dart';
+import '../home/product_details.dart';
 
 class Ad {
   final String category;
@@ -511,7 +512,7 @@ class _FavouriteState extends State<Favourite> with SingleTickerProviderStateMix
                   children: [
                     IconButton(
                       icon: Icon(
-                        Icons.grid_view,
+                        Icons.grid_view_sharp,
                         color: isGridView ? AppColor.green : AppColor.black,
                       ),
                       onPressed: () {
@@ -560,7 +561,7 @@ class _FavouriteState extends State<Favourite> with SingleTickerProviderStateMix
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => AdDetailsPage(
+                                builder: (context) => prDetailsPage(
                                     imagePath: ad['image']!,
                                     location: ad['location']!,
                                     title: ad['title']!
@@ -689,27 +690,33 @@ class _FavouriteState extends State<Favourite> with SingleTickerProviderStateMix
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => AdDetailsPage(imagePath: ad['image']!,
+                                builder: (context) => prDetailsPage(imagePath: ad['image']!,
                                     location: ad['location']!,
                                     title: ad['title']!),
                               ),
                             );
                           },
                           child: Container(
+                            height: 106.h,
                             decoration: BoxDecoration(
-                              color: AppColor.lightGrey,
-                              borderRadius: BorderRadius.circular(8.r),
+                                color: AppColor.lightGrey,
+                                borderRadius: BorderRadius.circular(8.r),
+                                border: Border.all(width: 1.w,color:AppColor.black3,)
                             ),
                             margin: EdgeInsets.only(bottom: 10.h),
                             child: Row(
                               children: [
-                                ClipRRect(
-                                  borderRadius: BorderRadius.horizontal(left: Radius.circular(8.r)),
-                                  child: Image.asset(
-                                    ad['image']!,
-                                    fit: BoxFit.cover,
-                                    width: 140.w,
-                                    height: 120.h,
+                                Padding(
+                                  padding: const EdgeInsets.all(4.0),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.all(Radius.circular(4.r)),
+                                    // borderRadius: BorderRadius.horizontal(left: Radius.circular(8.r),right: Radius.circular(8.r),b),
+                                    child: Image.asset(
+                                      ad['image']!,
+                                      fit: BoxFit.cover,
+                                      width: 140.w,
+                                      height: 120.h,
+                                    ),
                                   ),
                                 ),
                                 Expanded(
@@ -726,7 +733,7 @@ class _FavouriteState extends State<Favourite> with SingleTickerProviderStateMix
                                               padding: const EdgeInsets.only(left: 6.0),
                                               child: Text(
                                                 ad['category']!,
-                                                style: lemonMilk400(AppColor.orange, 9.sp),
+                                                style: lemonMilk400(AppColor.orange, 7.sp),
                                               ),
                                             ),
                                           ],
@@ -745,7 +752,7 @@ class _FavouriteState extends State<Favourite> with SingleTickerProviderStateMix
                                         SizedBox(height: 4.h),
                                         Text(
                                           ad['title']!,
-                                          style: lemonMilk600(AppColor.black, 10.sp),
+                                          style: lemonMilk500( 10.sp,AppColor.black,),
                                         ),
                                         SizedBox(height: 4.h),
                                         Row(
@@ -795,18 +802,10 @@ class _FavouriteState extends State<Favourite> with SingleTickerProviderStateMix
                                           children: [
                                             Text(
                                               ad['price']!,
-                                              style: lemonMilk600(AppColor.orange, 11.sp),
+                                              style: lemonMilk400(AppColor.orange, 11.sp),
                                             ),
-                                            InkWell(
-                                              onTap: () {
-                                                favoriteController.toggleFavorite(ad['id']!);
-                                              },
-                                              child: Icon(
-                                                Icons.favorite, // Always shows the filled heart icon
-                                                size: 16.h,
-                                                color: Colors.red, // Always set the color to red
-                                              ),
-                                            ),                                          ],
+                                            Icon(Icons.favorite,size: 14.sp,color: AppColor.red,)
+                                          ],
                                         ),
                                       ],
                                     ),

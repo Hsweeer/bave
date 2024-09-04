@@ -33,14 +33,14 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
               'CHANGE LANGUAGE',
               style: lemonMilkWithColor800(AppColor.black, 18.sp),
             ),
-            SizedBox(height: 5.h),
+            SizedBox(height: 2.h),
 
 
           ],
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 5.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -56,22 +56,27 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
                   'ENGLISH',
                   style: lemonMilkWithColor500(AppColor.black, 15.sp),
                 ),
-                Switch(
-                  value: isEnglishSelected,
-                  activeColor: AppColor.orange,
-                  activeTrackColor: AppColor.green,
-                  inactiveThumbColor: AppColor.orange,
-                  inactiveTrackColor: AppColor.lightGrey,
-                  onChanged: (bool value) {
-                    setState(() {
-                      isEnglishSelected = value;
-                      isFrenchSelected = !value; // Toggle French based on English
-                    });
-                  },
+                SizedBox(
+                  height: 22.h,
+                  width: 37.w,
+
+                  child: Switch(
+                    value: isEnglishSelected,
+                    activeColor: AppColor.orange,
+                    activeTrackColor: AppColor.green,
+                    inactiveThumbColor: AppColor.orange,
+                    inactiveTrackColor: AppColor.lightGrey,
+                    onChanged: (bool value) {
+                      setState(() {
+                        isEnglishSelected = value;
+                        isFrenchSelected = !value; // Toggle French based on English
+                      });
+                    },
+                  ),
                 ),
               ],
             ),
-            SizedBox(height: 16.h),
+            SizedBox(height: 20.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -79,18 +84,22 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
                   'FRENCH',
                   style: lemonMilkWithColor500(AppColor.black, 15.sp),
                 ),
-                Switch(
-                  value: isFrenchSelected,
-                  activeColor: AppColor.orange,
-                  activeTrackColor: AppColor.green,
-                  inactiveThumbColor: AppColor.orange,
-                  inactiveTrackColor: AppColor.lightGrey,
-                  onChanged: (bool value) {
-                    setState(() {
-                      isFrenchSelected = value;
-                      isEnglishSelected = !value; // Toggle English based on French
-                    });
-                  },
+                SizedBox(
+                  height: 22.h,
+                  width: 37.w,
+                  child: Switch(
+                    value: isFrenchSelected,
+                    activeColor: AppColor.orange,
+                    activeTrackColor: AppColor.green,
+                    inactiveThumbColor: AppColor.orange,
+                    inactiveTrackColor: AppColor.lightGrey,
+                    onChanged: (bool value) {
+                      setState(() {
+                        isFrenchSelected = value;
+                        isEnglishSelected = !value; // Toggle English based on French
+                      });
+                    },
+                  ),
                 ),
               ],
             ),

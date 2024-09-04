@@ -7,6 +7,7 @@ import '../../const/images.dart';
 import '../../controllers/home_scr_controllers/favourate.dart';
 import '../../controllers/home_scr_controllers/view_controller.dart';
 import '../ads/ad_details.dart';
+import '../home/product_details.dart';
 import 'bottom_sheet.dart';
 import 'filtered_result.dart';
 import 'filtered_screen.dart'; // Ensure this import points to the correct file containing FilterBottomSheet
@@ -19,6 +20,14 @@ class FilterScreen extends StatefulWidget {
 }
 
 class _FilterScreenState extends State<FilterScreen> {
+  String _selectedCategory = "FILTER BY  CATEGORIES";  // Default category text
+  bool _isExpanded = false;
+  void _toggleDropdown() {
+    setState(() {
+      _isExpanded = !_isExpanded;
+    });
+  }
+
   final List<Map<String, String>> recentAds = [
     {
       'id': '1', // Added unique ID for favorite tracking
@@ -74,7 +83,7 @@ class _FilterScreenState extends State<FilterScreen> {
                   children: [
                     IconButton(
                       icon: Icon(
-                        Icons.grid_view,
+                        Icons.grid_view_sharp,
                         color: isGridView ? AppColor.green : AppColor.black,
                       ),
                       onPressed: () {
@@ -109,11 +118,12 @@ class _FilterScreenState extends State<FilterScreen> {
                   onPressed: () {
                     _showFilterBottomSheet(context); // Call the function to show the bottom sheet
                   },
-                  icon: Icon(Icons.tune, color:AppColor.orange, size: 18),
                   label: Text(
                     'FILTER',
                     style: lemonMilk400(Colors.white, 11.sp)
                   ),
+                  icon: Icon(Icons.tune, color:AppColor.orange, size: 18),
+
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColor.green,
                     padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
@@ -150,7 +160,7 @@ class _FilterScreenState extends State<FilterScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => AdDetailsPage(imagePath: ad['image']!, title: ad['title']!, location: ad['location']!,),
+                              builder: (context) => prDetailsPage(imagePath: ad['image']!, title: ad['title']!, location: ad['location']!,),
                             ),
                           );
                         },
@@ -268,7 +278,7 @@ class _FilterScreenState extends State<FilterScreen> {
                       );
                     },
                   )
-                      : ListView.builder(
+                      :ListView.builder(
                     padding: EdgeInsets.zero,
                     itemCount: recentAds.length,
                     itemBuilder: (context, index) {
@@ -278,25 +288,33 @@ class _FilterScreenState extends State<FilterScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => AdDetailsPage(imagePath: ad['image']!, title:ad['title']!, location:ad['location']!,),
+                              builder: (context) => prDetailsPage(imagePath: ad['image']!,
+                                  location: ad['location']!,
+                                  title: ad['title']!),
                             ),
                           );
                         },
                         child: Container(
+                          height: 106.h,
                           decoration: BoxDecoration(
-                            color: AppColor.greyl,
-                            borderRadius: BorderRadius.circular(8.r),
+                              color: AppColor.lightGrey,
+                              borderRadius: BorderRadius.circular(8.r),
+                              border: Border.all(width: 1.w,color:AppColor.black3,)
                           ),
                           margin: EdgeInsets.only(bottom: 10.h),
                           child: Row(
                             children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.horizontal(left: Radius.circular(8.r)),
-                                child: Image.asset(
-                                  ad['image']!,
-                                  fit: BoxFit.cover,
-                                  width: 140.w,
-                                  height: 120.h,
+                              Padding(
+                                padding: const EdgeInsets.all(4.0),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.all(Radius.circular(4.r)),
+                                  // borderRadius: BorderRadius.horizontal(left: Radius.circular(8.r),right: Radius.circular(8.r),b),
+                                  child: Image.asset(
+                                    ad['image']!,
+                                    fit: BoxFit.cover,
+                                    width: 140.w,
+                                    height: 120.h,
+                                  ),
                                 ),
                               ),
                               Expanded(
@@ -313,7 +331,7 @@ class _FilterScreenState extends State<FilterScreen> {
                                             padding: const EdgeInsets.only(left: 6.0),
                                             child: Text(
                                               ad['category']!,
-                                              style: lemonMilk400(AppColor.orange, 9.sp),
+                                              style: lemonMilk400(AppColor.orange, 7.sp),
                                             ),
                                           ),
                                         ],
@@ -332,7 +350,7 @@ class _FilterScreenState extends State<FilterScreen> {
                                       SizedBox(height: 4.h),
                                       Text(
                                         ad['title']!,
-                                        style: lemonMilk500( 9.sp,AppColor.black,),
+                                        style: lemonMilk500( 10.sp,AppColor.black,),
                                       ),
                                       SizedBox(height: 4.h),
                                       Row(
@@ -341,24 +359,24 @@ class _FilterScreenState extends State<FilterScreen> {
                                           Row(
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsets.only(right: 4.0),
+                                                padding: const EdgeInsets.only(right: 2.0),
                                                 child: Image.asset(AppImages.location, height: 10.h),
                                               ),
                                               Text(
                                                 ad['location']!,
-                                                style: lemonMilk400(AppColor.grey, 8.sp),
+                                                style: lemonMilk400(AppColor.grey, 7.sp),
                                               ),
                                             ],
                                           ),
                                           Row(
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsets.only(right: 4.0),
+                                                padding: const EdgeInsets.only(right: 2.0),
                                                 child: Image.asset(AppImages.clock, height: 10.h),
                                               ),
                                               Text(
                                                 ad['time']!,
-                                                style: lemonMilk400(AppColor.grey, 8.sp),
+                                                style: lemonMilk400(AppColor.grey, 7.sp),
                                               ),
                                             ],
                                           ),
@@ -376,9 +394,16 @@ class _FilterScreenState extends State<FilterScreen> {
                                         ),
                                       ),
                                       SizedBox(height: 4.h),
-                                      Text(
-                                        ad['price']!,
-                                        style: lemonMilk600(AppColor.green, 8.sp),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                                        children: [
+                                          Text(
+                                            ad['price']!,
+                                            style: lemonMilk400(AppColor.orange, 11.sp),
+                                          ),
+                                          Icon(Icons.favorite_outline,size: 14.sp,)
+                                        ],
                                       ),
                                     ],
                                   ),
@@ -455,7 +480,44 @@ class _FilterScreenState extends State<FilterScreen> {
 }
 
 
-class FilterBottomSheet extends StatelessWidget {
+class FilterBottomSheet extends StatefulWidget {
+  @override
+  State<FilterBottomSheet> createState() => _FilterBottomSheetState();
+}
+
+class _FilterBottomSheetState extends State<FilterBottomSheet> {
+  String _selectedCategory = "FILTER BY  CATEGORIES";
+  final TextEditingController _minPriceController = TextEditingController();
+  final TextEditingController _maxPriceController = TextEditingController();
+  // Default category text
+  bool _isExpanded = false;
+
+  void _toggleDropdown() {
+    setState(() {
+      _isExpanded = !_isExpanded;
+    });
+  }
+  void _selectCategory(String category) {
+    setState(() {
+      _selectedCategory = category;  // Update the selected category
+      _isExpanded = false;  // Close the dropdown
+    });
+  }
+  String _selectedCategory1 = "FILTER BY  CITIES";
+  // Default category text
+  bool _isExpanded1 = false;
+
+  void _toggleDropdown1() {
+    setState(() {
+      _isExpanded1 = !_isExpanded1;
+    });
+  }
+  void _selectCategory1(String category) {
+    setState(() {
+      _selectedCategory1 = category;  // Update the selected category
+      _isExpanded1 = false;  // Close the dropdown
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -491,9 +553,119 @@ class FilterBottomSheet extends StatelessWidget {
             ],
           ),
           SizedBox(height: 20),
-          _buildDropdownButton('FILTER BY CATEGORIES'),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              GestureDetector(
+                onTap: _toggleDropdown,
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
+                  decoration: BoxDecoration(
+                  color: AppColor.green,
+                    border: Border.all(color: AppColor.orange),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        _selectedCategory,  // Display the selected category
+
+                        style:  lemonMilk400(AppColor.white, 12.sp),
+                      ),
+                      Icon(
+                        _isExpanded
+                            ? Icons.keyboard_arrow_up
+                            : Icons.keyboard_arrow_down,
+                        color: AppColor.white,
+                        size: 24.sp,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              AnimatedContainer(
+                duration: Duration(milliseconds: 300),
+                height: _isExpanded ? 220.h : 0.h,
+                child: _isExpanded
+                    ? Container(
+                  padding: EdgeInsets.symmetric(vertical: 10.h),
+                  decoration: BoxDecoration(
+                    color: AppColor.orange,
+                    borderRadius: BorderRadius.circular(8.r),
+                  ),
+                  child: Column(
+                    children: [
+                      _buildCategoryItem('ELECTRONICS', '234', AppImages.electronics),
+                      _buildCategoryItem('AUTOMOBILES', '367', AppImages.electronics),
+                      _buildCategoryItem('FASHION', '456', AppImages.fashion),
+                      _buildCategoryItem('PROPERTIES', '356', AppImages.furniture),
+                      _buildCategoryItem('GADGETS', '768', AppImages.fashion),
+                      _buildCategoryItem('FURNITURE', '977', AppImages.furniture),
+                    ],
+                  ),
+                )
+                    : Container(),
+              ),
+            ],
+          ),
+
           SizedBox(height: 16),
-          _buildDropdownButton('FILTER BY CITIES'),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              GestureDetector(
+                onTap: _toggleDropdown1,
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
+                  decoration: BoxDecoration(
+                  color: AppColor.green,
+                    border: Border.all(color: AppColor.orange),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        _selectedCategory1,  // Display the selected category
+
+                        style:  lemonMilk400(AppColor.white, 12.sp),
+                      ),
+                      Icon(
+                        _isExpanded1
+                            ? Icons.keyboard_arrow_up
+                            : Icons.keyboard_arrow_down,
+                        color: AppColor.white,
+                        size: 24.sp,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              AnimatedContainer(
+                duration: Duration(milliseconds: 300),
+                height: _isExpanded1 ? 160.h : 0.h,
+                child: _isExpanded1
+                    ? Container(
+                  padding: EdgeInsets.symmetric(vertical: 10.h),
+                  decoration: BoxDecoration(
+                    color: AppColor.orange,
+                    borderRadius: BorderRadius.circular(8.r),
+                  ),
+                  child: Column(
+                    children: [
+                      _buildCategoryItem1('Los Angeles', '234'),
+                      _buildCategoryItem1('San Francisco', '367'),
+                      _buildCategoryItem1('California', '456'),
+                      _buildCategoryItem1('Baltimore', '356'),
+                      _buildCategoryItem1('Avocados', '768'),
+                    ],
+                  ),
+                )
+                    : Container(),
+              ),
+            ],
+          ),
           SizedBox(height: 20),
           Row(
             children: [
@@ -506,7 +678,7 @@ class FilterBottomSheet extends StatelessWidget {
                 ),
               ),
               Spacer(),
-              _buildPriceField('\$00.00'),
+              _buildPriceField(_minPriceController, '\$00.00'), // For minimum price
               SizedBox(width: 10),
               Text(
                 '-',
@@ -517,7 +689,7 @@ class FilterBottomSheet extends StatelessWidget {
                 ),
               ),
               SizedBox(width: 10),
-              _buildPriceField('\$00.00'),
+              _buildPriceField(_maxPriceController, '\$00.00'), // For maximum price
             ],
           ),
           SizedBox(height: 30),
@@ -525,7 +697,7 @@ class FilterBottomSheet extends StatelessWidget {
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () {
-               Get.to(FilterResultScreen());
+                Get.to(FilterResultScreen());
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColor.orange,
@@ -548,6 +720,54 @@ class FilterBottomSheet extends StatelessWidget {
       ),
     );
   }
+  Widget _buildCategoryItem(String title, String count, String imageAsset) {
+    return GestureDetector(
+      onTap: () => _selectCategory(title),  // Update the category when tapped
+
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 4.h),
+        child: Row(
+          children: [
+            Image.asset(imageAsset, width: 24.w, height: 24.h),
+            SizedBox(width: 12.w),
+            Text(
+              title,
+              style: lemonMilk400(AppColor.white, 12.sp),
+            ),
+            Spacer(),
+            Text(
+              '($count)',
+              style: lemonMilk400(AppColor.white, 12.sp),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+  Widget _buildCategoryItem1(String title, String count) {
+    return GestureDetector(
+      onTap: () => _selectCategory1(title),  // Update the category when tapped
+
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 4.h),
+        child: Row(
+          children: [
+
+            Text(
+              title,
+              style: lemonMilk400(AppColor.white, 12.sp),
+            ),
+            Spacer(),
+            Text(
+              '($count)',
+              style: lemonMilk400(AppColor.white, 12.sp),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   Widget _buildDropdownButton(String title) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
@@ -576,23 +796,26 @@ class FilterBottomSheet extends StatelessWidget {
     );
   }
 
-  Widget _buildPriceField(String text) {
-    return Container(
-      width: 80.0,
-      padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
-      decoration: BoxDecoration(
-        color: Color.fromRGBO(5, 84, 46, 1),
-
-        border: Border.all(color: Colors.orange),
-        borderRadius: BorderRadius.circular(8.0),
-      ),
-      child: Text(
-        text,
-        style: TextStyle(
-          fontSize: 16.0,
-          color: Colors.white,
+  Widget _buildPriceField(TextEditingController controller, String hintText) {
+    return SizedBox(
+      width: 80, // Adjust the width as per your design
+      child: TextFormField(
+        controller: controller,
+        keyboardType: TextInputType.number,
+        style: TextStyle(color: Colors.white),
+        decoration: InputDecoration(
+          hintText: hintText,
+          hintStyle: TextStyle(color: Colors.white54),
+          contentPadding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 10.0),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8.0),
+            borderSide: BorderSide(color: AppColor.orange),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8.0),
+            borderSide: BorderSide(color: AppColor.orange),
+          ),
         ),
-        textAlign: TextAlign.center,
       ),
     );
   }

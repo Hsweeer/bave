@@ -17,15 +17,8 @@ class AccountScreen extends StatelessWidget {
       backgroundColor: AppColor.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        title:
-        Row(
-
+        automaticallyImplyLeading: false,  // Disable the back arrow
+        title: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(
@@ -34,7 +27,6 @@ class AccountScreen extends StatelessWidget {
             ),
           ],
         ),
-
       ),
       body: Center(
         child: SingleChildScrollView(
@@ -43,7 +35,6 @@ class AccountScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // SizedBox(height: 16.h),
                 CircleAvatar(
                   radius: 55.r,
                   backgroundColor: Colors.yellow,
@@ -52,13 +43,13 @@ class AccountScreen extends StatelessWidget {
                 SizedBox(height: 10.h),
                 Text(
                   'CAMERON WILLIAMSON',
-                  style: lemonMilkWithColor700(AppColor.black, 18.sp),
+                  style: lemonMilkWithColor500(AppColor.black, 18.sp),
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(height: 4.h),
                 Text(
                   'someone123@gmail.com',
-                  style: lemonMilk400(AppColor.grey, 10.sp),
+                  style: lemonMilkWithColor500(AppColor.grey, 10.sp),
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(height: 5.h),
@@ -66,7 +57,6 @@ class AccountScreen extends StatelessWidget {
                   icon: Icons.person_pin,
                   text: 'EDIT PERSONAL INFO',
                   textColor: AppColor.black,
-                  iconColor: AppColor.green,
                   onTap: () {
                     Navigator.push(
                       context,
@@ -75,13 +65,12 @@ class AccountScreen extends StatelessWidget {
                       ),
                     );
                   },
-                  imagePath: AppImages.user, // Ensure to provide the correct image path
+                  imagePath: AppImages.user,
                 ),
                 _buildAccountOption(
                   icon: Icons.lock,
                   text: 'CHANGE PASSWORD',
                   textColor: AppColor.black,
-                  iconColor: AppColor.green,
                   onTap: () {
                     Navigator.push(
                       context,
@@ -90,13 +79,12 @@ class AccountScreen extends StatelessWidget {
                       ),
                     );
                   },
-                  imagePath: AppImages.Lock, // Ensure to provide the correct image path
+                  imagePath: AppImages.Lock,
                 ),
                 _buildAccountOption(
                   icon: Icons.logout_sharp,
                   text: 'Change Language',
                   textColor: AppColor.black,
-                  iconColor: AppColor.green,
                   onTap: () {
                     Navigator.push(
                       context,
@@ -105,13 +93,12 @@ class AccountScreen extends StatelessWidget {
                       ),
                     );
                   },
-                  imagePath: AppImages.globe, // Ensure to provide the correct image path
+                  imagePath: AppImages.globe,
                 ),
                 _buildAccountOption(
                   icon: Icons.logout_sharp,
                   text: 'LOG OUT',
                   textColor: AppColor.orange,
-                  iconColor: AppColor.green,
                   onTap: () {
                     showModalBottomSheet(
                       context: context,
@@ -120,22 +107,21 @@ class AccountScreen extends StatelessWidget {
                       builder: (context) => LogoutBottomSheet(),
                     );
                   },
-                  imagePath: AppImages.logout, // Ensure to provide the correct image path
+                  imagePath: AppImages.logout,
                 ),
                 _buildAccountOption(
                   icon: Icons.delete,
                   text: 'DELETE ACCOUNT',
                   textColor: AppColor.red,
-                  iconColor: AppColor.red,
                   onTap: () {
                     showModalBottomSheet(
                       context: context,
                       isScrollControlled: true,
                       backgroundColor: Colors.transparent,
-                      builder: (context) => DeletetBottomSheet(), // Ensure to provide the correct class name
+                      builder: (context) => DeletetBottomSheet(),
                     );
                   },
-                  imagePath: AppImages.delete, // Ensure to provide the correct image path
+                  imagePath: AppImages.delete,
                 ),
               ],
             ),
@@ -149,15 +135,15 @@ class AccountScreen extends StatelessWidget {
     required IconData icon,
     required String text,
     required Color textColor,
-    required Color iconColor,
     required VoidCallback onTap,
-    required String imagePath, // Added parameter for the image path
+    required String imagePath,
   }) {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 6.h),
       child: InkWell(
         onTap: onTap,
         child: Container(
+          height: 55.h,
           padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 10.h),
           decoration: BoxDecoration(
             border: Border.all(color: AppColor.lightGreen),
@@ -170,14 +156,14 @@ class AccountScreen extends StatelessWidget {
                 height: 40.h,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.green,
+                  color: icon == Icons.delete ? AppColor.red : AppColor.green,
                 ),
                 child: Center(
                   child: Image.asset(
-                    imagePath, // Image path
+                    imagePath,
                     width: 16.w,
                     height: 16.h,
-                    fit: BoxFit.contain, // Changed fit to contain
+                    fit: BoxFit.contain,
                   ),
                 ),
               ),
@@ -185,10 +171,10 @@ class AccountScreen extends StatelessWidget {
               Expanded(
                 child: Text(
                   text,
-                  style: lemonMilkWithColor500(textColor, 11.sp),
+                  style: lemonMilk500(11.sp, textColor),
                 ),
               ),
-              Icon(Icons.arrow_forward_ios, color: iconColor, size: 16.sp),
+              Icon(Icons.arrow_forward_ios, color: icon == Icons.delete ? AppColor.red : AppColor.green, size: 16.sp),
             ],
           ),
         ),

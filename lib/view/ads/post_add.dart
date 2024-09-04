@@ -2,6 +2,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
@@ -19,6 +20,49 @@ class PostAdScreen extends StatefulWidget {
 
 class _PostAdScreenState extends State<PostAdScreen> {
   List<XFile> _uploadedFiles = [];
+  bool _isExpanded = false;
+  bool _isExpanded1 = false;
+  bool _isExpanded2 = false;
+  String _selectedCategory = "CHOOSE CATEGORY";  // Default category text
+  String _selectedCategory1 = "PRICE CONDITION";  // Default category text
+  String _selectedCategory2 ="PRODUCT CONDITION";   // Default category text
+
+
+
+
+  void _toggleDropdown() {
+    setState(() {
+      _isExpanded = !_isExpanded;
+    });
+  }
+  void _toggleDropdown1() {
+    setState(() {
+      _isExpanded1 = !_isExpanded1;
+    });
+  }
+  void _toggleDropdown2() {
+    setState(() {
+      _isExpanded2= !_isExpanded2;
+    });
+  }
+  void _selectCategory(String category) {
+    setState(() {
+      _selectedCategory = category;  // Update the selected category
+      _isExpanded = false;  // Close the dropdown
+    });
+  }
+  void _selectCategory1(String category) {
+    setState(() {
+      _selectedCategory1 = category;  // Update the selected category
+      _isExpanded1 = false;  // Close the dropdown
+    });
+  }
+  void _selectCategory2(String category) {
+    setState(() {
+      _selectedCategory2 = category;  // Update the selected category
+      _isExpanded2 = false;  // Close the dropdown
+    });
+  }
 
   // Method to pick multiple images/videos
   Future<void> _pickImage() async {
@@ -78,7 +122,7 @@ class _PostAdScreenState extends State<PostAdScreen> {
                     Text(
                       'PLEASE WAIT FOR ADMIN APPROVAL.',
                       textAlign: TextAlign.center,
-                      style: lemonMilk500(10.sp, AppColor.white),
+                      style: lemonMilk500(9.sp, AppColor.white),
                     ),
                     SizedBox(height: 24.h),
                     SizedBox(
@@ -169,13 +213,170 @@ class _PostAdScreenState extends State<PostAdScreen> {
             SizedBox(height: 20.h),
             _buildPhotoUploadBox(),
             SizedBox(height: 20.h),
-            _buildDropdownField('CHOOSE CATEGORY'),
-            SizedBox(height: 20.h),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              GestureDetector(
+                onTap: _toggleDropdown,
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: AppColor.green, width: 1.w),
+                    borderRadius: BorderRadius.circular(8.r),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        _selectedCategory,  // Display the selected category
+
+                        style:  lemonMilk400(AppColor.black2, 12.sp),
+                      ),
+                      Icon(
+                        _isExpanded
+                            ? Icons.keyboard_arrow_up
+                            : Icons.keyboard_arrow_down,
+                        color: AppColor.black,
+                        size: 24.sp,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              AnimatedContainer(
+                duration: Duration(milliseconds: 300),
+                height: _isExpanded ? 220.h : 0.h,
+                child: _isExpanded
+                    ? Container(
+                  padding: EdgeInsets.symmetric(vertical: 10.h),
+                  decoration: BoxDecoration(
+                    color: AppColor.green,
+                    borderRadius: BorderRadius.circular(8.r),
+                  ),
+                  child: Column(
+                    children: [
+                      _buildCategoryItem('ELECTRONICS', '234', AppImages.electronics),
+                      _buildCategoryItem('AUTOMOBILES', '367', AppImages.electronics),
+                      _buildCategoryItem('FASHION', '456', AppImages.fashion),
+                      _buildCategoryItem('PROPERTIES', '356', AppImages.furniture),
+                      _buildCategoryItem('GADGETS', '768', AppImages.fashion),
+                      _buildCategoryItem('FURNITURE', '977', AppImages.furniture),
+                    ],
+                  ),
+                )
+                    : Container(),
+              ),
+            ],
+          ),
+          SizedBox(height: 20.h),
             _buildTextField('PRICE'),
             SizedBox(height: 20.h),
-            _buildDropdownField('PRICE CONDITION'),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                GestureDetector(
+                  onTap: _toggleDropdown1,
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: AppColor.green, width: 1.w),
+                      borderRadius: BorderRadius.circular(8.r),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                    _selectedCategory1,
+                    style:  lemonMilk400(AppColor.black2, 12.sp),
+                        ),
+                        Icon(
+                          _isExpanded1
+                              ? Icons.keyboard_arrow_up
+                              : Icons.keyboard_arrow_down,
+                          color: AppColor.black,
+                          size: 24.sp,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                AnimatedContainer(
+                  duration: Duration(milliseconds: 300),
+                  height: _isExpanded1 ? 180.h : 0.h,
+                  child: _isExpanded1
+                      ? Container(
+                    padding: EdgeInsets.symmetric(vertical: 10.h),
+                    decoration: BoxDecoration(
+                      color: AppColor.green,
+                      borderRadius: BorderRadius.circular(8.r),
+                    ),
+                    child: Column(
+                      children: [
+                        PRICECONDITION('Fixed'),
+                        PRICECONDITION('Negotiable'),
+                        PRICECONDITION('Daily'),
+                        PRICECONDITION('Weekly'),
+                        PRICECONDITION('Monthly'),
+                        PRICECONDITION('Yearly'),
+                      ],
+                    ),
+                  )
+                      : Container(),
+                ),
+              ],
+            ),
             SizedBox(height: 20.h),
-            _buildDropdownField('PRODUCT CONDITION'),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                GestureDetector(
+                  onTap: _toggleDropdown2,
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: AppColor.green, width: 1.w),
+                      borderRadius: BorderRadius.circular(8.r),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                    _selectedCategory2,
+                    style:  lemonMilk400(AppColor.black2, 12.sp),
+                        ),
+                        Icon(
+                          _isExpanded2
+                              ? Icons.keyboard_arrow_up
+                              : Icons.keyboard_arrow_down,
+                          color: AppColor.black,
+                          size: 24.sp,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                AnimatedContainer(
+                  duration: Duration(milliseconds: 300),
+                  height: _isExpanded2 ? 75.h : 0.h,
+                  child: _isExpanded2
+                      ? Container(
+                    padding: EdgeInsets.symmetric(vertical: 10.h),
+                    decoration: BoxDecoration(
+                      color: AppColor.green,
+                      borderRadius: BorderRadius.circular(8.r),
+                    ),
+                    child: Column(
+                      children: [
+                        PRODUCTCONDITION('New'),
+                        PRODUCTCONDITION('Used'),
+
+                      ],
+                    ),
+                  )
+                      : Container(),
+                ),
+              ],
+            ),
             SizedBox(height: 20.h),
             Text(
               'AD DESCRIPTION:',
@@ -244,6 +445,8 @@ class _PostAdScreenState extends State<PostAdScreen> {
   Widget _buildDescriptionField(String hintText) {
     return TextField(
       maxLines: 5,
+      style: lemonMilk500( 11.sp,AppColor.black),  // Apply lemonMilk400 to the typed text
+
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: lemonMilk400(AppColor.black2, 12.sp),
@@ -345,18 +548,18 @@ class _PostAdScreenState extends State<PostAdScreen> {
                       borderRadius: BorderRadius.circular(8.0),
                       image: DecorationImage(
                         image: FileImage(File(_uploadedFiles[index].path)),
-                        fit: BoxFit.fill,
+                        fit: BoxFit.cover,
                       ),
                     ),
                   ),
                   Positioned(
-                    top: 4.0,
-                    right: 8.0,
+                    top: 8.0,
+                    right: 18.0,
                     child: GestureDetector(
                       onTap: () => _removeImage(index),
                       child: Container(
-                        width: 24.w,
-                        height: 25.h,
+                        width: 14.w,
+                        height: 15.h,
                         decoration: const BoxDecoration(
                           color: AppColor.red,
                             borderRadius: BorderRadius.vertical(
@@ -384,7 +587,7 @@ class _PostAdScreenState extends State<PostAdScreen> {
   Widget _buildPhoneNumberField() {
     return TextField(
       decoration: InputDecoration(
-        hintText: '+1 ENTER PHONE NUMBER',
+        hintText: '+1 | ENTER PHONE NUMBER',
         hintStyle: lemonMilk400(AppColor.black2, 12.sp),
         border: OutlineInputBorder(
           borderSide: BorderSide(color: AppColor.green, width: 1.w),
@@ -394,18 +597,26 @@ class _PostAdScreenState extends State<PostAdScreen> {
           borderSide: BorderSide(color: AppColor.green, width: 1.w),
           borderRadius: BorderRadius.circular(8.r),
         ),
-        // prefixIcon: Padding(
-        //   padding: EdgeInsets.only(left: 10.w),
-        //   child: Text(
-        //     '+1',
-        //     style: lemonMilk400(AppColor.black2, 14.sp),
-        //   ),
-        // ),
       ),
-      keyboardType: TextInputType.phone,
+      keyboardType: TextInputType.phone,  // This sets the keyboard type to numeric
+      inputFormatters: [FilteringTextInputFormatter.digitsOnly],  // Restricts input to numbers only
     );
   }
-
+  Widget buildCircularTickIcon() {
+    return Container(
+      width: 14.w,  // Adjust the size as needed
+      height: 14.h,
+      decoration: BoxDecoration(
+        color:  AppColor.white,  // Background color of the circle
+        shape: BoxShape.circle,
+      ),
+      child: Icon(
+        Icons.check,  // Tick icon
+        color: AppColor.orange,  // Icon color
+        size: 15.0,  // Icon size
+      ),
+    );
+  }
   Widget _buildPostButton() {
     return SizedBox(
       width: double.infinity,
@@ -419,11 +630,78 @@ class _PostAdScreenState extends State<PostAdScreen> {
             borderRadius: BorderRadius.circular(8.r),
           ),
         ),
-        child: Text(
-          'Post Your Ad',
-          style: lemonMilkWithColor800(AppColor.white, 16.sp),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            buildCircularTickIcon(),
+            SizedBox(width: 10.w,),
+            Text(
+              'POST YOUR ADD',
+              style: lemonMilkWithColor800(AppColor.white, 15.sp),
+            ),
+          ],
         ),
       ),
     );
   }
+  Widget _buildCategoryItem(String title, String count, String imageAsset) {
+    return GestureDetector(
+      onTap: () => _selectCategory(title),  // Update the category when tapped
+
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 4.h),
+        child: Row(
+          children: [
+            Image.asset(imageAsset, width: 24.w, height: 24.h),
+            SizedBox(width: 12.w),
+            Text(
+              title,
+              style: lemonMilk400(AppColor.white, 12.sp),
+            ),
+            Spacer(),
+            Text(
+              '($count)',
+              style: lemonMilk400(AppColor.white, 12.sp),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+  Widget PRICECONDITION(String title) {
+    return GestureDetector(
+      onTap: () => _selectCategory1(title),  // Update the category when tapped
+
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 4.h),
+        child: Row(
+          children: [
+            Text(
+              title,
+              style: lemonMilk400(AppColor.white, 12.sp),
+            ),
+
+          ],
+        ),
+      ),
+    );
+  } Widget PRODUCTCONDITION(String title) {
+    return GestureDetector(
+      onTap: () => _selectCategory2(title),  // Update the category when tapped
+
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 4.h),
+        child: Row(
+          children: [
+            Text(
+              title,
+              style: lemonMilk400(AppColor.white, 12.sp),
+            ),
+
+          ],
+        ),
+      ),
+    );
+  }
+
 }

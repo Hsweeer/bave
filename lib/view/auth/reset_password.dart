@@ -24,7 +24,7 @@ class _resetpasswordState extends State<resetpassword> {
       backgroundColor: AppColor.white,
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24.w),
+          padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -43,7 +43,7 @@ class _resetpasswordState extends State<resetpassword> {
                     SizedBox(width: 8.w),
                     Text(
                       "RESET PASSWORD",
-                      style: lemonMilk600(AppColor.black, 18.sp),
+                      style: lemonMilk500( 18.sp,AppColor.black,),
                     ),
                   ],
                 ),
@@ -54,85 +54,30 @@ class _resetpasswordState extends State<resetpassword> {
                 style: lemonMilk400(AppColor.black, 12.sp),
               ),
               // Phone Number Input
-              SizedBox(height: 10.h),
+              SizedBox(height: 15.h),
               // Password Input
-              TextField(
-                obscureText: !_isPasswordVisible,
-                decoration: InputDecoration(
-                  prefixIcon: Padding(
-                    padding: const EdgeInsets.all(12.0), // Adjust padding as needed
-                    child: Image.asset(
-                      AppImages.Lock,
-                      color: AppColor.lightGreyl, // Optional: To apply a color filter to the image
-                      fit: BoxFit.contain, // Adjust to control how the image fits within the space
-                      width: 8, // Set the width of the image
-                      height: 7.25, // Set the height of the image
-                    ),
-                  ),
-                  suffixIcon: IconButton(
-                    icon: Icon(
-                      _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
-                      color: AppColor.grey,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        _isPasswordVisible = !_isPasswordVisible;
-                      });
-                    },
-                  ),
-                  hintText: "PASSWORD",
-                  hintStyle: lemonMilk500(12.sp, AppColor.grey),
-                  contentPadding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 16.w),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.r),
-                    borderSide: BorderSide(color: AppColor.green),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.r),
-                    borderSide: BorderSide(color: AppColor.green), // Green color when focused
-                  ),
-                ),
+              _buildPasswordField(
+                label: ' PASSWORD',
+
+                isVisible: _isPasswordVisible,
+                onVisibilityToggle: () {
+                  setState(() {
+                    _isPasswordVisible = !_isPasswordVisible;
+                  });
+                },
               ),
               SizedBox(height: 16.h),
+              _buildPasswordField(
+                label: 'CONFIRM PASSWORD',
 
-              // Confirm Password Input
-              TextField(
-                obscureText: !_isConfirmPasswordVisible,
-                decoration: InputDecoration(
-                  prefixIcon: Padding(
-                    padding: const EdgeInsets.all(12.0), // Adjust padding as needed
-                    child: Image.asset(
-                      AppImages.Lock,
-                      color: AppColor.lightGreyl, // Optional: To apply a color filter to the image
-                      fit: BoxFit.contain, // Adjust to control how the image fits within the space
-                      width: 8, // Set the width of the image
-                      height: 7.25, // Set the height of the image
-                    ),
-                  ),
-                  suffixIcon: IconButton(
-                    icon: Icon(
-                      _isConfirmPasswordVisible ? Icons.visibility : Icons.visibility_off,
-                      color: AppColor.grey,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        _isConfirmPasswordVisible = !_isConfirmPasswordVisible;
-                      });
-                    },
-                  ),
-                  hintText: "CONFIRM PASSWORD",
-                  hintStyle: lemonMilk500(12.sp, AppColor.grey),
-                  contentPadding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 16.w),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.r),
-                    borderSide: BorderSide(color: AppColor.green),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.r),
-                    borderSide: BorderSide(color: AppColor.green), // Green color when focused
-                  ),
-                ),
+                isVisible: _isPasswordVisible,
+                onVisibilityToggle: () {
+                  setState(() {
+                    _isPasswordVisible = !_isPasswordVisible;
+                  });
+                },
               ),
+              // Confirm Password Input
 
               Spacer(),
 
@@ -163,6 +108,44 @@ class _resetpasswordState extends State<resetpassword> {
             ],
           ),
         ),
+      ),
+    );
+  }
+  Widget _buildPasswordField({
+    required String label,
+    required bool isVisible,
+    required VoidCallback onVisibilityToggle,
+  }) {
+    return Container(
+      height: 55.w,
+      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8.r),
+        border: Border.all(color: AppColor.lightGreen),
+      ),
+      child: Row(
+        children: [
+          Icon(Icons.lock, color: AppColor.grey),
+          SizedBox(width: 10.w),
+          Expanded(
+            child: TextField(
+              obscureText: !isVisible,
+              decoration: InputDecoration(
+                contentPadding: EdgeInsets.only(bottom: 15.h), // Adjust this value to align text
+                hintText: label,
+                hintStyle: lemonMilkWithColor500(AppColor.grey, 12.sp),
+                border: InputBorder.none,
+              ),
+            ),
+          ),
+          GestureDetector(
+            onTap: onVisibilityToggle,
+            child: Icon(
+              isVisible ? Icons.visibility_outlined : Icons.visibility_off_outlined,
+              color: AppColor.grey,
+            ),
+          ),
+        ],
       ),
     );
   }

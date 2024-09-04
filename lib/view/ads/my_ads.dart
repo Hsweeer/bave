@@ -168,7 +168,7 @@ class _MyAdsPageState extends State<MyAdsPage>
                 children: [
                   IconButton(
                     icon: Icon(
-                      Icons.grid_view,
+                      Icons.grid_view_sharp,
                       color: isGridView ? AppColor.green : AppColor.black,
                     ),
                     onPressed: () {
@@ -258,7 +258,136 @@ class _MyAdsPageState extends State<MyAdsPage>
           itemCount: recentAds.length,
           itemBuilder: (context, index) {
             final ad = recentAds[index];
-            return _buildAdCard(ad);
+            return GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AdDetailsPage(imagePath: ad['image']!,
+                        location: ad['location']!,
+                        title: ad['title']!),
+                  ),
+                );
+              },
+              child: Container(
+                height: 106.h,
+                decoration: BoxDecoration(
+                    color: AppColor.lightGrey,
+                    borderRadius: BorderRadius.circular(8.r),
+                    border: Border.all(width: 1.w,color:AppColor.black3,)
+                ),
+                margin: EdgeInsets.only(bottom: 10.h),
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.all(Radius.circular(4.r)),
+                        // borderRadius: BorderRadius.horizontal(left: Radius.circular(8.r),right: Radius.circular(8.r),b),
+                        child: Image.asset(
+                          ad['image']!,
+                          fit: BoxFit.cover,
+                          width: 140.w,
+                          height: 120.h,
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: EdgeInsets.all(4.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Image.asset(AppImages.tag, height: 10.h, width: 10.w),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 6.0),
+                                  child: Text(
+                                    ad['category']!,
+                                    style: lemonMilk400(AppColor.orange, 7.sp),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Container(
+                              padding: EdgeInsets.only(bottom: 4),
+                              decoration: BoxDecoration(
+                                border: Border(
+                                  bottom: BorderSide(
+                                    color: Color.fromRGBO(0, 0, 0, 0.08),
+                                    width: 1,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: 4.h),
+                            Text(
+                              ad['title']!,
+                              style: lemonMilk500( 10.sp,AppColor.black,),
+                            ),
+                            SizedBox(height: 4.h),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(right: 2.0),
+                                      child: Image.asset(AppImages.location, height: 10.h),
+                                    ),
+                                    Text(
+                                      ad['location']!,
+                                      style: lemonMilk400(AppColor.grey, 7.sp),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(right: 2.0),
+                                      child: Image.asset(AppImages.clock, height: 10.h),
+                                    ),
+                                    Text(
+                                      ad['time']!,
+                                      style: lemonMilk400(AppColor.grey, 7.sp),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            Container(
+                              padding: EdgeInsets.only(bottom: 4),
+                              decoration: BoxDecoration(
+                                border: Border(
+                                  bottom: BorderSide(
+                                    color: Color.fromRGBO(0, 0, 0, 0.08),
+                                    width: 1,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: 4.h),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                              children: [
+                                Text(
+                                  ad['price']!,
+                                  style: lemonMilk400(AppColor.orange, 11.sp),
+                                ),
+                                Icon(Icons.favorite_outline,size: 14.sp,)
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
           },
         );
       }),

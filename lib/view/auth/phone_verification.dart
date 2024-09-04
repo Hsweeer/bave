@@ -109,10 +109,10 @@ class _PhoneNumberVerificationScreenState
 
               // Instructions Text
               Text(
-                "ENTER THE VERIFICATION CODE SENT TO YOUR PHONE NUMBER",
-                style: lemonMilkWithColor500(AppColor.grey, 13.sp),
+                "ENTER THE VERIFICATION CODE SENT TO YOUR PHONE\n NUMBER",
+                style: lemonMilkWithColor500(AppColor.grey, 12.sp),
               ),
-              SizedBox(height: 80.h),
+              SizedBox(height: 100.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: List.generate(4, (index) {
