@@ -409,7 +409,7 @@ class _FavouriteState extends State<Favourite> with SingleTickerProviderStateMix
     {
       'id': '2',
       'category': 'AUTOMOBILES /  CAR',
-      'title': 'LOREM IPSUM DOLOR SIT AMET ...',
+      'title': 'Lorem ipsum dolor sit amet consectetur. ...',
       'price': '\$3300',
       'image': AppImages.bmw,
       'location': 'UTTARA, DHAKA',
@@ -478,68 +478,128 @@ class _FavouriteState extends State<Favourite> with SingleTickerProviderStateMix
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.white,
-      appBar: AppBar(
-        backgroundColor: AppColor.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Padding(
-              padding: EdgeInsets.only(left: 0.0),
-              child: RichText(
-                text: TextSpan(
-                  children: [
-                    TextSpan(
-                      text: "FAVORITES",
-                      style: lemonMilk500( 24.sp,AppColor.black,),
-
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Spacer(),
-            Obx(
-                  () {
-                bool isGridView = viewController.isGridView.value;
-                return Row(
-                  children: [
-                    IconButton(
-                      icon: Icon(
-                        Icons.grid_view_sharp,
-                        color: isGridView ? AppColor.green : AppColor.black,
-                      ),
-                      onPressed: () {
-                        viewController.toggleViewMode(); // Toggle view mode
-                      },
-                    ),
-                    IconButton(
-                      icon: Icon(
-                        Icons.view_list,
-                        color: !isGridView ? AppColor.green : AppColor.black,
-                      ),
-                      onPressed: () {
-                        viewController.toggleViewMode(); // Toggle view mode
-                      },
-                    ),
-                  ],
-                );
-              },
-            ),
-          ],
-        ),
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: AppColor.white,
+      //   elevation: 0,
+      //   leading: IconButton(
+      //     icon: Icon(Icons.arrow_back, color: Colors.black),
+      //     onPressed: () {
+      //       Navigator.pop(context);
+      //     },
+      //   ),
+      //   title: Row(
+      //     mainAxisAlignment: MainAxisAlignment.start,
+      //     children: [
+      //       Padding(
+      //         padding: EdgeInsets.only(left: 0.0),
+      //         child: RichText(
+      //           text: TextSpan(
+      //             children: [
+      //               TextSpan(
+      //                 text: "FAVORITES",
+      //                 style: lemonMilk500( 24.sp,AppColor.black,),
+      //
+      //               ),
+      //             ],
+      //           ),
+      //         ),
+      //       ),
+      //       Spacer(),
+      //       Obx(
+      //             () {
+      //           bool isGridView = viewController.isGridView.value;
+      //           return Row(
+      //             children: [
+      //               IconButton(
+      //                 icon: Icon(
+      //                   Icons.grid_view_sharp,
+      //                   color: isGridView ? AppColor.green : AppColor.black,
+      //                 ),
+      //                 onPressed: () {
+      //                   viewController.toggleViewMode(); // Toggle view mode
+      //                 },
+      //               ),
+      //               IconButton(
+      //                 icon: Icon(
+      //                   Icons.view_list,
+      //                   color: !isGridView ? AppColor.green : AppColor.black,
+      //                 ),
+      //                 onPressed: () {
+      //                   viewController.toggleViewMode(); // Toggle view mode
+      //                 },
+      //               ),
+      //             ],
+      //           );
+      //         },
+      //       ),
+      //     ],
+      //   ),
+      // ),
       body:
         Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
+              SizedBox(height: 40.h,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(left: 0.0),
+                    child: RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "FAVORITES",
+                            style: lemonMilk500( 24.sp,AppColor.black,),
+
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Spacer(),
+                  Obx(
+                        () {
+                      bool isGridView = viewController.isGridView.value;
+                      return
+                        Row(
+                          children: [
+
+                            SizedBox(
+                              width: 18.w,
+                              child: IconButton(
+                                icon: Icon(
+                                  Icons.grid_view_sharp,
+                                  color: isGridView ? AppColor.green : AppColor.black,
+                                  size: 18.h,
+                                ),
+                                onPressed: () {
+                                  viewController.toggleViewMode(); // Toggle view mode
+                                },
+                              ),
+                            ),
+                            SizedBox(width: 4.w,),
+
+                            SizedBox(
+                              width:30.w
+                              ,                          child: IconButton(
+                              icon: Icon(
+                                Icons.view_list,
+                                color: !isGridView ? AppColor.green : AppColor.black,
+                              ),
+                              onPressed: () {
+                                viewController.toggleViewMode(); // Toggle view mode
+                              },
+                            ),
+                            ),
+
+                          ],
+                        );
+                    },
+                  ),
+                ],
+              ),
               Obx(
                     () {
                   bool isGridView = viewController.isGridView.value; // Correctly observe the view mode
@@ -550,7 +610,7 @@ class _FavouriteState extends State<Favourite> with SingleTickerProviderStateMix
                         crossAxisCount: 2,
                         crossAxisSpacing: 10.w,
                         mainAxisSpacing: 10.h,
-                        childAspectRatio: 0.70,
+                        childAspectRatio: 0.73,
                       ),
                       padding: EdgeInsets.zero,
                       itemCount: recentAds.length,
@@ -602,7 +662,7 @@ class _FavouriteState extends State<Favourite> with SingleTickerProviderStateMix
                                                 padding: const EdgeInsets.only(left: 4.0),
                                                 child: Text(
                                                   ad['category']!,
-                                                  style: lemonMilk400(AppColor.orange, 8.sp),
+                                                  style: lemonMilk400(AppColor.orange, 6.sp),
                                                 ),
                                               ),
                                             ],
@@ -612,14 +672,13 @@ class _FavouriteState extends State<Favourite> with SingleTickerProviderStateMix
                                               favoriteController.toggleFavorite(ad['id']!);
                                             },
                                             child: Icon(
-                                              Icons.favorite, // Always shows the filled heart icon
-                                              size: 16.h,
-                                              color: Colors.red, // Always set the color to red
+                                              Icons.favorite        ,                                      size: 10.h,
+                                              color: AppColor.red
+
                                             ),
                                           ),
                                         ],
                                       ),
-
                                       Container(
                                         padding: EdgeInsets.only(bottom: 4),
                                         decoration: BoxDecoration(
@@ -639,7 +698,7 @@ class _FavouriteState extends State<Favourite> with SingleTickerProviderStateMix
                                       SizedBox(height: 4.h),
                                       Text(
                                         ad['price']!,
-                                        style: lemonMilk400(AppColor.orange, 10.sp),
+                                        style: lemonMilk400(AppColor.orange, 8.sp),
                                       ),
                                       SizedBox(height: 4.h),
                                       Row(
@@ -649,11 +708,11 @@ class _FavouriteState extends State<Favourite> with SingleTickerProviderStateMix
                                             children: [
                                               Padding(
                                                 padding: const EdgeInsets.only(right: 4.0),
-                                                child: Image.asset(AppImages.location, height: 10.h),
+                                                child: Image.asset(AppImages.location, height: 7.h),
                                               ),
                                               Text(
                                                 ad['location']!,
-                                                style: lemonMilk400(AppColor.grey, 7.sp),
+                                                style: lemonMilk400(AppColor.grey, 5.5.sp),
                                               ),
                                             ],
                                           ),
@@ -661,11 +720,11 @@ class _FavouriteState extends State<Favourite> with SingleTickerProviderStateMix
                                             children: [
                                               Padding(
                                                 padding: const EdgeInsets.only(right: 2.0),
-                                                child: Image.asset(AppImages.clock, height: 10.h),
+                                                child: Image.asset(AppImages.clock, height: 7.h),
                                               ),
                                               Text(
                                                 ad['time']!,
-                                                style: lemonMilk400(AppColor.grey, 7.sp),
+                                                style: lemonMilk400(AppColor.grey, 5.5.sp),
                                               ),
                                             ],
                                           ),
@@ -707,15 +766,15 @@ class _FavouriteState extends State<Favourite> with SingleTickerProviderStateMix
                             child: Row(
                               children: [
                                 Padding(
-                                  padding: const EdgeInsets.all(4.0),
+                                  padding: const EdgeInsets.all(2.0),
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.all(Radius.circular(4.r)),
                                     // borderRadius: BorderRadius.horizontal(left: Radius.circular(8.r),right: Radius.circular(8.r),b),
                                     child: Image.asset(
                                       ad['image']!,
                                       fit: BoxFit.cover,
-                                      width: 140.w,
-                                      height: 120.h,
+                                      width: 120.w,
+                                      height: 95.h,
                                     ),
                                   ),
                                 ),
@@ -749,12 +808,12 @@ class _FavouriteState extends State<Favourite> with SingleTickerProviderStateMix
                                             ),
                                           ),
                                         ),
-                                        SizedBox(height: 4.h),
+                                        SizedBox(height: 6.h),
                                         Text(
                                           ad['title']!,
                                           style: lemonMilk500( 10.sp,AppColor.black,),
                                         ),
-                                        SizedBox(height: 4.h),
+                                        SizedBox(height: 6.h),
                                         Row(
                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                           children: [
@@ -784,6 +843,8 @@ class _FavouriteState extends State<Favourite> with SingleTickerProviderStateMix
                                             ),
                                           ],
                                         ),
+                                        SizedBox(height: 6.h),
+
                                         Container(
                                           padding: EdgeInsets.only(bottom: 4),
                                           decoration: BoxDecoration(
@@ -795,7 +856,7 @@ class _FavouriteState extends State<Favourite> with SingleTickerProviderStateMix
                                             ),
                                           ),
                                         ),
-                                        SizedBox(height: 4.h),
+                                        Spacer(),
                                         Row(
                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
@@ -817,6 +878,7 @@ class _FavouriteState extends State<Favourite> with SingleTickerProviderStateMix
                         );
                       },
                     ),
+
                   );
                 },
               )

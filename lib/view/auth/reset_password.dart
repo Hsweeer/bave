@@ -22,6 +22,24 @@ class _resetpasswordState extends State<resetpassword> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.white,
+      appBar: AppBar(
+        backgroundColor: AppColor.white,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        title:
+        Text(
+          "RESET PASSWORD",
+          style: lemonMilk500( 18.sp,AppColor.black,),
+
+        ),
+        centerTitle: false, // Ensures the title is left-aligned next to the leading icon
+
+      ),
+
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.w),
@@ -29,25 +47,6 @@ class _resetpasswordState extends State<resetpassword> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Back Button and Title
-              Padding(
-                padding: EdgeInsets.only(top: 10.h),
-                child: Row(
-                  children: [
-                    IconButton(
-                      icon: Icon(Icons.arrow_back, color: AppColor.black),
-                      onPressed: () {
-                        // Handle back action.
-                        Navigator.pop(context);
-                      },
-                    ),
-                    SizedBox(width: 8.w),
-                    Text(
-                      "RESET PASSWORD",
-                      style: lemonMilk500( 18.sp,AppColor.black,),
-                    ),
-                  ],
-                ),
-              ),
               SizedBox(height: 5.h),
               Text(
                 "Create a new password",

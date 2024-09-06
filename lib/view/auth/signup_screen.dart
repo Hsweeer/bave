@@ -36,6 +36,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           'JOIN WITH EMAIL',
           style: lemonMilkWithColor800(AppColor.black, 18.sp),
         ),
+        centerTitle: false, // Ensures the title is left-aligned next to the leading icon
 
       ),
       body: Padding(
@@ -93,14 +94,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
               _buildTextField('CONFIRM PASSWORD', AppImages.Lock, obscureText: !_isConfirmPasswordVisible, isPasswordField: true), // Replace with your image path
               SizedBox(height: 290.h), // Space before the button
               _buildSignUpButton(),
-              SizedBox(height: 10.h),
+              SizedBox(height: 20.h),
               Center(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
                       'ALREADY HAVE AN ACCOUNT?',
-                      style: lemonMilk400(AppColor.black, 12.sp),
+                      style: lemonMilk400(AppColor.black2, 12.sp),
                     ),
                     SizedBox(width: 5.w),
                     GestureDetector(
@@ -136,6 +137,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ? Container(
           padding: EdgeInsets.symmetric(horizontal: 12.w),
           alignment: Alignment.center,
+
           width: 30.w,
           child: Text(
             prefixText,

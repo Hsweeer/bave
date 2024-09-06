@@ -22,7 +22,7 @@ class EditPersonalInfoScreen extends StatelessWidget {
         ),
         title: Text(
           'EDIT PERSONAL INFO',
-          style: lemonMilkWithColor800(AppColor.black2, 18.sp),
+          style: lemonMilkWithColor500(AppColor.black, 18.sp),
         ),
         centerTitle: false,
       ),
@@ -35,7 +35,7 @@ class EditPersonalInfoScreen extends StatelessWidget {
               SizedBox(height: 2.h),
               Text(
                 'EDIT PERSONAL DETAILS',
-                style: lemonMilk500( 11.sp,AppColor.black,),
+                style: lemonMilk500( 11.sp,AppColor.black2,),
               ),
               SizedBox(height: 16.h),
               Center(
@@ -45,7 +45,7 @@ class EditPersonalInfoScreen extends StatelessWidget {
                       radius: 60.r,
                       backgroundColor: Colors.yellow,
                       backgroundImage: AssetImage(
-                          AppImages.person), // Replace with your image path
+                          AppImages.person2), // Replace with your image path
                     ),
                     Positioned(
                       bottom: 0,
@@ -67,7 +67,7 @@ class EditPersonalInfoScreen extends StatelessWidget {
                   style: lemonMilkWithColor500(AppColor.black, 14.sp),
                 ),
               ),
-              SizedBox(height: 24.h),
+              SizedBox(height: 10.h),
               _buildTextField(
                 label: 'FULL NAME:',
                 imagePath: AppImages
@@ -129,7 +129,7 @@ class EditPersonalInfoScreen extends StatelessWidget {
                     .location, // Ensure to provide the correct image path
                 initialValue: '6391 Elgin St. Celina, Delaware 10299',
               ),
-              SizedBox(height: 40.h),
+              SizedBox(height: 80.h),
               Padding(
                 padding: EdgeInsets.only(bottom: 20.h),
                 child: SizedBox(
@@ -166,7 +166,7 @@ class EditPersonalInfoScreen extends StatelessWidget {
     required String initialValue,
   }) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 8.h),
+      padding: EdgeInsets.symmetric(vertical: 6.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

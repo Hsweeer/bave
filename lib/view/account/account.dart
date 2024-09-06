@@ -15,19 +15,6 @@ class AccountScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        automaticallyImplyLeading: false,  // Disable the back arrow
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Text(
-              'ACCOUNT',
-              style: lemonMilkWithColor800(AppColor.black, 24.sp),
-            ),
-          ],
-        ),
-      ),
       body: Center(
         child: SingleChildScrollView(
           child: Padding(
@@ -35,12 +22,23 @@ class AccountScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CircleAvatar(
-                  radius: 55.r,
-                  backgroundColor: Colors.yellow,
-                  backgroundImage: AssetImage(AppImages.person),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      'ACCOUNT',
+                      style: lemonMilkWithColor500(AppColor.black, 25.sp),
+                    ),
+                  ],
                 ),
-                SizedBox(height: 10.h),
+                SizedBox(height: 40.h),
+
+                CircleAvatar(
+                  radius: 65.r,
+                  backgroundColor: Colors.yellow,
+                  backgroundImage: AssetImage(AppImages.person2,),
+                ),
+                SizedBox(height: 15.h),
                 Text(
                   'CAMERON WILLIAMSON',
                   style: lemonMilkWithColor500(AppColor.black, 18.sp),
@@ -174,7 +172,7 @@ class AccountScreen extends StatelessWidget {
                   style: lemonMilk500(11.sp, textColor),
                 ),
               ),
-              Icon(Icons.arrow_forward_ios, color: icon == Icons.delete ? AppColor.red : AppColor.green, size: 16.sp),
+              Icon(Icons.arrow_forward_ios, color: icon == Icons.delete ? AppColor.black : AppColor.black, size: 16.sp),
             ],
           ),
         ),

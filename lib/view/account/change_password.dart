@@ -32,7 +32,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
             ),
             title: Text(
               'CHANGE PASSWORD',
-              style: lemonMilkWithColor800(AppColor.black, 18.sp),
+              style: lemonMilkWithColor500(AppColor.black, 18.sp),
             ),
             centerTitle: false,
           ),
@@ -47,7 +47,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 ),
                 SizedBox(height: 15.h),
                 _buildPasswordField(
-                  label: 'OLD PASSWORD',
+                  label: ' OLD PASSWORD',
                   isVisible: _isOldPasswordVisible,
                   onVisibilityToggle: () {
                     setState(() {
@@ -57,7 +57,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 ),
                 SizedBox(height: 10.h),
                 _buildPasswordField(
-                  label: 'NEW PASSWORD',
+                  label: ' NEW PASSWORD',
                   isVisible: _isNewPasswordVisible,
                   onVisibilityToggle: () {
                     setState(() {
@@ -67,7 +67,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 ),
                 SizedBox(height: 10.h),
                 _buildPasswordField(
-                  label: 'CONFIRM PASSWORD',
+                  label: ' CONFIRM PASSWORD',
                   isVisible: _isConfirmPasswordVisible,
                   onVisibilityToggle: () {
                     setState(() {

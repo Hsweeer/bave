@@ -29,7 +29,7 @@ class _SignInScreenState extends State<SignInScreen> {
     return Scaffold(
       backgroundColor: AppColor.green,
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.w),
+        padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 20.h),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -39,85 +39,78 @@ class _SignInScreenState extends State<SignInScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
-                    icon: Icon(Icons.close, color: AppColor.white, size: 24.w),
+                    icon: Icon(Icons.close, color: AppColor.white, size: 28.w),
                     onPressed: () {
                       // Handle close button action
                     },
                   ),
-                Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            GestureDetector(
-              onTap: () {
-                setState(() {
-                  _isExpanded = !_isExpanded;
-                });
-              },
-              child: Container(
-                width: 85.w,
-                height: 23.h,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8.r),
-                  color: AppColor.orange,
-                ),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 4.w),
-                  child: Row(
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                                      Image.asset(AppImages.globe, height: 12.h, width: 12.w),
-                      SizedBox(width: 4.w),
-                      Text(
-                        _selectedLanguage,
-                        style: lemonMilk400(AppColor.white, 10.sp),
-                      ),
-                      Icon(Icons.arrow_drop_down, size: 14.h, color: AppColor.white),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            if (_isExpanded)
-              Container(
-                width: 85.w,
-                margin: EdgeInsets.only(top: 4.h),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8.r),
-                  color: AppColor.white,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
-                      blurRadius: 5.r,
-                      offset: Offset(0, 2),
-                    ),
-                  ],
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: _languages.map((language) {
-                    return GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          _selectedLanguage = language;
-                          _isExpanded = false;
-                        });
-                      },
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
-                        child: Text(
-                          language,
-                          style: lemonMilk400(AppColor.black, 10.sp),
+                      SizedBox(
+                        width: 85.w,
+                        child: DropdownButtonHideUnderline(
+                          child: DropdownButton<String>(
+                            value: _selectedLanguage,
+                            dropdownColor: AppColor.white,
+                            onChanged: (String? newValue) {
+                              setState(() {
+                                _selectedLanguage = newValue!;
+                              });
+                            },
+                            items: _languages.map<DropdownMenuItem<String>>((String language) {
+                              return DropdownMenuItem<String>(
+                                value: language,
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
+                                  child: Text(
+                                    language,
+                                    style: lemonMilk400(AppColor.black, 10.sp),
+                                  ),
+                                ),
+                              );
+                            }).toList(),
+                            selectedItemBuilder: (BuildContext context) {
+                              return _languages.map((String language) {
+                                return Row(
+                                  children: [
+                                    Container(
+                                      width: 85.w,
+                                      height: 25.h,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8.r),
+                                        color: AppColor.orange,
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsets.symmetric(horizontal: 4.w),
+                                        child: Row(
+                                          children: [
+                                            Image.asset(AppImages.globe, height: 12.h, width: 12.w),
+                                            SizedBox(width: 4.w),
+                                            Text(
+                                              _selectedLanguage,
+                                              style: lemonMilk400(AppColor.white, 10.sp),
+                                            ),
+                                            Icon(Icons.arrow_drop_down, size: 14.h, color: AppColor.white),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                );
+                              }).toList();
+                            },
+                            isExpanded: true,
+                            icon: SizedBox.shrink(),  // This removes the default arrow icon
+                          ),
                         ),
                       ),
-                    );
-                  }).toList(),
-                ),
-              ),
-          ],
-                ),
-          
+                    ],
+                  )
+
                 ],
               ),
-              SizedBox(height: 20.h),
+              SizedBox(height: 30.h),
               Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -129,7 +122,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         AppImages.splash,color: AppColor.orange,
                       ),
                     ),
-                    SizedBox(height: 40.h),
+                    SizedBox(height: 30.h),
                     Text(
                       'CREATE YOUR NEW ACCOUNT',
                       style: lemonMilk400(AppColor.white, 15.sp),
@@ -152,7 +145,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     SizedBox(height: 30.h),
                     Text(
                       'OR',
-                      style: lemonMilkWithColor500(AppColor.white, 16.sp),
+                      style: lemonMilk400(AppColor.white, 15.sp),
                     ),
                     SizedBox(height: 30.h),
                     _buildButton(
@@ -166,7 +159,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         );
                       },
                     ),
-                    SizedBox(height: 210.h),
+                    SizedBox(height: 200.h),
                     GestureDetector(
                       onTap: () {
                         // Navigate to the new screen
@@ -219,11 +212,12 @@ class _SignInScreenState extends State<SignInScreen> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            SizedBox(width: 5.w,),
             Image.asset(iconPath, height: 22.h, width: 22.w),
             SizedBox(width: 55.w),
             Text(
               text,
-              style: lemonMilkWithColor500(textColor, 16.sp),
+              style: lemonMilkWithColor500(textColor, 12.sp),
             ),
           ],
         ),
@@ -245,7 +239,7 @@ class _SignInScreenState extends State<SignInScreen> {
         child: Center(
           child: Text(
             text,
-            style: lemonMilkWithColor500(textColor, 16.sp),
+            style: lemonMilkWithColor500(textColor, 12.sp),
           ),
         ),
       ),

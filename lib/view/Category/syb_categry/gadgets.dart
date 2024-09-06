@@ -18,27 +18,27 @@ class _GadgetsScreenState extends State<GadgetsScreen> {
     {
       'image': AppImages.comp,
       'title': 'Gadgets',
-      'adsCount': '100 ADS',
+      'adsCount': '(100 ADS)',
     },
     {
       'image': AppImages.mob,
-      'title': 'ELECTRONICS',
+      'title': '(ELECTRONICS)',
       'adsCount': '22 ADS',
     },
     {
       'image': AppImages.camh,
       'title': 'FURNITURE',
-      'adsCount': '150 ADS',
+      'adsCount': '(150 ADS)',
     },
     {
       'image': AppImages.drownh,
       'title': 'ANIMALS',
-      'adsCount': '100 ADS',
+      'adsCount': '(100 ADS)',
     },
     {
       'image': AppImages.recth,
       'title': 'FASHION',
-      'adsCount': '1K ADS',
+      'adsCount': '(1K ADS)',
     },
 
 
@@ -85,7 +85,7 @@ class _GadgetsScreenState extends State<GadgetsScreen> {
                           category['image'],
                           width: 45.w,
                           height: 55.h,
-                          fit: BoxFit.cover,
+                          fit: BoxFit.contain,
                         ),
                       ),
                       SizedBox(width: 16.w),

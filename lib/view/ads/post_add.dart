@@ -192,6 +192,8 @@ class _PostAdScreenState extends State<PostAdScreen> {
           'POST AD',
           style: lemonMilkWithColor500(AppColor.black, 18.sp),
         ),
+        centerTitle: false, // Ensures the title is left-aligned next to the leading icon
+
         backgroundColor: AppColor.white,
         elevation: 0,
       ),
@@ -636,8 +638,8 @@ class _PostAdScreenState extends State<PostAdScreen> {
             buildCircularTickIcon(),
             SizedBox(width: 10.w,),
             Text(
-              'POST YOUR ADD',
-              style: lemonMilkWithColor800(AppColor.white, 15.sp),
+              'POST YOUR AD',
+              style: lemonMilkWithColor500(AppColor.white, 15.sp),
             ),
           ],
         ),

@@ -40,15 +40,67 @@ class _FilterScreenState extends State<FilterScreen> {
     },
     {
       'id': '2',
-      'category': 'AUTOMOBILES / PRIVATE CAR',
-      'title': 'LOREM IPSUM DOLOR SIT AMET CONSECTETUR...',
+      'category': 'AUTOMOBILES /  CAR',
+      'title': 'Lorem ipsum dolor sit amet consectetur. ...',
       'price': '\$3300',
       'image': AppImages.bmw,
       'location': 'UTTARA, DHAKA',
       'time': '30 MINS AGO',
     },
-
-
+    {
+      'id': '3',
+      'category': 'ANIMAL / CAT',
+      'title': 'LOREM IPSUM DOLOR SIT AMET CONSECTETUR...',
+      'price': '\$390',
+      'image': AppImages.cat,
+      'location': 'UTTARA, DHAKA',
+      'time': '30 MINS AGO',
+    },
+    {
+      'id': '4',
+      'category': 'FASHION / SHOE',
+      'title': 'LOREM IPSUM DOLOR SIT AMET CONSECTETUR...',
+      'price': '\$383',
+      'image': AppImages.shoe,
+      'location': 'UTTARA, DHAKA',
+      'time': '30 MINS AGO',
+    },
+    {
+      'id': '5',
+      'category': 'Popular / House',
+      'title': 'LOREM IPSUM DOLOR SIT AMET CONSECTETUR...',
+      'price': '\$383',
+      'image': AppImages.house,
+      'location': 'UTTARA, DHAKA',
+      'time': '30 MINS AGO',
+    },
+    {
+      'id': '6',
+      'category': 'Electronics / Television',
+      'title': 'LOREM IPSUM DOLOR SIT AMET CONSECTETUR...',
+      'price': '\$383',
+      'image': AppImages.televison,
+      'location': 'UTTARA, DHAKA',
+      'time': '30 MINS AGO',
+    },
+    {
+      'id': '7',
+      'category': 'Gadget / Headphone',
+      'title': 'LOREM IPSUM DOLOR SIT AMET CONSECTETUR...',
+      'price': '\$383',
+      'image': AppImages.hedset,
+      'location': 'UTTARA, DHAKA',
+      'time': '30 MINS AGO',
+    },
+    {
+      'id': '8',
+      'category': 'Automobile / Cycle',
+      'title': 'LOREM IPSUM DOLOR SIT AMET CONSECTETUR...',
+      'price': '\$383',
+      'image': AppImages.bicycle,
+      'location': 'UTTARA, DHAKA',
+      'time': '30 MINS AGO',
+    },
     // Add more ads here
   ];
   final ViewController viewController = Get.put(ViewController());
@@ -79,33 +131,45 @@ class _FilterScreenState extends State<FilterScreen> {
             Obx(
                   () {
                 bool isGridView = viewController.isGridView.value;
-                return Row(
-                  children: [
-                    IconButton(
-                      icon: Icon(
-                        Icons.grid_view_sharp,
-                        color: isGridView ? AppColor.green : AppColor.black,
+                return
+                  Row(
+                    children: [
+
+                      SizedBox(
+                        width: 18.w,
+                        child: IconButton(
+                          icon: Icon(
+                            Icons.grid_view_sharp,
+                            color: isGridView ? AppColor.green : AppColor.black,
+                            size: 18.h,
+                          ),
+                          onPressed: () {
+                            viewController.toggleViewMode(); // Toggle view mode
+                          },
+                        ),
                       ),
-                      onPressed: () {
-                        viewController.toggleViewMode(); // Toggle view mode
-                      },
-                    ),
-                    IconButton(
-                      icon: Icon(
-                        Icons.view_list,
-                        color: !isGridView ? AppColor.green : AppColor.black,
+                      SizedBox(width: 4.w,),
+
+                      SizedBox(
+                        width:30.w
+                        ,                          child: IconButton(
+                        icon: Icon(
+                          Icons.view_list,
+                          color: !isGridView ? AppColor.green : AppColor.black,
+                        ),
+                        onPressed: () {
+                          viewController.toggleViewMode(); // Toggle view mode
+                        },
                       ),
-                      onPressed: () {
-                        viewController.toggleViewMode(); // Toggle view mode
-                      },
-                    ),
-                  ],
-                );
+                      ),
+
+                    ],
+                  );
               },
             ),
-
           ],
         ),
+        centerTitle: false, // Ensures the title is left-aligned next to the leading icon
 
       ),
       body: Padding(
@@ -114,21 +178,24 @@ class _FilterScreenState extends State<FilterScreen> {
           children: [
             Row(
               children: [
-                ElevatedButton.icon(
-                  onPressed: () {
-                    _showFilterBottomSheet(context); // Call the function to show the bottom sheet
-                  },
-                  label: Text(
-                    'FILTER',
-                    style: lemonMilk400(Colors.white, 11.sp)
-                  ),
-                  icon: Icon(Icons.tune, color:AppColor.orange, size: 18),
+                SizedBox(
+                  height: 34.h,
+                  child: ElevatedButton.icon(
+                    onPressed: () {
+                      _showFilterBottomSheet(context); // Call the function to show the bottom sheet
+                    },
+                    label: Text(
+                      'FILTER',
+                      style: lemonMilk400(Colors.white, 11.sp)
+                    ),
+                    icon: Icon(Icons.tune, color:AppColor.orange, size: 18),
 
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColor.green,
-                    padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.0),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColor.green,
+                      padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
                     ),
                   ),
                 ),
@@ -149,7 +216,7 @@ class _FilterScreenState extends State<FilterScreen> {
                       crossAxisCount: 2,
                       crossAxisSpacing: 10.w,
                       mainAxisSpacing: 10.h,
-                      childAspectRatio: 0.70,
+                      childAspectRatio: 0.73,
                     ),
                     padding: EdgeInsets.zero,
                     itemCount: recentAds.length,
@@ -160,13 +227,17 @@ class _FilterScreenState extends State<FilterScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => prDetailsPage(imagePath: ad['image']!, title: ad['title']!, location: ad['location']!,),
+                              builder: (context) => prDetailsPage(
+                                  imagePath: ad['image']!,
+                                  location: ad['location']!,
+                                  title: ad['title']!
+                              ),
                             ),
                           );
                         },
                         child: Container(
                           decoration: BoxDecoration(
-                            color: AppColor.greyl,
+                            color: AppColor.lightGrey,
                             borderRadius: BorderRadius.circular(8.r),
                           ),
                           child: Column(
@@ -197,7 +268,7 @@ class _FilterScreenState extends State<FilterScreen> {
                                               padding: const EdgeInsets.only(left: 4.0),
                                               child: Text(
                                                 ad['category']!,
-                                                style: lemonMilk400(AppColor.orange, 8.sp),
+                                                style: lemonMilk400(AppColor.orange, 6.sp),
                                               ),
                                             ),
                                           ],
@@ -207,10 +278,9 @@ class _FilterScreenState extends State<FilterScreen> {
                                             favoriteController.toggleFavorite(ad['id']!);
                                           },
                                           child: Icon(
-                                            favoriteController.isFavorite(ad['id']!)
-                                                ? Icons.favorite
+                                            favoriteController.isFavorite(ad['id']!) ? Icons.favorite
                                                 : Icons.favorite_outline,
-                                            size: 16.h,
+                                            size: 10.h,
                                             color: favoriteController.isFavorite(ad['id']!)
                                                 ? Colors.red
                                                 : Colors.black,
@@ -232,12 +302,12 @@ class _FilterScreenState extends State<FilterScreen> {
                                     SizedBox(height: 4.h),
                                     Text(
                                       ad['title']!,
-                                      style: lemonMilk500(11.sp, AppColor.black),
+                                      style: lemonMilk500(10.sp, AppColor.black),
                                     ),
                                     SizedBox(height: 4.h),
                                     Text(
                                       ad['price']!,
-                                      style: lemonMilk400(AppColor.orange, 10.sp),
+                                      style: lemonMilk400(AppColor.orange, 8.sp),
                                     ),
                                     SizedBox(height: 4.h),
                                     Row(
@@ -247,23 +317,23 @@ class _FilterScreenState extends State<FilterScreen> {
                                           children: [
                                             Padding(
                                               padding: const EdgeInsets.only(right: 4.0),
-                                              child: Image.asset(AppImages.location, height: 10.h),
+                                              child: Image.asset(AppImages.location, height: 7.h),
                                             ),
                                             Text(
                                               ad['location']!,
-                                              style: lemonMilk400(AppColor.grey, 8.sp),
+                                              style: lemonMilk400(AppColor.grey, 5.5.sp),
                                             ),
                                           ],
                                         ),
                                         Row(
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsets.only(right: 4.0),
-                                              child: Image.asset(AppImages.clock, height: 10.h),
+                                              padding: const EdgeInsets.only(right: 2.0),
+                                              child: Image.asset(AppImages.clock, height: 7.h),
                                             ),
                                             Text(
                                               ad['time']!,
-                                              style: lemonMilk400(AppColor.grey, 8.sp),
+                                              style: lemonMilk400(AppColor.grey, 5.5.sp),
                                             ),
                                           ],
                                         ),
@@ -278,7 +348,7 @@ class _FilterScreenState extends State<FilterScreen> {
                       );
                     },
                   )
-                      :ListView.builder(
+                      : ListView.builder(
                     padding: EdgeInsets.zero,
                     itemCount: recentAds.length,
                     itemBuilder: (context, index) {
@@ -305,15 +375,15 @@ class _FilterScreenState extends State<FilterScreen> {
                           child: Row(
                             children: [
                               Padding(
-                                padding: const EdgeInsets.all(4.0),
+                                padding: const EdgeInsets.all(2.0),
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.all(Radius.circular(4.r)),
                                   // borderRadius: BorderRadius.horizontal(left: Radius.circular(8.r),right: Radius.circular(8.r),b),
                                   child: Image.asset(
                                     ad['image']!,
                                     fit: BoxFit.cover,
-                                    width: 140.w,
-                                    height: 120.h,
+                                    width: 120.w,
+                                    height: 95.h,
                                   ),
                                 ),
                               ),
@@ -347,12 +417,12 @@ class _FilterScreenState extends State<FilterScreen> {
                                           ),
                                         ),
                                       ),
-                                      SizedBox(height: 4.h),
+                                      SizedBox(height: 6.h),
                                       Text(
                                         ad['title']!,
                                         style: lemonMilk500( 10.sp,AppColor.black,),
                                       ),
-                                      SizedBox(height: 4.h),
+                                      SizedBox(height: 6.h),
                                       Row(
                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children: [
@@ -382,6 +452,8 @@ class _FilterScreenState extends State<FilterScreen> {
                                           ),
                                         ],
                                       ),
+                                      SizedBox(height: 6.h),
+
                                       Container(
                                         padding: EdgeInsets.only(bottom: 4),
                                         decoration: BoxDecoration(
@@ -393,7 +465,7 @@ class _FilterScreenState extends State<FilterScreen> {
                                           ),
                                         ),
                                       ),
-                                      SizedBox(height: 4.h),
+                                      Spacer(),
                                       Row(
                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
@@ -437,26 +509,32 @@ class _FilterScreenState extends State<FilterScreen> {
   }
 
   Widget _buildOutlinedButton(String text) {
-    return OutlinedButton(
-      onPressed: () {
-        // Select category
-      },
-      style: OutlinedButton.styleFrom(
-        side: BorderSide(color: AppColor.green),
-        padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8.0),
+    return SizedBox(
+      height: 34.h,
+
+      child: OutlinedButton(
+        onPressed: () {
+          // Select category
+        },
+        style: OutlinedButton.styleFrom(
+          side: BorderSide(color: AppColor.green),
+          padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8.0),
+          ),
         ),
-      ),
-      child: Text(
-        text,
-        style: lemonMilk400(AppColor.black, 11.sp)
+        child: Text(
+          text,
+          style: lemonMilk400(AppColor.black, 11.sp)
+        ),
       ),
     );
   }
 
   Widget _buildLocationButton(String location) {
     return SizedBox(
+      height: 34.h,
+
       width: 148.w,
       child: OutlinedButton.icon(
         onPressed: () {
@@ -561,7 +639,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
                   decoration: BoxDecoration(
-                  color: AppColor.green,
+                  color: AppColor.greendark,
                     border: Border.all(color: AppColor.orange),
                     borderRadius: BorderRadius.circular(8.0),
                   ),
@@ -619,7 +697,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
                   decoration: BoxDecoration(
-                  color: AppColor.green,
+                    color: AppColor.greendark,
                     border: Border.all(color: AppColor.orange),
                     borderRadius: BorderRadius.circular(8.0),
                   ),
@@ -708,11 +786,8 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
               ),
               child: Text(
                 'APPLY FILTER',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: lemonMilk500(15.sp, AppColor.white),
+
               ),
             ),
           ),
@@ -798,7 +873,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
 
   Widget _buildPriceField(TextEditingController controller, String hintText) {
     return SizedBox(
-      width: 80, // Adjust the width as per your design
+      width: 119.w, // Adjust the width as per your design
       child: TextFormField(
         controller: controller,
         keyboardType: TextInputType.number,
@@ -807,6 +882,8 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
           hintText: hintText,
           hintStyle: TextStyle(color: Colors.white54),
           contentPadding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 10.0),
+          fillColor: AppColor.greendark, // Set the background color
+          filled: true, // Ensure the background color is applied
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8.0),
             borderSide: BorderSide(color: AppColor.orange),
@@ -818,5 +895,6 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
         ),
       ),
     );
+
   }
 }

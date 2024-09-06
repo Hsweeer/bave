@@ -80,6 +80,24 @@ class _otpVerificationScreenState
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.white,
+      appBar: AppBar(
+        backgroundColor: AppColor.white,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        title:
+        Text(
+          "OTP VERIFICATION",
+          style: lemonMilkWithColor500(AppColor.black, 18.sp),
+
+        ),
+        centerTitle: false, // Ensures the title is left-aligned next to the leading icon
+
+      ),
+
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24.w),
@@ -87,30 +105,13 @@ class _otpVerificationScreenState
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Back Button and Title
-              Padding(
-                padding: EdgeInsets.only(top: 16.h),
-                child: Row(
-                  children: [
-                    IconButton(
-                      icon: Icon(Icons.arrow_back, color: AppColor.black, size: 18.w),
-                      onPressed: () {
-                        // Handle back button action
-                        Navigator.pop(context);
-                      },
-                    ),
-                    // SizedBox(width: 5.w),
-                    Text(
-                      "OTP VERIFICATION",
-                      style: lemonMilkWithColor500(AppColor.black, 18.sp),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: 6.h),
-
               // Instructions Text
               Text(
-                "Enter the verification code sent to your email\n address",
+                "ENTER THE VERIFICATION CODE SENT TO YOUR EMAIL",
+                style: lemonMilkWithColor500(AppColor.grey, 11.sp),
+              ),
+              Text(
+                "ADDRESS",
                 style: lemonMilkWithColor500(AppColor.grey, 11.sp),
               ),
               SizedBox(height: 100.h),

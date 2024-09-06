@@ -20,6 +20,23 @@ class _SignInScreenmainState extends State<SignInScreenmain> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.white,
+      appBar: AppBar(
+        backgroundColor: AppColor.white,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        title:
+        Text(
+          "SIGN IN",
+          style: lemonMilkWithColor500(AppColor.black, 18.sp),
+        ),
+        centerTitle: false, // Ensures the title is left-aligned next to the leading icon
+
+      ),
+
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24.w),
@@ -27,24 +44,6 @@ class _SignInScreenmainState extends State<SignInScreenmain> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Back Button and Title
-              Padding(
-                padding: EdgeInsets.only(top: 10.h),
-                child: Row(
-                  children: [
-                    IconButton(
-                      icon: Icon(Icons.arrow_back, color: AppColor.black),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    ),
-                    SizedBox(width: 8.w),
-                    Text(
-                      "SIGN IN",
-                      style: lemonMilk600(AppColor.black, 18.sp),
-                    ),
-                  ],
-                ),
-              ),
 
               // Phone Number Input
               Center(
@@ -139,7 +138,7 @@ class _SignInScreenmainState extends State<SignInScreenmain> {
                   ),
                 ),
               ),
-              SizedBox(height: 20.h),
+              SizedBox(height: 25.h),
 
               // Sign Up Link with GestureDetector for Navigation
               Center(
@@ -164,7 +163,7 @@ class _SignInScreenmainState extends State<SignInScreenmain> {
                   ),
                 ),
               ),
-              SizedBox(height: 24.h),
+              SizedBox(height: 15.h),
             ],
           ),
         ),

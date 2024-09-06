@@ -31,13 +31,15 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
           children: [
             Text(
               'CHANGE LANGUAGE',
-              style: lemonMilkWithColor800(AppColor.black, 18.sp),
+              style: lemonMilkWithColor500(AppColor.black, 18.sp),
             ),
             SizedBox(height: 2.h),
 
 
           ],
         ),
+        centerTitle: false, // Ensures the title is left-aligned next to the leading icon
+
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 5.0),
@@ -54,51 +56,59 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
               children: [
                 Text(
                   'ENGLISH',
-                  style: lemonMilkWithColor500(AppColor.black, 15.sp),
+                  style: lemonMilkWithColor500(Color.fromRGBO(26, 27, 45, 1),
+                 15.sp),
                 ),
                 SizedBox(
-                  height: 22.h,
-                  width: 37.w,
-
-                  child: Switch(
-                    value: isEnglishSelected,
-                    activeColor: AppColor.orange,
-                    activeTrackColor: AppColor.green,
-                    inactiveThumbColor: AppColor.orange,
-                    inactiveTrackColor: AppColor.lightGrey,
-                    onChanged: (bool value) {
-                      setState(() {
-                        isEnglishSelected = value;
-                        isFrenchSelected = !value; // Toggle French based on English
-                      });
-                    },
+                  height: 40.h, // Adjust the height of the container
+                  width: 60.w, // Adjust the width of the container
+                  child: Transform.scale(
+                    scale: 0.8, // Scale factor to adjust the size of the switch
+                    child: Switch(
+                      value: isEnglishSelected,
+                      activeColor: AppColor.orange,
+                      activeTrackColor: AppColor.green,
+                      inactiveThumbColor: AppColor.orange,
+                      inactiveTrackColor: Color.fromRGBO(221, 221, 221, 1), // Custom track color
+                      onChanged: (bool value) {
+                        setState(() {
+                          isEnglishSelected = value;
+                          isFrenchSelected = !value; // Toggle French based on English
+                        });
+                      },
+                    ),
                   ),
                 ),
               ],
             ),
-            SizedBox(height: 20.h),
+          // isEnglishSelected = value;
+          // isFrenchSelected = !value; // Toggle French based on English
+            SizedBox(height: 10.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   'FRENCH',
-                  style: lemonMilkWithColor500(AppColor.black, 15.sp),
+                  style: lemonMilkWithColor500(Color.fromRGBO(26, 27, 45, 1), 15.sp),
                 ),
                 SizedBox(
-                  height: 22.h,
-                  width: 37.w,
-                  child: Switch(
-                    value: isFrenchSelected,
-                    activeColor: AppColor.orange,
-                    activeTrackColor: AppColor.green,
-                    inactiveThumbColor: AppColor.orange,
-                    inactiveTrackColor: AppColor.lightGrey,
-                    onChanged: (bool value) {
-                      setState(() {
-                        isFrenchSelected = value;
-                        isEnglishSelected = !value; // Toggle English based on French
-                      });
-                    },
+                  height: 40.h, // Adjust the height of the container
+                  width: 60.w, // Adjust the width of the container
+                  child: Transform.scale(
+                    scale: 0.8, // Scale factor to adjust the size of the switch
+                    child: Switch(
+                      value: isFrenchSelected,
+                      activeColor: AppColor.orange,
+                      activeTrackColor: AppColor.green,
+                      inactiveThumbColor: AppColor.orange,
+                      inactiveTrackColor: Color.fromRGBO(221, 221, 221, 1), // Custom track color
+                      onChanged: (bool value) {
+                        setState(() {
+                          isFrenchSelected = value;
+                          isEnglishSelected = !value; // Toggle English based on French
+                        });
+                      },
+                    ),
                   ),
                 ),
               ],

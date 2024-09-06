@@ -135,7 +135,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                             category['image'],
                             width: 45.w,
                             height: 55.h,
-                            fit: BoxFit.cover,
+                            fit: BoxFit.contain,
                           ),
                         ),
                         SizedBox(width: 16.w),

@@ -9,13 +9,23 @@ import 'package:bon_achat/view/home/home_scr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:provider/provider.dart';
 import 'const/colors.dart';
+import 'controllers/appbar_controller.dart';
 import 'custom_widgets/CustomBottomAppBar.dart';
 import 'view/ads/post_add.dart';
 
 void main() {
-  runApp(MyApp());
-}
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => BottomBarProvider()),
+
+
+      ],
+      child: MyApp(),
+    ),
+  );}
 
 class MyApp extends StatelessWidget {
   @override

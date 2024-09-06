@@ -13,6 +13,24 @@ class forgetpassword extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.white,
+      appBar: AppBar(
+        backgroundColor: AppColor.white,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        title:
+        Text(
+          "FORGOT PASSWORD",
+          style: lemonMilk500( 18.sp,AppColor.black,),
+
+        ),
+        centerTitle: false, // Ensures the title is left-aligned next to the leading icon
+
+      ),
+
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 15.w),
@@ -20,24 +38,6 @@ class forgetpassword extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Back Button and Title
-              Padding(
-                padding: EdgeInsets.only(top: 10.h),
-                child: Row(
-                  children: [
-                    IconButton(
-                      icon: Icon(Icons.arrow_back, color: AppColor.black, size: 20.w),
-                      onPressed: () {
-                        // Handle back button action
-                        Navigator.pop(context);
-                      },
-                    ),                    SizedBox(width: 8.w),
-                    Text(
-                      "FORGOT PASSWORD",
-                      style: lemonMilk500( 18.sp,AppColor.black,),
-                    ),
-                  ],
-                ),
-              ),
               Text(
                 "Enter the email address to get verification code \nto reset password",
                 style: lemonMilkWithColor500(AppColor.grey, 11.sp),

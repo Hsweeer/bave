@@ -29,7 +29,7 @@ class FilterResultScreen extends StatelessWidget {
     {
       'id': '2',
       'category': 'AUTOMOBILES /  CAR',
-      'title': 'LOREM IPSUM DOLOR SIT AMET CONSECTETUR...',
+      'title': 'Lorem ipsum dolor sit amet consectetur. ...',
       'price': '\$3300',
       'image': AppImages.bmw,
       'location': 'UTTARA, DHAKA',
@@ -85,7 +85,7 @@ class FilterResultScreen extends StatelessWidget {
       'category': 'Automobile / Cycle',
       'title': 'LOREM IPSUM DOLOR SIT AMET CONSECTETUR...',
       'price': '\$383',
-      'image': AppImages.bycycle,
+      'image': AppImages.bicycle,
       'location': 'UTTARA, DHAKA',
       'time': '30 MINS AGO',
     },
@@ -110,7 +110,7 @@ class FilterResultScreen extends StatelessWidget {
         ),
         title: Text(
           'FILTER RESULT',
-          style: lemonMilk500(16.sp, Colors.black)
+          style: lemonMilk500(14.sp, Colors.black)
         ),
         centerTitle: false,
         actions: [
@@ -126,28 +126,40 @@ class FilterResultScreen extends StatelessWidget {
           Obx(
                 () {
               bool isGridView = viewController.isGridView.value;
-              return Row(
-                children: [
-                  IconButton(
-                    icon: Icon(
-                      Icons.grid_view_sharp,
-                      color: isGridView ? AppColor.green : AppColor.black,
+              return
+                Row(
+                  children: [
+
+                    SizedBox(
+                      width: 18.w,
+                      child: IconButton(
+                        icon: Icon(
+                          Icons.grid_view_sharp,
+                          color: isGridView ? AppColor.green : AppColor.black,
+                          size: 18.h,
+                        ),
+                        onPressed: () {
+                          viewController.toggleViewMode(); // Toggle view mode
+                        },
+                      ),
                     ),
-                    onPressed: () {
-                      viewController.toggleViewMode(); // Toggle view mode
-                    },
-                  ),
-                  IconButton(
-                    icon: Icon(
-                      Icons.view_list,
-                      color: !isGridView ? AppColor.green : AppColor.black,
+                    SizedBox(width: 4.w,),
+
+                    SizedBox(
+                      width:30.w
+                      ,                          child: IconButton(
+                      icon: Icon(
+                        Icons.view_list,
+                        color: !isGridView ? AppColor.green : AppColor.black,
+                      ),
+                      onPressed: () {
+                        viewController.toggleViewMode(); // Toggle view mode
+                      },
                     ),
-                    onPressed: () {
-                      viewController.toggleViewMode(); // Toggle view mode
-                    },
-                  ),
-                ],
-              );
+                    ),
+SizedBox(width: 12.w,),
+                  ],
+                );
             },
           ),
 
@@ -186,7 +198,7 @@ class FilterResultScreen extends StatelessWidget {
                       crossAxisCount: 2,
                       crossAxisSpacing: 10.w,
                       mainAxisSpacing: 10.h,
-                      childAspectRatio: 0.70,
+                      childAspectRatio: 0.73,
                     ),
                     padding: EdgeInsets.zero,
                     itemCount: recentAds.length,
@@ -197,13 +209,17 @@ class FilterResultScreen extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => prDetailsPage(imagePath: ad['image']!, title:ad['title']!, location:ad['location']!,),
+                              builder: (context) => prDetailsPage(
+                                  imagePath: ad['image']!,
+                                  location: ad['location']!,
+                                  title: ad['title']!
+                              ),
                             ),
                           );
                         },
                         child: Container(
                           decoration: BoxDecoration(
-                            color: AppColor.greyl,
+                            color: AppColor.lightGrey,
                             borderRadius: BorderRadius.circular(8.r),
                           ),
                           child: Column(
@@ -229,12 +245,12 @@ class FilterResultScreen extends StatelessWidget {
                                         Row(
                                           crossAxisAlignment: CrossAxisAlignment.center,
                                           children: [
-                                            Image.asset(AppImages.tag, height: 9.h, width: 10.w),
+                                            Image.asset(AppImages.tag, height: 10.h, width: 10.w),
                                             Padding(
-                                              padding: const EdgeInsets.only(left: 2.0),
+                                              padding: const EdgeInsets.only(left: 4.0),
                                               child: Text(
                                                 ad['category']!,
-                                                style: lemonMilk400(AppColor.orange, 8.sp),
+                                                style: lemonMilk400(AppColor.orange, 6.sp),
                                               ),
                                             ),
                                           ],
@@ -244,10 +260,9 @@ class FilterResultScreen extends StatelessWidget {
                                             favoriteController.toggleFavorite(ad['id']!);
                                           },
                                           child: Icon(
-                                            favoriteController.isFavorite(ad['id']!)
-                                                ? Icons.favorite
+                                            favoriteController.isFavorite(ad['id']!) ? Icons.favorite
                                                 : Icons.favorite_outline,
-                                            size: 16.h,
+                                            size: 10.h,
                                             color: favoriteController.isFavorite(ad['id']!)
                                                 ? Colors.red
                                                 : Colors.black,
@@ -269,7 +284,7 @@ class FilterResultScreen extends StatelessWidget {
                                     SizedBox(height: 4.h),
                                     Text(
                                       ad['title']!,
-                                      style: lemonMilk500(9.sp, AppColor.black),
+                                      style: lemonMilk500(10.sp, AppColor.black),
                                     ),
                                     SizedBox(height: 4.h),
                                     Text(
@@ -288,7 +303,7 @@ class FilterResultScreen extends StatelessWidget {
                                             ),
                                             Text(
                                               ad['location']!,
-                                              style: lemonMilk400(AppColor.grey, 8.sp),
+                                              style: lemonMilk400(AppColor.grey, 5.5.sp),
                                             ),
                                           ],
                                         ),
@@ -300,7 +315,7 @@ class FilterResultScreen extends StatelessWidget {
                                             ),
                                             Text(
                                               ad['time']!,
-                                              style: lemonMilk400(AppColor.grey, 8.sp),
+                                              style: lemonMilk400(AppColor.grey, 5.5.sp),
                                             ),
                                           ],
                                         ),
@@ -342,15 +357,15 @@ class FilterResultScreen extends StatelessWidget {
                           child: Row(
                             children: [
                               Padding(
-                                padding: const EdgeInsets.all(4.0),
+                                padding: const EdgeInsets.all(2.0),
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.all(Radius.circular(4.r)),
                                   // borderRadius: BorderRadius.horizontal(left: Radius.circular(8.r),right: Radius.circular(8.r),b),
                                   child: Image.asset(
                                     ad['image']!,
                                     fit: BoxFit.cover,
-                                    width: 140.w,
-                                    height: 120.h,
+                                    width: 120.w,
+                                    height: 95.h,
                                   ),
                                 ),
                               ),
@@ -384,12 +399,12 @@ class FilterResultScreen extends StatelessWidget {
                                           ),
                                         ),
                                       ),
-                                      SizedBox(height: 4.h),
+                                      SizedBox(height: 6.h),
                                       Text(
                                         ad['title']!,
                                         style: lemonMilk500( 10.sp,AppColor.black,),
                                       ),
-                                      SizedBox(height: 4.h),
+                                      SizedBox(height: 6.h),
                                       Row(
                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children: [
@@ -419,6 +434,8 @@ class FilterResultScreen extends StatelessWidget {
                                           ),
                                         ],
                                       ),
+                                      SizedBox(height: 6.h),
+
                                       Container(
                                         padding: EdgeInsets.only(bottom: 4),
                                         decoration: BoxDecoration(
@@ -430,7 +447,7 @@ class FilterResultScreen extends StatelessWidget {
                                           ),
                                         ),
                                       ),
-                                      SizedBox(height: 4.h),
+                                      Spacer(),
                                       Row(
                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
@@ -474,6 +491,7 @@ class FilterChipWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 35.h,
       padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
       decoration: BoxDecoration(
         border: Border.all(color: AppColor.green),
@@ -491,7 +509,7 @@ class FilterChipWidget extends StatelessWidget {
           if (icon != null) SizedBox(width: 5.w),
           Text(
             label,
-            style: lemonMilk400(Colors.black, 12.sp)
+            style: lemonMilk400(Colors.black, 11.sp)
           ),
         ],
       ),

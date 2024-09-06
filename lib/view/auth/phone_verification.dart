@@ -79,6 +79,23 @@ class _PhoneNumberVerificationScreenState
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.white,
+      appBar: AppBar(
+        backgroundColor: AppColor.white,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        title:
+        Text(
+          "PHONE NUMBER VERIFICATION",
+          style: lemonMilkWithColor500(AppColor.black, 18.sp),
+        ),
+        centerTitle: false, // Ensures the title is left-aligned next to the leading icon
+
+      ),
+
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 15.w),
@@ -86,30 +103,13 @@ class _PhoneNumberVerificationScreenState
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Back Button and Title
-              Padding(
-                padding: EdgeInsets.only(top: 10.h),
-                child: Row(
-                  children: [
-                    IconButton(
-                      icon: Icon(Icons.arrow_back, color: AppColor.black, size: 18.w),
-                      onPressed: () {
-                        // Handle back button action
-                        Navigator.pop(context);
-                      },
-                    ),
-                    // SizedBox(width: 5.w),
-                    Text(
-                      "PHONE NUMBER VERIFICATION",
-                      style: lemonMilkWithColor500(AppColor.black, 17.sp),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: 8.h),
 
               // Instructions Text
               Text(
-                "ENTER THE VERIFICATION CODE SENT TO YOUR PHONE\n NUMBER",
+                "ENTER THE VERIFICATION CODE SENT TO YOUR PHONE",
+                style: lemonMilkWithColor500(AppColor.grey, 12.sp),
+              ),Text(
+        "NUMBER" ,
                 style: lemonMilkWithColor500(AppColor.grey, 12.sp),
               ),
               SizedBox(height: 100.h),

@@ -30,8 +30,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
     },
     {
       'id': '2',
-      'category': 'AUTOMOBILES / PRIVATE ',
-      'title': 'LOREM IPSUM DOLOR SIT AMET CONSECTETUR...',
+      'category': 'AUTOMOBILES /  CAR',
+      'title': 'Lorem ipsum dolor sit amet consectetur. ...',
       'price': '\$3300',
       'image': AppImages.bmw,
       'location': 'UTTARA, DHAKA',
@@ -87,7 +87,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       'category': 'Automobile / Cycle',
       'title': 'LOREM IPSUM DOLOR SIT AMET CONSECTETUR...',
       'price': '\$383',
-      'image': AppImages.bycycle,
+      'image': AppImages.bicycle,
       'location': 'UTTARA, DHAKA',
       'time': '30 MINS AGO',
     },
@@ -156,7 +156,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
             SizedBox(height: 16.h),
             Text(
-              'Corporis dolore libero temporibus minus tempora quia voluptas nesciunt.',
+              'Corporis dolore libero temporibus minus',
+              style:lemonMilk400(Color.fromRGBO(85, 85, 85, 1), 11.sp)
+            ),  Text(
+              'tempora quia voluptas nesciunt.',
               style:lemonMilk400(Color.fromRGBO(85, 85, 85, 1), 11.sp)
             ),
             SizedBox(height: 16.h),
@@ -175,37 +178,50 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Obx(
-                      () {
-                    bool isGridView = viewController.isGridView.value;
-                    return Row(
-                      children: [
-                        IconButton(
+            SizedBox(height: 10.h,),
+            Divider(color: AppColor.black3, // Set the color of the divider
+              thickness: 0.5, // Set the thickness of the divider (width)
+               ),
+
+            Obx(
+                  () {
+                bool isGridView = viewController.isGridView.value;
+                return
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+
+                      SizedBox(
+                        width: 18.w,
+                        child: IconButton(
                           icon: Icon(
-                            Icons.grid_view,
+                            Icons.grid_view_sharp,
                             color: isGridView ? AppColor.green : AppColor.black,
+                            size: 18.h,
                           ),
                           onPressed: () {
                             viewController.toggleViewMode(); // Toggle view mode
                           },
                         ),
-                        IconButton(
-                          icon: Icon(
-                            Icons.view_list,
-                            color: !isGridView ? AppColor.green : AppColor.black,
-                          ),
-                          onPressed: () {
-                            viewController.toggleViewMode(); // Toggle view mode
-                          },
+                      ),
+                      SizedBox(width: 4.w,),
+
+                      SizedBox(
+                        width:30.w
+                        ,                          child: IconButton(
+                        icon: Icon(
+                          Icons.view_list,
+                          color: !isGridView ? AppColor.green : AppColor.black,
                         ),
-                      ],
-                    );
-                  },
-                ),
-              ],
+                        onPressed: () {
+                          viewController.toggleViewMode(); // Toggle view mode
+                        },
+                      ),
+                      ),
+
+                    ],
+                  );
+              },
             ),
             SizedBox(height: 0.h,),
             Obx(
@@ -218,7 +234,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       crossAxisCount: 2,
                       crossAxisSpacing: 10.w,
                       mainAxisSpacing: 10.h,
-                      childAspectRatio: 0.70,
+                      childAspectRatio: 0.73,
                     ),
                     padding: EdgeInsets.zero,
                     itemCount: recentAds.length,
@@ -229,13 +245,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => prDetailsPage(imagePath: ad['image']!, title:ad['title']!, location:ad['location']!,),
+                              builder: (context) => prDetailsPage(
+                                  imagePath: ad['image']!,
+                                  location: ad['location']!,
+                                  title: ad['title']!
+                              ),
                             ),
                           );
                         },
                         child: Container(
                           decoration: BoxDecoration(
-                            color: AppColor.greyl,
+                            color: AppColor.lightGrey,
                             borderRadius: BorderRadius.circular(8.r),
                           ),
                           child: Column(
@@ -266,7 +286,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                               padding: const EdgeInsets.only(left: 4.0),
                                               child: Text(
                                                 ad['category']!,
-                                                style: lemonMilk400(AppColor.orange, 8.sp),
+                                                style: lemonMilk400(AppColor.orange, 6.sp),
                                               ),
                                             ),
                                           ],
@@ -276,10 +296,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             favoriteController.toggleFavorite(ad['id']!);
                                           },
                                           child: Icon(
-                                            favoriteController.isFavorite(ad['id']!)
-                                                ? Icons.favorite
+                                            favoriteController.isFavorite(ad['id']!) ? Icons.favorite
                                                 : Icons.favorite_outline,
-                                            size: 16.h,
+                                            size: 10.h,
                                             color: favoriteController.isFavorite(ad['id']!)
                                                 ? Colors.red
                                                 : Colors.black,
@@ -301,7 +320,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     SizedBox(height: 4.h),
                                     Text(
                                       ad['title']!,
-                                      style: lemonMilk500(9.sp, AppColor.black),
+                                      style: lemonMilk500(10.sp, AppColor.black),
                                     ),
                                     SizedBox(height: 4.h),
                                     Text(
@@ -320,19 +339,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             ),
                                             Text(
                                               ad['location']!,
-                                              style: lemonMilk400(AppColor.grey, 6.sp),
+                                              style: lemonMilk400(AppColor.grey, 5.5.sp),
                                             ),
                                           ],
                                         ),
                                         Row(
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsets.only(right: 4.0),
+                                              padding: const EdgeInsets.only(right: 2.0),
                                               child: Image.asset(AppImages.clock, height: 7.h),
                                             ),
                                             Text(
                                               ad['time']!,
-                                              style: lemonMilk400(AppColor.grey, 6.sp),
+                                              style: lemonMilk400(AppColor.grey, 5.5.sp),
                                             ),
                                           ],
                                         ),
@@ -347,7 +366,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       );
                     },
                   )
-                      :ListView.builder(
+                      : ListView.builder(
                     padding: EdgeInsets.zero,
                     itemCount: recentAds.length,
                     itemBuilder: (context, index) {
@@ -374,15 +393,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           child: Row(
                             children: [
                               Padding(
-                                padding: const EdgeInsets.all(4.0),
+                                padding: const EdgeInsets.all(2.0),
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.all(Radius.circular(4.r)),
                                   // borderRadius: BorderRadius.horizontal(left: Radius.circular(8.r),right: Radius.circular(8.r),b),
                                   child: Image.asset(
                                     ad['image']!,
                                     fit: BoxFit.cover,
-                                    width: 140.w,
-                                    height: 120.h,
+                                    width: 120.w,
+                                    height: 95.h,
                                   ),
                                 ),
                               ),
@@ -416,12 +435,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           ),
                                         ),
                                       ),
-                                      SizedBox(height: 4.h),
+                                      SizedBox(height: 6.h),
                                       Text(
                                         ad['title']!,
                                         style: lemonMilk500( 10.sp,AppColor.black,),
                                       ),
-                                      SizedBox(height: 4.h),
+                                      SizedBox(height: 6.h),
                                       Row(
                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children: [
@@ -451,6 +470,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           ),
                                         ],
                                       ),
+                                      SizedBox(height: 6.h),
+
                                       Container(
                                         padding: EdgeInsets.only(bottom: 4),
                                         decoration: BoxDecoration(
@@ -462,7 +483,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           ),
                                         ),
                                       ),
-                                      SizedBox(height: 4.h),
+                                      Spacer(),
                                       Row(
                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
 

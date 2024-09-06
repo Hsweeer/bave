@@ -1,5 +1,6 @@
 class AppImages {
   static const person = 'assets/images/person.png';
+  static const person2 = 'assets/images/person2.png';
   static const splash = 'assets/images/splash.png';
   static const circles = 'assets/images/circles.png';
   static const google = 'assets/images/google.png';

@@ -24,11 +24,17 @@ class DeletetBottomSheet extends StatelessWidget {
             'DELETE ACCOUNT',
             style: lemonMilkWithColor800(AppColor.white, 18.sp),
           ),
+          Divider(
+            color: AppColor.dull_white2, // Set the color of the divider
+            thickness: 0.5, // Set the thickness of the divider (width)
+            indent: 16.0, // Set the space before the divider starts (optional)
+            endIndent: 16.0, // Set the space after the divider ends (optional)
+          ),
           SizedBox(height: 10.h),
           Text(
             'Are you sure you want to permanently\n delete your account?',
             textAlign: TextAlign.center,
-            style: lemonMilkWithColor500(AppColor.white, 13.sp),
+            style: lemonMilk400(AppColor.dull_white, 13.sp),
           ),
           SizedBox(height: 20.h),
           Row(
@@ -75,7 +81,7 @@ class DeletetBottomSheet extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 5.w),
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-            foregroundColor: AppColor.white, backgroundColor: AppColor.red,
+            foregroundColor: AppColor.dull_white, backgroundColor: AppColor.red,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8.r),
             ),

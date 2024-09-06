@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
     {
       'id': '1', // Added unique ID for favorite tracking
       'category': 'GADGET / MOBILE',
-      'title': 'APPLE IPHONE 15 PRO MAX NATURAL...',
+      'title': 'Apple Iphone 15 Pro Max natural titanium...',
       'price': '\$1000',
       'image': AppImages.ios2,
       'location': 'UTTARA, DHAKA',
@@ -52,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
     {
       'id': '2',
       'category': 'AUTOMOBILES /  CAR',
-      'title': 'LOREM IPSUM DOLOR SIT AMET ...',
+      'title': 'Lorem ipsum dolor sit amet consectetur. ...',
       'price': '\$3300',
       'image': AppImages.bmw,
       'location': 'UTTARA, DHAKA',
@@ -129,8 +129,8 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 CircleAvatar(
-                  radius: 25.r,
-                  backgroundImage: AssetImage(AppImages.person),
+                  radius: 20.r,
+                  backgroundImage: AssetImage(AppImages.person2),
                   backgroundColor: Colors.transparent,
                 ),
                 Column(
@@ -138,7 +138,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     Text(
                       '   Current Location',
-                      style: lemonMilk500(6.sp, AppColor.grey),
+                      style: lemonMilk500(9.sp, AppColor.grey),
                     ),
                     Row(
                       mainAxisSize: MainAxisSize.min,
@@ -150,11 +150,11 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: [
                             Text(
                               'Uttara, Dhaka',
-                              style: lemonMilk500(12.sp, AppColor.black),
+                              style: lemonMilk500(13.sp, AppColor.black),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(top: 5.0),
-                              child: Icon(Icons.keyboard_arrow_down_outlined,color: Color.fromRGBO(0, 0, 0, 0.2),size: 20.h,),
+                              child: Icon(Icons.keyboard_arrow_down_outlined,color: Color.fromRGBO(0, 0, 0, 0.2),size: 18.h,),
                             )
                           ],
 
@@ -180,7 +180,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Container(
                 height: 48.h,
                 decoration: BoxDecoration(
-                  border: Border.all(width: 1, color: AppColor.green),
+                  border: Border.all(width: 0.5.w, color: AppColor.green),
                   borderRadius: BorderRadius.circular(8.r),
                 ),
                 child: Padding(
@@ -234,7 +234,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             SizedBox(height: 10.h),
             Container(
-              height: 90.h,
+              height: 82.h,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: categories.length,
@@ -296,26 +296,38 @@ class _HomeScreenState extends State<HomeScreen> {
                 Obx(
                       () {
                     bool isGridView = viewController.isGridView.value;
-                    return Row(
+                    return
+                      Row(
                       children: [
-                        IconButton(
-                          icon: Icon(
-                            Icons.grid_view_sharp,
-                            color: isGridView ? AppColor.green : AppColor.black,
+
+                        SizedBox(
+                          width: 18.w,
+                          child: IconButton(
+                            icon: Icon(
+                              Icons.grid_view_sharp,
+                              color: isGridView ? AppColor.green : AppColor.black,
+                              size: 18.h,
+                            ),
+                            onPressed: () {
+                              viewController.toggleViewMode(); // Toggle view mode
+                            },
                           ),
-                          onPressed: () {
-                            viewController.toggleViewMode(); // Toggle view mode
-                          },
                         ),
-                        IconButton(
-                          icon: Icon(
-                            Icons.view_list,
-                            color: !isGridView ? AppColor.green : AppColor.black,
+                        SizedBox(width: 4.w,),
+
+                        SizedBox(
+                          width:30.w
+,                          child: IconButton(
+                            icon: Icon(
+                              Icons.view_list,
+                              color: !isGridView ? AppColor.green : AppColor.black,
+                            ),
+                            onPressed: () {
+                              viewController.toggleViewMode(); // Toggle view mode
+                            },
                           ),
-                          onPressed: () {
-                            viewController.toggleViewMode(); // Toggle view mode
-                          },
                         ),
+
                       ],
                     );
                   },
@@ -332,7 +344,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       crossAxisCount: 2,
                       crossAxisSpacing: 10.w,
                       mainAxisSpacing: 10.h,
-                      childAspectRatio: 0.70,
+                      childAspectRatio: 0.73,
                     ),
                     padding: EdgeInsets.zero,
                     itemCount: recentAds.length,
@@ -384,7 +396,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                               padding: const EdgeInsets.only(left: 4.0),
                                               child: Text(
                                                 ad['category']!,
-                                                style: lemonMilk400(AppColor.orange, 8.sp),
+                                                style: lemonMilk400(AppColor.orange, 6.sp),
                                               ),
                                             ),
                                           ],
@@ -394,10 +406,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                             favoriteController.toggleFavorite(ad['id']!);
                                           },
                                           child: Icon(
-                                            favoriteController.isFavorite(ad['id']!)
-                                                ? Icons.favorite
+                                            favoriteController.isFavorite(ad['id']!) ? Icons.favorite
                                                 : Icons.favorite_outline,
-                                            size: 16.h,
+                                            size: 10.h,
                                             color: favoriteController.isFavorite(ad['id']!)
                                                 ? Colors.red
                                                 : Colors.black,
@@ -424,7 +435,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     SizedBox(height: 4.h),
                                     Text(
                                       ad['price']!,
-                                      style: lemonMilk400(AppColor.orange, 10.sp),
+                                      style: lemonMilk400(AppColor.orange, 8.sp),
                                     ),
                                     SizedBox(height: 4.h),
                                     Row(
@@ -434,11 +445,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                           children: [
                                             Padding(
                                               padding: const EdgeInsets.only(right: 4.0),
-                                              child: Image.asset(AppImages.location, height: 10.h),
+                                              child: Image.asset(AppImages.location, height: 7.h),
                                             ),
                                             Text(
                                               ad['location']!,
-                                              style: lemonMilk400(AppColor.grey, 7.sp),
+                                              style: lemonMilk400(AppColor.grey, 5.5.sp),
                                             ),
                                           ],
                                         ),
@@ -446,11 +457,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                           children: [
                                             Padding(
                                               padding: const EdgeInsets.only(right: 2.0),
-                                              child: Image.asset(AppImages.clock, height: 10.h),
+                                              child: Image.asset(AppImages.clock, height: 7.h),
                                             ),
                                             Text(
                                               ad['time']!,
-                                              style: lemonMilk400(AppColor.grey, 7.sp),
+                                              style: lemonMilk400(AppColor.grey, 5.5.sp),
                                             ),
                                           ],
                                         ),
@@ -492,15 +503,15 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Row(
                             children: [
                               Padding(
-                                padding: const EdgeInsets.all(4.0),
+                                padding: const EdgeInsets.all(2.0),
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.all(Radius.circular(4.r)),
                                   // borderRadius: BorderRadius.horizontal(left: Radius.circular(8.r),right: Radius.circular(8.r),b),
                                   child: Image.asset(
                                     ad['image']!,
                                     fit: BoxFit.cover,
-                                    width: 140.w,
-                                    height: 120.h,
+                                    width: 120.w,
+                                    height: 95.h,
                                   ),
                                 ),
                               ),
@@ -534,12 +545,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                           ),
                                         ),
                                       ),
-                                      SizedBox(height: 4.h),
+                                      SizedBox(height: 6.h),
                                       Text(
                                         ad['title']!,
                                         style: lemonMilk500( 10.sp,AppColor.black,),
                                       ),
-                                      SizedBox(height: 4.h),
+                                      SizedBox(height: 6.h),
                                       Row(
                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children: [
@@ -569,6 +580,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                           ),
                                         ],
                                       ),
+                                      SizedBox(height: 6.h),
+
                                       Container(
                                         padding: EdgeInsets.only(bottom: 4),
                                         decoration: BoxDecoration(
@@ -580,7 +593,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           ),
                                         ),
                                       ),
-                                      SizedBox(height: 4.h),
+Spacer(),
                                       Row(
                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
@@ -604,7 +617,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 );
               },
-            )
+            ),
+
           ],
         ),
       ),

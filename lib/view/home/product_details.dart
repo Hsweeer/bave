@@ -207,439 +207,462 @@ class _prDetailsPageState extends State<prDetailsPage> {
     return Scaffold(
       backgroundColor: AppColor.white,
       body: SingleChildScrollView(
-        child: SafeArea(
-          child: Column(
-            children: [
-              Container(
-                width: double.infinity, // Set the width to the full screen width
-                height: 313.h, //
-                child: Stack(
-                  children: [
-                    Container(
-                      height: 313.h ,
-                      child: Image.asset(
-                        widget.imagePath,
-                        fit: BoxFit.cover,
-                      ),
+        child: Column(
+          children: [
+            Container(
+              width: double.infinity, // Set the width to the full screen width
+              height: 313.h, //
+              child: Stack(
+                children: [
+                  Container(
+                    height: 313.h ,
+                    child: Image.asset(
+                      widget.imagePath,
+                      fit: BoxFit.cover,
                     ),
+                  ),
 
-                    Positioned(
-                        top: 18,  // Adjust these values to position the icons
-                        right: 8,
-                        child:
-                        Row(
-                          children: [
-                            // Circular container with an image for edit action
-                            GestureDetector(
-                              onTap: () {
-                                // Handle edit action
-                              },
-                              child: Container(
-                                width: 40.w, // Adjust size as needed
-                                height: 40.h, // Adjust size as needed
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: AppColor.green, // Optional background color
+                  Positioned(
+                      top: 50,  // Adjust these values to position the icons
+                      right: 8,
+                      child:
+                      Row(
+                        children: [
+                          // Circular container with an image for edit action
+                          GestureDetector(
+                            onTap: () {
+                              // Handle edit action
+                            },
+                            child: Container(
+                              width: 40.w, // Adjust size as needed
+                              height: 40.h, // Adjust size as needed
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: AppColor.green, // Optional background color
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Center(
+                                  child: Image.asset(
+                                    AppImages.heart, // Replace with your edit icon image path
+                                    width: 24.w, // Adjust size as needed
+                                    height: 24.h, // Adjust size as needed
+                                  ),
                                 ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: 5.w), // Space between the icons
+                          // Circular container with an image for share action
+                          GestureDetector(
+                            onTap: () {
+                              // Handle share action
+                            },
+                            child: Container(
+                              width: 40.w, // Adjust size as needed
+                              height: 40.h, // Adjust size as needed
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: AppColor.green, // Optional background color
+                              ),
+                              child: Center(
                                 child: Padding(
                                   padding: const EdgeInsets.all(10.0),
-                                  child: Center(
-                                    child: Image.asset(
-                                      AppImages.heart, // Replace with your edit icon image path
-                                      width: 24.w, // Adjust size as needed
-                                      height: 24.h, // Adjust size as needed
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            SizedBox(width: 5.w), // Space between the icons
-                            // Circular container with an image for share action
-                            GestureDetector(
-                              onTap: () {
-                                // Handle share action
-                              },
-                              child: Container(
-                                width: 40.w, // Adjust size as needed
-                                height: 40.h, // Adjust size as needed
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: AppColor.green, // Optional background color
-                                ),
-                                child: Center(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(10.0),
-                                    child: Image.asset(
-                                      AppImages.setting, // Replace with your share icon image path
-                                      width: 24.w, // Adjust size as needed
-                                      height: 24.h, // Adjust size as needed
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        )
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: 10.w),
-
-
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.w),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // Image Section
-
-                    Row(
-                      children: [
-                        Image.asset(
-                          AppImages.tagg, // Replace with your category icon image path
-                          color: Colors.grey,
-                          width: 14.w, // Adjust size as needed
-                          height: 14.h, // Adjust size as needed
-                        ),
-                        SizedBox(width: 4.w),
-                        Text(
-                          'GADGET / LAPTOP',
-                          style: lemonMilk400(AppColor.grey, 10.sp),
-                        ),
-                        Spacer(),
-                        Row(
-                          children: [
-                            Image.asset(
-                              AppImages.eye, // Replace with your preview icon image path
-                              width: 24.w, // Adjust size as needed
-                              height: 24.h, // Adjust size as needed
-                            ),
-                            SizedBox(width: 4.w),
-                            Text(
-                              '(134) PREVIEW',
-                              style: lemonMilk500(8.sp, AppColor.black),
-                            ),
-                            SizedBox(width: 16.w), // Spacing between preview and clicks
-                            Image.asset(
-                              AppImages.mouse, // Replace with your clicks icon image path
-                              width: 24.w, // Adjust size as needed
-                              height: 24.h, // Adjust size as needed
-                            ),
-                            SizedBox(width: 4.w),
-                            Text(
-                              '(76) CLICKS',
-                              style: lemonMilk500(8.sp, AppColor.black),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 8.h), // Spacing between rows
-                    Row(
-                      children: [
-                        Image.asset(
-                          AppImages.location, // Replace with your location icon image path
-                          color: Colors.grey,
-                          width: 12.w, // Adjust size as needed
-                          height: 12.h, // Adjust size as needed
-                        ),
-                        SizedBox(width: 4.w),
-                        Text(
-                          widget.location,
-                          style: lemonMilk500(10.sp, AppColor.black),
-                        ),
-                      ],
-                    ),
-
-                    // Title, Price, and Call to Action
-                    Text(
-                        widget.title,
-                        style: lemonMilkWithColor500(AppColor.black,20.sp)
-                    ),
-                    SizedBox(height: 8.h),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        // SizedBox(width: 40.w,),
-
-                        Container(
-                          width: 150.w,
-                          height: 60.h,
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: AppColor.orange,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8.r),
-                              ),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                    "\$2347",
-                                    style:  lemonMilk500(16.sp,AppColor.white)
-                                ),
-                                SizedBox(width: 0.w),
-                                Image.asset(
-                                  AppImages.tagg, // Replace with your category icon image path
-                                  color: Colors.white,
-                                  width: 15.w, // Adjust size as needed
-                                  height: 35.h, // Adjust size as needed
-                                ),                              ],
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: 12.w),
-                        Container(
-                          width: 150.w,
-                          height: 60.h,
-                          child: ElevatedButton(
-
-                            onPressed: () {},
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: AppColor.green,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8.r),
-                              ),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                    "(+800)",
-                                    style:  lemonMilk500(16.sp,AppColor.white)
-                                ),
-                                SizedBox(width: 8.w),
-                                Icon(Icons.phone, color: AppColor.white, size: 18.sp),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 16.h),
-
-                    // Specifications Section
-                    _buildSectionTitle("SPECIFICATIONS:"),
-                    _buildSpecification("Price:", "\$2,347"),
-                    _buildSpecification("Seller Type:", "Personal"),
-                    _buildSpecification("Published:", "February 02, 2021"),
-                    _buildSpecification("Location:", "Jalkuri, Narayanganj"),
-                    _buildSpecification("Category:", "Gadgets"),
-                    _buildSpecification("Condition:", "Used"),
-                    _buildSpecification("Price Type:", "Negotiable"),
-
-                    SizedBox(height: 16.h),
-
-                    // Description Section
-                    _buildSectionTitle("DESCRIPTION"),
-
-                    Container(
-                      width: 353.w,
-                      height: 286.h,
-                      padding: EdgeInsets.all(12.h),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8.r),
-                          color: AppColor.greyl
-                      ),
-                      child: Text(
-                          "Lorem ipsum dolor sit amet, cLorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna utas vitae qui...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna utas vitae qui...onsectetur adipiscing elit. Ut magna utas vitae qui...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna utas vitae qui...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna utas vitae qui...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna utas vitae qui...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna utas vitae qui... ",
-                          style:  lemonMilk400(AppColor.grey,12.sp,)
-                      ),
-                    ),
-                    SizedBox(height: 16.h),
-
-                    // Author Info
-                    _buildSectionTitle("AUTHOR INFO"),
-                    SizedBox(height: 10.h),
-
-                    Container(
-                      width: 353.w,
-
-                      padding: EdgeInsets.all(12.h),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8.r),
-                          color: AppColor.greyl
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              CircleAvatar(
-                                radius: 30,
-                                backgroundColor: Colors.yellow,
-                                child: GestureDetector(
-                                  onTap: (){
-                                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                                      // builder: (context) => HomePagenav(), // Replace with your next page widget
-                                      builder: (context) => ProfileScreen(), // Replace with your next page widget
-                                    ));
-                                  },
-
                                   child: Image.asset(
-                                    AppImages.profile,
-                                    fit: BoxFit.cover, // Adjust this property as needed
+                                    AppImages.setting, // Replace with your share icon image path
+                                    width: 24.w, // Adjust size as needed
+                                    height: 24.h, // Adjust size as needed
                                   ),
                                 ),
                               ),
-                              SizedBox(width: 16),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Jackon Honson',
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  Text(
-                                      'JOINED: FEBRUARY 02, 2021',
-                                      style:  lemonMilk400(AppColor.grey,12.sp,)
-
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 16),
-                          Text(
-                              'CORPORIS DOLORE LIBERO TEMPORIBUS MINUS TEMPORA QUIA VOLUPTAS NESCIUNT.',
-                              style:  lemonMilk400(AppColor.grey,12.sp,)
-
-                          ),
-                          SizedBox(height: 16),
-                          Divider(),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 8.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                    'TOTAL ADS',
-                                    style:  lemonMilk500(13.sp,AppColor.black)
-
-                                ),
-                                Text(
-                                    '134',
-                                    style: lemonMilk500(13.sp,AppColor.black)
-
-                                ),
-                              ],
                             ),
                           ),
                         ],
+                      )
+                  ),
+                  Positioned(
+                      top: 50,  // Adjust these values to position the icons
+                      left: 8,
+                      child:
+                      IconButton(
+                        icon: Icon(Icons.arrow_back, color: Colors.black),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
                       ),
-                    ),              SizedBox(height: 16.h),
-
-                    // Location Section
-                    _buildSectionTitle("LOCATION"),
-                    Container(
-                      height: 370.h,
-                      width: 352.w,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8.r),
-                        color: AppColor.lightGrey,
-                      ),
-                      child:  Image.asset(
-                        AppImages.map,
-                        fit: BoxFit.cover, // Adjust this property as needed
-                      ),
-                    ),
-                    SizedBox(height: 16.h),
-
-                    _buildSectionTitle("SAFETY TIPS"),
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        color: Color.fromRGBO(247, 247, 247, 1),
-
-                      ),
-                      child: Column(children: [
-                        _buildSafetyTip("Check the item before you buy"),
-                        _buildSafetyTip("Pay only after collecting the item"),
-                        _buildSafetyTip("Beware of unrealistic offers"),
-                        _buildSafetyTip("Meet seller at a safe location"),
-                        _buildSafetyTip("Do not make an abrupt decision"),
-                        _buildSafetyTip("Be honest with the ad you post"),
-                      ],),
-                    ),
-
-                    SizedBox(height: 16.h),
-
-                    // Admin Approval Section
-                    // Container(
-                    //   width: double.infinity,
-                    //
-                    //   child: Text(
-                    //     "PLEASE WAIT FOR ADMIN APPROVAL",
-                    //     style: lemonMilk500(12.sp,AppColor.black),
-                    //
-                    //     textAlign: TextAlign.center,
-                    //   ),
-                    // ),
-                    // SizedBox(height: 16.h),
-                    //
-                    // // Delete Ad Button
-                    // Row(
-                    //   mainAxisAlignment: MainAxisAlignment.center,
-                    //   children: [
-                    //     SizedBox(
-                    //       width: 160.w,
-                    //       height: 55.h,
-                    //       child: ElevatedButton(
-                    //         onPressed: _showSuccessDialog,
-                    //
-                    //         style: ElevatedButton.styleFrom(
-                    //           backgroundColor: AppColor.orange,
-                    //           padding: EdgeInsets.symmetric(vertical: 12.h),
-                    //           shape: RoundedRectangleBorder(
-                    //             borderRadius: BorderRadius.circular(8.r),
-                    //           ),
-                    //         ),
-                    //         child: Center(
-                    //           child: Text(
-                    //               "MARK AS SOLD",
-                    //               style: lemonMilk500(15.sp,AppColor.white)
-                    //
-                    //           ),
-                    //         ),
-                    //       ),
-                    //     ),
-                    //     SizedBox(width: 5.w,),
-                    //     SizedBox(
-                    //       width: 160.w,
-                    //       height: 55.h,
-                    //       child: ElevatedButton(
-                    //         onPressed: _showSuccessDialog2,
-                    //
-                    //         style: ElevatedButton.styleFrom(
-                    //           backgroundColor: AppColor.red,
-                    //           padding: EdgeInsets.symmetric(vertical: 12.h),
-                    //           shape: RoundedRectangleBorder(
-                    //             borderRadius: BorderRadius.circular(8.r),
-                    //           ),
-                    //         ),
-                    //         child: Center(
-                    //           child: Text(
-                    //               "DELETE AD",
-                    //               style: lemonMilk500(15.sp,AppColor.white)
-                    //
-                    //           ),
-                    //         ),
-                    //       ),
-                    //     ),
-                    //   ],
-                    // ),
-                    // SizedBox(height: 24.h),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+            SizedBox(height: 10.w),
+
+
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Image Section
+
+                  Row(
+                    children: [
+                      Image.asset(
+                        AppImages.tagg, // Replace with your category icon image path
+                        color: Colors.grey,
+                        width: 14.w, // Adjust size as needed
+                        height: 14.h, // Adjust size as needed
+                      ),
+                      SizedBox(width: 4.w),
+                      Text(
+                        'GADGET / LAPTOP',
+                        style: lemonMilk400(AppColor.grey, 10.sp),
+                      ),
+                      Spacer(),
+                      Row(
+                        children: [
+                          Image.asset(
+                            AppImages.eye, // Replace with your preview icon image path
+                            width: 24.w, // Adjust size as needed
+                            height: 24.h, // Adjust size as needed
+                          ),
+                          SizedBox(width: 4.w),
+                          Text(
+                            '(134) PREVIEW',
+                            style: lemonMilk500(8.sp, AppColor.black),
+                          ),
+                          SizedBox(width: 16.w), // Spacing between preview and clicks
+                          Image.asset(
+                            AppImages.mouse, // Replace with your clicks icon image path
+                            width: 24.w, // Adjust size as needed
+                            height: 24.h, // Adjust size as needed
+                          ),
+                          SizedBox(width: 4.w),
+                          Text(
+                            '(76) CLICKS',
+                            style: lemonMilk500(8.sp, AppColor.black),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 8.h), // Spacing between rows
+                  Row(
+                    children: [
+                      Image.asset(
+                        AppImages.location, // Replace with your location icon image path
+                        color: Colors.grey,
+                        width: 12.w, // Adjust size as needed
+                        height: 12.h, // Adjust size as needed
+                      ),
+                      SizedBox(width: 4.w),
+                      Text(
+                        widget.location,
+                        style: lemonMilk500(10.sp, AppColor.black),
+                      ),
+                    ],
+                  ),
+
+                  // Title, Price, and Call to Action
+                  Text(
+                      widget.title,
+                      style: lemonMilkWithColor500(AppColor.black,20.sp)
+                  ),
+                  SizedBox(height: 8.h),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      // SizedBox(width: 40.w,),
+
+                      Container(
+                        width: 150.w,
+                        height: 60.h,
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: AppColor.orange,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8.r),
+                            ),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                  "\$2347",
+                                  style:  lemonMilk500(16.sp,AppColor.white)
+                              ),
+                              SizedBox(width: 0.w),
+                              Image.asset(
+                                AppImages.tagg, // Replace with your category icon image path
+                                color: Colors.white,
+                                width: 15.w, // Adjust size as needed
+                                height: 35.h, // Adjust size as needed
+                              ),                              ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: 12.w),
+                      Container(
+                        width: 150.w,
+                        height: 60.h,
+                        child: ElevatedButton(
+
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: AppColor.green,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8.r),
+                            ),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SizedBox(height: 5,),
+
+                                  Text(
+                                      "(+800)",
+                                      style:  lemonMilk500(16.sp,AppColor.white)
+                                  ),
+                                  Text(
+                                      "Click to show",
+                                      style:  lemonMilk400(AppColor.white,8.sp,)
+                                  ),
+
+                                ],
+                              ),
+                              SizedBox(width: 8.w),
+                              Icon(Icons.phone, color: AppColor.white, size: 18.sp),
+
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 16.h),
+
+                  // Specifications Section
+                  _buildSectionTitle("SPECIFICATIONS:"),
+                  _buildSpecification("Price:", "\$2,347"),
+                  _buildSpecification("Seller Type:", "Personal"),
+                  _buildSpecification("Published:", "February 02, 2021"),
+                  _buildSpecification("Location:", "Jalkuri, Narayanganj"),
+                  _buildSpecification("Category:", "Gadgets"),
+                  _buildSpecification("Condition:", "Used"),
+                  _buildSpecification("Price Type:", "Negotiable"),
+
+                  SizedBox(height: 16.h),
+
+                  // Description Section
+                  _buildSectionTitle("DESCRIPTION"),
+
+                  Container(
+                    width: 353.w,
+                    height: 286.h,
+                    padding: EdgeInsets.all(12.h),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8.r),
+                        color: AppColor.greyl
+                    ),
+                    child: Text(
+                        "Lorem ipsum dolor sit amet, cLorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna utas vitae qui...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna utas vitae qui...onsectetur adipiscing elit. Ut magna utas vitae qui...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna utas vitae qui...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna utas vitae qui...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna utas vitae qui...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna utas vitae qui... ",
+                        style:  lemonMilk400(AppColor.grey,12.sp,)
+                    ),
+                  ),
+                  SizedBox(height: 16.h),
+
+                  // Author Info
+                  _buildSectionTitle("AUTHOR INFO"),
+                  SizedBox(height: 10.h),
+
+                  Container(
+                    width: 353.w,
+
+                    padding: EdgeInsets.all(12.h),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8.r),
+                        color: AppColor.greyl
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            CircleAvatar(
+                              radius: 30,
+                              backgroundColor: Colors.yellow,
+                              child: GestureDetector(
+                                onTap: (){
+                                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                                    // builder: (context) => HomePagenav(), // Replace with your next page widget
+                                    builder: (context) => ProfileScreen(), // Replace with your next page widget
+                                  ));
+                                },
+
+                                child: Image.asset(
+                                  AppImages.profile,
+                                  fit: BoxFit.cover, // Adjust this property as needed
+                                ),
+                              ),
+                            ),
+                            SizedBox(width: 16),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Jackon Honson',
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Text(
+                                    'JOINED: FEBRUARY 02, 2021',
+                                    style:  lemonMilk400(AppColor.grey,12.sp,)
+
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 16),
+                        Text(
+                            'CORPORIS DOLORE LIBERO TEMPORIBUS MINUS TEMPORA QUIA VOLUPTAS NESCIUNT.',
+                            style:  lemonMilk400(AppColor.grey,12.sp,)
+
+                        ),
+                        SizedBox(height: 16),
+                        Divider(),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                  'TOTAL ADS',
+                                  style:  lemonMilk500(13.sp,AppColor.black)
+
+                              ),
+                              Text(
+                                  '134',
+                                  style: lemonMilk500(13.sp,AppColor.black)
+
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),              SizedBox(height: 16.h),
+
+                  // Location Section
+                  _buildSectionTitle("LOCATION"),
+                  Container(
+                    height: 370.h,
+                    width: 352.w,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8.r),
+                      color: AppColor.lightGrey,
+                    ),
+                    child:  Image.asset(
+                      AppImages.map,
+                      fit: BoxFit.cover, // Adjust this property as needed
+                    ),
+                  ),
+                  SizedBox(height: 16.h),
+
+                  _buildSectionTitle("SAFETY TIPS"),
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: Color.fromRGBO(247, 247, 247, 1),
+
+                    ),
+                    child: Column(children: [
+                      _buildSafetyTip("Check the item before you buy"),
+                      _buildSafetyTip("Pay only after collecting the item"),
+                      _buildSafetyTip("Beware of unrealistic offers"),
+                      _buildSafetyTip("Meet seller at a safe location"),
+                      _buildSafetyTip("Do not make an abrupt decision"),
+                      _buildSafetyTip("Be honest with the ad you post"),
+                    ],),
+                  ),
+
+                  SizedBox(height: 16.h),
+
+                  // Admin Approval Section
+                  // Container(
+                  //   width: double.infinity,
+                  //
+                  //   child: Text(
+                  //     "PLEASE WAIT FOR ADMIN APPROVAL",
+                  //     style: lemonMilk500(12.sp,AppColor.black),
+                  //
+                  //     textAlign: TextAlign.center,
+                  //   ),
+                  // ),
+                  // SizedBox(height: 16.h),
+                  //
+                  // // Delete Ad Button
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.center,
+                  //   children: [
+                  //     SizedBox(
+                  //       width: 160.w,
+                  //       height: 55.h,
+                  //       child: ElevatedButton(
+                  //         onPressed: _showSuccessDialog,
+                  //
+                  //         style: ElevatedButton.styleFrom(
+                  //           backgroundColor: AppColor.orange,
+                  //           padding: EdgeInsets.symmetric(vertical: 12.h),
+                  //           shape: RoundedRectangleBorder(
+                  //             borderRadius: BorderRadius.circular(8.r),
+                  //           ),
+                  //         ),
+                  //         child: Center(
+                  //           child: Text(
+                  //               "MARK AS SOLD",
+                  //               style: lemonMilk500(15.sp,AppColor.white)
+                  //
+                  //           ),
+                  //         ),
+                  //       ),
+                  //     ),
+                  //     SizedBox(width: 5.w,),
+                  //     SizedBox(
+                  //       width: 160.w,
+                  //       height: 55.h,
+                  //       child: ElevatedButton(
+                  //         onPressed: _showSuccessDialog2,
+                  //
+                  //         style: ElevatedButton.styleFrom(
+                  //           backgroundColor: AppColor.red,
+                  //           padding: EdgeInsets.symmetric(vertical: 12.h),
+                  //           shape: RoundedRectangleBorder(
+                  //             borderRadius: BorderRadius.circular(8.r),
+                  //           ),
+                  //         ),
+                  //         child: Center(
+                  //           child: Text(
+                  //               "DELETE AD",
+                  //               style: lemonMilk500(15.sp,AppColor.white)
+                  //
+                  //           ),
+                  //         ),
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
+                  // SizedBox(height: 24.h),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -703,11 +726,25 @@ class _prDetailsPageState extends State<prDetailsPage> {
         ),
         child: Row(
           children: [
-            Icon(
-              Icons.circle,
-              color: AppColor.orange,
-              size: 16.sp,
+            Stack(
+              alignment: Alignment.center,  // Center the white dot
+              children: [
+                Icon(
+                  Icons.circle,
+                  color: AppColor.orange,
+                  size: 16.sp,
+                ),
+                Container(
+                  width: 4.sp,  // Set the size of the white dot
+                  height: 4.sp,
+                  decoration: BoxDecoration(
+                    color: Colors.white,  // White color for the dot
+                    shape: BoxShape.circle,  // Circular shape
+                  ),
+                ),
+              ],
             ),
+
             SizedBox(width: 8.w),
             Expanded(
               child: Text(
